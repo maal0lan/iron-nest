@@ -1,26 +1,22 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { login } from '../features/auth/authSlice.js';
-import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { status, error } = useSelector((state) => state.auth);
   const [form, setForm] = useState({ email: '', password: '' });
-  const [serverError, setServerError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setServerError('');
-    try {
-      await dispatch(login(form));
-      navigate('/');
-    } catch (err) {
-      setServerError(err.message || 'Login failed.');
+    const result = await dispatch(login({ ...form, email: form.email.trim() }));
+    if (login.fulfilled.match(result)) {
+      navigate(location.state?.from || '/', { replace: true });
     }
   };
 
@@ -58,9 +54,9 @@ export default function Login() {
               required
             />
 
-            {serverError && (
-              <div className="rounded-md bg-[var(--color-danger-50)] p-3 text-[var(--color-danger-700)] text-sm text-center">
-                {serverError}
+            {error && (
+              <div role="alert" className="rounded-md bg-[var(--color-danger-50)] p-3 text-[var(--color-danger-700)] text-sm text-center">
+                {error}
               </div>
             )}
 
