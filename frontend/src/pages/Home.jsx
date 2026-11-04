@@ -17,18 +17,18 @@ const CATEGORIES = [
 
 // Store rules (README): shipping, coupons.
 const PERKS = [
-  'Free shipping over $50',
-  'SAVE10 · 10% off',
-  'POWER15 · 15% off $100+',
-  'LIFT5 · $5 off $20+',
+  'Free shipping over ₹999',
+  '10% off your cart',
+  '15% off orders ₹2,000+',
+  '₹50 off orders ₹500+',
   'Independent fitness sellers',
   'Demo checkout',
 ];
 
 const COUPONS = [
-  { code: 'SAVE10', title: '10% off', note: 'On your whole cart' },
-  { code: 'POWER15', title: '15% off', note: 'Orders of $100 or more' },
-  { code: 'LIFT5', title: '$5 off', note: 'Orders of $20 or more' },
+  { title: '10% off', note: 'On your whole cart' },
+  { title: '15% off', note: 'Orders of ₹2,000 or more' },
+  { title: '₹50 off', note: 'Orders of ₹500 or more' },
 ];
 
 const btnPrimary =
@@ -67,8 +67,8 @@ export default function Home() {
               <span className="text-gradient">Save smarter.</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-white/80 sm:text-lg">
-              Gear from independent fitness sellers. Use code <strong className="text-white">SAVE10</strong> for 10% off your cart,
-              and ship free on orders of $50 or more.
+              Gear from independent fitness sellers. Get 10% off your cart,
+              and ship free on orders of ₹999 or more.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/products" className={btnPrimary}>Shop deals</Link>
@@ -80,7 +80,7 @@ export default function Home() {
           <div className="hidden gap-3 lg:grid" aria-label="Current offers">
             {COUPONS.map((c, i) => (
               <div
-                key={c.code}
+                key={c.title}
                 className="animate-fade-up flex items-center justify-between rounded-lg border border-white/15 bg-white/10 px-5 py-4 backdrop-blur-md"
                 style={{ animationDelay: `${150 + i * 110}ms`, marginLeft: `${i * 18}px` }}
               >
@@ -88,7 +88,6 @@ export default function Home() {
                   <p className="font-display text-2xl font-semibold uppercase tracking-wide text-white">{c.title}</p>
                   <p className="text-xs text-white/70">{c.note}</p>
                 </div>
-                <code className="rounded-md border border-dashed border-white/50 px-3 py-1.5 text-sm font-bold tracking-widest text-white">{c.code}</code>
               </div>
             ))}
           </div>
@@ -165,12 +164,11 @@ export default function Home() {
       <section className="mb-6 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
         <div className="grid gap-px bg-[var(--border)] md:grid-cols-3">
           {COUPONS.map((c) => (
-            <div key={c.code} className="flex items-center justify-between gap-4 bg-[var(--bg-card)] p-6">
+            <div key={c.title} className="flex items-center justify-between gap-4 bg-[var(--bg-card)] p-6">
               <div>
                 <p className="font-display text-3xl font-bold uppercase text-[var(--text-strong)]">{c.title}</p>
                 <p className="text-sm text-[var(--text-muted)]">{c.note}</p>
               </div>
-              <code className="rounded-md border border-dashed border-[var(--color-primary-600)] bg-[var(--color-primary-50)] px-3 py-1.5 text-sm font-bold tracking-widest text-[var(--color-primary-600)]">{c.code}</code>
             </div>
           ))}
         </div>

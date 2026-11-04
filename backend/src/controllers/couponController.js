@@ -21,7 +21,7 @@ export const validateCoupon = async (request, response, next) => {
         valid: false,
         code: coupon.code,
         discountCents: 0,
-        message: `Minimum subtotal of $${(coupon.minSubtotalCents / 100).toFixed(2)} required`,
+        message: `Minimum subtotal of ${new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(coupon.minSubtotalCents / 100)} required`,
       });
     }
 

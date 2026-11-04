@@ -1,4 +1,4 @@
-/** Client-side pricing — must match backend utils/pricing.js exactly. All cents. */
+/** Client-side pricing — must match backend utils/pricing.js exactly. All values in paise. */
 
 export const unitPrice = (product) => {
   const discount = product.discountPercentage || 0;
@@ -17,9 +17,9 @@ export const couponDiscount = (subtotalCents, coupon) => {
 };
 
 export const shipping = (subtotalCents, coupon) => {
-  if (subtotalCents >= 5000) return 0;
+  if (subtotalCents >= 99900) return 0;
   if (coupon && coupon.type === 'freeShipping') return 0;
-  return 499;
+  return 4900;
 };
 
 export const total = (subtotalCents, discountCents, shippingCents) =>
@@ -29,7 +29,7 @@ export const total = (subtotalCents, discountCents, shippingCents) =>
 export const couponInfo = (code) => {
   const c = code.toUpperCase();
   if (c === 'SAVE10') return { code: 'SAVE10', type: 'percent', value: 10, minSubtotalCents: 0 };
-  if (c === 'POWER15') return { code: 'POWER15', type: 'percent', value: 15, minSubtotalCents: 10000 };
-  if (c === 'LIFT5') return { code: 'LIFT5', type: 'flat', value: 500, minSubtotalCents: 2000 };
+  if (c === 'POWER15') return { code: 'POWER15', type: 'percent', value: 15, minSubtotalCents: 200000 };
+  if (c === 'LIFT5') return { code: 'LIFT5', type: 'flat', value: 5000, minSubtotalCents: 50000 };
   return null;
 };

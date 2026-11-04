@@ -71,7 +71,7 @@ export default function SellerDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[stats.productCount, stats.orderCount, null, stats.revenueCents].map((val, i) => {
             const labels = ['Products', 'Orders', 'Top product', 'Revenue'];
-            const values = [stats.productCount, stats.orderCount, stats.topProduct?.title || '—', stats.revenueCents !== undefined ? formatMoney(stats.revenueCents) : '$0'];
+            const values = [stats.productCount, stats.orderCount, stats.topProduct?.title || '—', stats.revenueCents !== undefined ? formatMoney(stats.revenueCents) : formatMoney(0)];
             return (
               <div key={i} className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm">
                 <p className="text-xs text-[var(--color-gray-500)] uppercase font-semibold">{labels[i]}</p>

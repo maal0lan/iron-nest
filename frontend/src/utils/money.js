@@ -1,6 +1,6 @@
 export const formatMoney = (cents) => {
-  const dollars = (cents || 0) / 100;
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(dollars);
+  const rupees = (cents || 0) / 100;
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(rupees);
 };
 
-export const formatCents = (cents) => `$${((cents || 0) / 100).toFixed(2)}`;
+export const formatCents = (cents) => formatMoney(cents);

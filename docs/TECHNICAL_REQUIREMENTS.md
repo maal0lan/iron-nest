@@ -54,18 +54,18 @@ All routes use the `/api` base path and JSON. Errors should use
 `GET /products` is intended to return
 `{ items, total, page, pages }`. Its query filters include category,
 subcategory, seller, search, min/max price, minimum rating, in-stock, sort,
-page, and limit. Price query values are in dollars and are converted to cents
+page, and limit. Price query values are in rupees and are converted to paise
 by the backend.
 
 ## Pricing and stock
 
-- Persist and calculate currency as integer cents; format only at display time.
+- Persist and calculate currency as integer paise; format as INR only at display time.
 - `discountedPriceCents = round(priceCents * (1 - discountPercentage / 100))`.
 - Subtotal is the sum of discounted unit price times quantity.
-- `SAVE10`: 10% off. `POWER15`: 15% off with a $100 minimum.
-- `LIFT5`: $5 off with a $20 minimum. Other codes are invalid.
-- Free shipping applies when the **pre-coupon** subtotal is at least 5,000 cents;
-  otherwise shipping is 499 cents. This resolves the source notes' stated
+- `SAVE10`: 10% off. `POWER15`: 15% off with a ₹2,000 minimum.
+- `LIFT5`: ₹50 off with a ₹500 minimum. Other codes are invalid.
+- Free shipping applies when the **pre-coupon** subtotal is at least 99,900 paise;
+  otherwise shipping is 4,900 paise. This resolves the source notes' stated
   pre-coupon shipping decision consistently across client and server.
 - For orders, the server recalculates prices and totals, checks available stock,
   and decrements stock. Per-item cart quantity cannot exceed stock.
