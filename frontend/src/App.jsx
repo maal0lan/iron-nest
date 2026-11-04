@@ -63,8 +63,8 @@ function AppContent() {
           <Route path="/products" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order/:id" element={<OrderPlaced />} />
+          <Route path="/checkout" element={<ProtectedRoute roles={['customer', 'seller', 'admin']}><Checkout /></ProtectedRoute>} />
+          <Route path="/order/:id" element={<ProtectedRoute roles={['customer', 'seller', 'admin']}><OrderPlaced /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/orders" element={<ProtectedRoute roles={['customer', 'seller', 'admin']}><MyOrders /></ProtectedRoute>} />

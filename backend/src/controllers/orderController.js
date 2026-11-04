@@ -1,4 +1,4 @@
-import { subtotal, couponDiscount, shipping, total } from '../utils/pricing.js';
+import { couponDiscount, shipping, total } from '../utils/pricing.js';
 import Product from '../models/Product.js';
 import Coupon from '../models/Coupon.js';
 import Order from '../models/Order.js';
@@ -45,7 +45,7 @@ export const createOrder = async (request, response, next) => {
       await product.save({ session });
     }
 
-    const sub = subtotal(orderItems);
+    const sub = orderItems.reduce((sum, item) => sum + item.unitPriceCents * item.quantity, 0);
     const coupon = couponCode ? await Coupon.findOne({ code: couponCode.toUpperCase(), active: true }).session(session) : null;
     const discount = couponDiscount(sub, coupon);
     const ship = shipping(sub, coupon);
