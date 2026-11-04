@@ -97,51 +97,6 @@ export default function Cart() {
               );
             })}
           </div>
-
-      {/* Order summary */}
-      <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm">
-        <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-6">Order summary</h2>
-
-        <div className="mb-6">
-          <form onSubmit={handleApply} className="flex gap-2">
-            <Input
-              id="coupon"
-              placeholder="Coupon code"
-              value={couponCode}
-              onChange={(e) => dispatch(setCoupon(e.target.value))}
-              className="flex-1 min-w-0"
-            />
-            <Button variant="primary" size="sm" type="submit" disabled={couponStatus === 'loading'}>
-              {couponStatus === 'loading' ? '…' : 'Apply'}
-            </Button>
-          </form>
-          {couponError && (
-            <p className="mt-2 text-xs text-[var(--color-danger-700)]">{couponError}</p>
-          )}
-          {couponCode && couponStatus === 'succeeded' && !couponError && (
-            <p className="mt-2 text-xs text-[var(--color-success-700)] font-semibold">
-              {couponCode} applied: {formatMoney(disc)} off
-            </p>
-          )}
-        </div>
-
-        <div className="space-y-3 mb-6">
-          <div className="flex justify-between text-sm">
-            <span className="text-[var(--color-gray-500)]">Subtotal ({itemCount} items)</span>
-            <span className="text-[var(--text-strong)]">{formatMoney(sub)}</span>
-          </div>
-          {disc > 0 && (
-            <div className="flex justify-between text-sm">
-              <span className="text-[var(--color-gray-500)]">Coupon ({couponCode})</span>
-              <span className="text-[var(--color-success-700)] font-semibold">−{formatMoney(disc)}</span>
-            </div>
-          )}
-          <div className="flex justify-between text-sm">
-            <span className="text-[var(--color-gray-500)]">Shipping</span>
-            <span className={`text-xs font-semibold ${ship === 0 ? 'text-[var(--color-success-700)]' : 'text-[var(--color-gray-700)]'}`}>
-              {ship === 0 ? 'FREE' : formatMoney(ship)}
-            </span>
-          </div>
         </div>
 
         {/* Order summary */}

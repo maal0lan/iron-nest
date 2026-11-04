@@ -139,7 +139,7 @@ function Navbar() {
                   <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 {itemCount > 0 && (
-                  <span className="absolute right-0 top-0 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white ring-2 ring-[var(--bg-header)]">
+                  <span className="absolute right-0 top-0 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white">
                     {itemCount > 9 ? '9+' : itemCount}
                   </span>
                 )}
@@ -173,31 +173,19 @@ function Navbar() {
                   </svg>
                 </button>
                 {userOpen && (
-                  <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-56 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
+                  <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
                     <div className="border-b border-[var(--border)] px-4 pb-2 pt-1.5">
                       <p className="truncate text-sm font-semibold text-[var(--text-strong)]">{user?.name}</p>
                       <p className="text-xs capitalize text-[var(--text-muted)]">{role}</p>
                     </div>
-                    {[
-                      ['/orders', 'My orders'],
-                      ['/wishlist', 'Wishlist'],
-                      ...(isSeller ? [['/seller', 'Seller dashboard']] : []),
-                      ...(role === 'admin' ? [['/admin', 'Admin dashboard']] : []),
-                    ].map(([to, label]) => (
-                      <Link key={to} to={to} role="menuitem" className="block px-4 py-2 text-sm text-[var(--text-body)] transition-colors hover:bg-[var(--color-gray-100)] hover:text-[var(--text-strong)]">
-                        {label}
-                      </Link>
-                    ))}
-                    <div className="mt-1 border-t border-[var(--border)] pt-1">
-                      <button
-                        type="button"
-                        role="menuitem"
-                        onClick={() => { dispatch(logout()); setUserOpen(false); }}
-                        className="w-full px-4 py-2 text-left text-sm font-medium text-[var(--color-danger-700)] transition-colors hover:bg-[var(--color-danger-50)]"
-                      >
-                        Logout
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => { dispatch(logout()); setUserOpen(false); }}
+                      className="w-full px-4 py-2 text-left text-sm font-medium text-[var(--color-danger-700)] transition-colors hover:bg-[var(--color-danger-50)]"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>

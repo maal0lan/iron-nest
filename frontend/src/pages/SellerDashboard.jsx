@@ -19,6 +19,7 @@ export default function SellerDashboard() {
   const { products, orders, stats, status } = useSelector((state) => state.seller);
   const [activeTab, setActiveTab] = useState('products');
   const [openForm, setOpenForm] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [form, setForm] = useState({
     title: '', description: '', category: 'supplements', subCategory: '', brand: '',
     priceCents: '', discountPercentage: '0', stock: '', images: '', tags: '',
@@ -55,6 +56,23 @@ export default function SellerDashboard() {
     setForm({ title: '', description: '', category: 'supplements', subCategory: '', brand: '', priceCents: '', discountPercentage: '0', stock: '', images: '', tags: '' });
   };
 
+  const handleDelete = (id) => {
+    if (!window.confirm('Are you sure you want to delete this product?')) return;
+    dispatch(deleteSellerProduct(id));
+    setConfirmDeleteId(null);
+  };
+
+  const handleSetStock = (id, currentStock) => {
+    const next = window.prompt(`Set new stock (current: ${currentStock}):`);
+    if (next === null) return;
+    const stock = Number(next);
+    if (!Number.isFinite(stock) || stock < 0) {
+      window.alert('Please enter a valid non-negative number.');
+      return;
+    }
+    dispatch(updateSellerStock({ id, stock }));
+  };
+
   return (
     <div className="container page py-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -66,6 +84,65 @@ export default function SellerDashboard() {
           + Add product
         </Button>
       </div>
+
+      {/* Add / Edit product form */}
+      {openForm && (
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm mb-8">
+          <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-4">
+            {editId ? 'Edit product' : 'Add product'}
+          </h2>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Title</label>
+              <Input id="title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Description</label>
+              <Input id="description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+            </div>
+            <div className="sm:col-span-1 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Category</label>
+              <select id="category" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="min-h-[var(--control-md)] w-full rounded-md border border-[var(--border)] bg-[var(--bg-card)] px-3 py-1.5 text-sm text-[var(--text-body)] focus:border-[var(--color-primary-600)] focus:outline-none">
+                {CATEGORIES.map((c) => (
+                  <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
+                ))}
+              </select>
+            </div>
+            <div className="sm:col-span-1 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Brand</label>
+              <Input id="brand" value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} />
+            </div>
+            <div className="sm:col-span-1 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Price (₹)</label>
+              <Input id="priceCents" type="number" min="0" value={form.priceCents} onChange={(e) => setForm({ ...form, priceCents: e.target.value })} required />
+            </div>
+            <div className="sm:col-span-1 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Discount %</label>
+              <Input id="discountPercentage" type="number" min="0" max="100" value={form.discountPercentage} onChange={(e) => setForm({ ...form, discountPercentage: e.target.value })} />
+            </div>
+            <div className="sm:col-span-1 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Stock</label>
+              <Input id="stock" type="number" min="0" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} required />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Images (comma separated)</label>
+              <Input id="images" value={form.images} onChange={(e) => setForm({ ...form, images: e.target.value })} placeholder="url1, url2" />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-1">
+              <label className="block text-xs font-semibold uppercase text-[var(--color-gray-500)] mb-1">Tags (comma separated)</label>
+              <Input id="tags" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} placeholder="tag1, tag2" />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-2 flex gap-2">
+              <Button type="button" variant="ghost" onClick={() => { setOpenForm(false); setEditId(null); setForm({ title: '', description: '', category: 'supplements', subCategory: '', brand: '', priceCents: '', discountPercentage: '0', stock: '', images: '', tags: '' }); }}>
+                Cancel
+              </Button>
+              <Button type="submit" variant="primary" className="flex-1">
+                {editId ? 'Save changes' : 'Create product'}
+              </Button>
+            </div>
+          </form>
+        </div>
+      )}
 
       {/* Stats cards */}
       {stats && (
@@ -111,6 +188,8 @@ export default function SellerDashboard() {
           setEditId={setEditId}
           handleSubmit={handleSubmit}
           CATEGORIES={CATEGORIES}
+          handleDelete={handleDelete}
+          handleSetStock={handleSetStock}
         />
       ) : (
         <OrdersTab orders={orders} dispatch={dispatch} />
@@ -119,7 +198,7 @@ export default function SellerDashboard() {
   );
 }
 
-function ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm, editId, setEditId, handleSubmit, CATEGORIES }) {
+function ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm, editId, setEditId, handleSubmit, CATEGORIES, handleDelete, handleSetStock }) {
   if (!products || products.length === 0) {
     return (
       <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-8 shadow-sm text-center">
@@ -148,7 +227,18 @@ function ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm,
                 </div>
               </td>
               <td className="px-6 py-3 text-[var(--text-strong)]">{formatMoney(p.priceCents)}</td>
-              <td className="px-6 py-3"><StockBadge stock={p.stock} /></td>
+              <td className="px-6 py-3">
+                <div className="flex items-center gap-2">
+                  <StockBadge stock={p.stock} />
+                  <button
+                    type="button"
+                    onClick={() => handleSetStock(p._id, p.stock)}
+                    className="text-xs text-[var(--color-primary-600)] hover:underline font-semibold"
+                  >
+                    Set
+                  </button>
+                </div>
+              </td>
               <td className="px-6 py-3 flex gap-2">
                 <button
                   onClick={() => { setEditId(p._id); setForm({ title: p.title || '', description: p.description || '', category: p.category, subCategory: p.subCategory || '', brand: p.brand || '', priceCents: (p.priceCents / 100).toString(), discountPercentage: (p.discountPercentage || 0).toString(), stock: p.stock.toString(), images: (p.images || []).join(', '), tags: (p.tags || []).join(', ') }); setOpenForm(true); }}
@@ -157,7 +247,7 @@ function ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm,
                   Edit
                 </button>
                 <button
-                  onClick={() => dispatch(deleteSellerProduct(p._id))}
+                  onClick={() => handleDelete(p._id)}
                   className="text-xs text-[var(--color-danger-700)] hover:underline font-semibold"
                 >
                   Delete

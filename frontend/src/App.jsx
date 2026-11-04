@@ -10,7 +10,6 @@ import { selectTheme } from './features/theme/themeSlice.js';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import CursorFx from './components/CursorFx.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 import Home from './pages/Home.jsx';
@@ -55,7 +54,6 @@ function AppContent() {
   return (
     <div className="flex min-h-screen flex-col bg-[var(--bg-page)] text-[var(--text-body)]">
       <ScrollToTop />
-      <CursorFx enabled />
       <Navbar />
       <main className="pt-header flex-1">
         <Routes>

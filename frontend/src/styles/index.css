@@ -228,25 +228,6 @@
   }
   .tile:hover::before { opacity: 1; }
 
-  /* cursor (see CursorFx) */
-  .cursor-ring, .cursor-dot {
-    position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
-    border-radius: 50%; will-change: transform;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px; margin: -18px 0 0 -18px;
-    border: 2px solid var(--color-primary-600);
-    transition: width .18s ease-out, height .18s ease-out, margin .18s ease-out, background-color .18s ease-out, opacity .18s;
-    opacity: 0;
-  }
-  .cursor-ring.is-visible { opacity: .9; }
-  .cursor-ring.is-active {
-    width: 56px; height: 56px; margin: -28px 0 0 -28px;
-    background: color-mix(in srgb, var(--color-primary-600) 18%, transparent);
-  }
-  .cursor-ring.is-down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
-  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--color-primary-600); opacity: 0; }
-  .cursor-dot.is-visible { opacity: 1; }
 }
 
 @layer utilities {
