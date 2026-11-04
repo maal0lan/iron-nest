@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { increase, decrease, removeItem, selectCartQtyByProductId } from '../features/cart/cartSlice.js';
 
-export default function QtyStepper({ productId, stock, className }) {
+function QtyStepper({ productId, stock, className }) {
   const dispatch = useDispatch();
   const qty = useSelector((state) => selectCartQtyByProductId(state)(productId));
 
@@ -31,3 +31,6 @@ export default function QtyStepper({ productId, stock, className }) {
     </div>
   );
 }
+
+export { QtyStepper };
+export default QtyStepper;

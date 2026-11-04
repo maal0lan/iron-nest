@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../features/auth/authSlice.js';
 
-export default function ProtectedRoute({ children, roles }) {
+function ProtectedRoute({ children, roles }) {
   const { user, status } = useSelector(selectAuth);
   const location = useLocation();
 
@@ -20,3 +20,6 @@ export default function ProtectedRoute({ children, roles }) {
 
   return children;
 }
+
+export { ProtectedRoute };
+export default ProtectedRoute;

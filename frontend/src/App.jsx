@@ -1,18 +1,16 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './app/store.js';
 import { loadMe } from './features/auth/authSlice.js';
-import { setTheme } from './features/theme/themeSlice.js';
 import { selectTheme } from './features/theme/themeSlice.js';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import CursorFx from './components/CursorFx.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
-import ThemeToggle from './components/ThemeToggle.jsx';
 
 import Home from './pages/Home.jsx';
 import ProductList from './pages/ProductList.jsx';
@@ -27,6 +25,12 @@ import Wishlist from './pages/Wishlist.jsx';
 import SellerDashboard from './pages/SellerDashboard.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 function AppContent() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
@@ -35,12 +39,19 @@ function AppContent() {
     dispatch(loadMe());
   }, [dispatch]);
 
+  // Re-apply the saved theme on every load (not only when the user switches it).
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme && theme !== 'light') root.setAttribute('data-theme', theme);
+    else root.removeAttribute('data-theme');
+  }, [theme]);
+
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-body)' }}>
+    <div className="flex min-h-screen flex-col bg-[var(--bg-page)] text-[var(--text-body)]">
+      <ScrollToTop />
       <CursorFx enabled />
       <Navbar />
-      <ThemeToggle />
-      <main className="flex-1">
+      <main className="pt-header flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductList />} />

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { placeOrder, selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon } from '../features/cart/cartSlice.js';
+import { selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon } from '../features/cart/cartSlice.js';
+import { placeOrder } from '../features/orders/ordersSlice.js';
 import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
 import { PriceTag } from '../components/PriceTag.jsx';
@@ -110,7 +111,7 @@ export default function Checkout() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
+              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
             >
               {submitting ? 'Placing order…' : 'Place order'}
             </button>
