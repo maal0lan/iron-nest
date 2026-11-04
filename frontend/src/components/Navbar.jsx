@@ -67,8 +67,10 @@ function Navbar() {
   ];
 
   const navClass = ({ isActive }) =>
-    `nav-link rounded-md px-3 py-2 text-sm font-semibold transition-colors ${
-      isActive ? 'text-[var(--on-header)]' : 'text-[var(--on-header-muted)] hover:text-[var(--on-header)]'
+    `nav-link rounded-pill px-4 py-2 text-sm font-semibold transition-all ${
+      isActive
+        ? 'bg-[color-mix(in_srgb,var(--on-header)_12%,transparent)] text-[var(--on-header)] shadow-sm'
+        : 'text-[var(--on-header-muted)] hover:bg-[color-mix(in_srgb,var(--on-header)_7%,transparent)] hover:text-[var(--on-header)]'
     }`;
 
   const searchForm = (idSuffix) => (
@@ -89,14 +91,14 @@ function Navbar() {
 
   return (
     <>
-      <header className="glass fixed inset-x-0 top-0 z-40 text-[var(--on-header)]" style={{ height: 'var(--header-height)' }}>
-        <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-6">
+      <header className="glass fixed inset-x-0 top-0 z-40 border-b border-[color-mix(in_srgb,var(--on-header)_10%,transparent)] text-[var(--on-header)] shadow-sm" style={{ height: 'var(--header-height)' }}>
+        <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-5">
           {/* Logo */}
-          <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label="IronNest home">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
+          <Link to="/" className="group flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)]" aria-label="IronNest home">
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
               I
             </span>
-            <span className="font-display text-xl font-bold uppercase tracking-wider text-[var(--on-header)]">
+            <span className="font-display text-lg font-bold uppercase tracking-wider text-[var(--on-header)] md:text-xl">
               Iron<span className="text-[var(--color-primary-600)]">Nest</span>
             </span>
           </Link>
@@ -105,47 +107,38 @@ function Navbar() {
           <div className="hidden max-w-xl flex-1 md:block">{searchForm('desktop')}</div>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-1 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_10%,transparent)] bg-[color-mix(in_srgb,var(--on-header)_4%,transparent)] p-1 lg:flex" aria-label="Primary">
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} className={navClass}>{l.label}</NavLink>
             ))}
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
-            {/* Mobile search toggle */}
-            <button
-              type="button"
-              onClick={() => setMobileOpen((o) => !o)}
-              className="grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] md:hidden"
-              aria-label="Search products"
-              aria-expanded={mobileOpen}
-            >
-              <SearchIcon />
-            </button>
+            <div className="flex items-center gap-1 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_14%,transparent)] bg-[color-mix(in_srgb,var(--on-header)_5%,transparent)] p-1">
+              <ThemeToggle />
 
-            <ThemeToggle />
-
-            {/* Cart */}
-            <Link
-              to="/cart"
-              className="relative grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)]"
-              aria-label={`Cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`}
-            >
-              <svg className="h-5 w-5" {...iconProps}>
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              {itemCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white ring-2 ring-[var(--bg-header)]">
-                  {itemCount > 9 ? '9+' : itemCount}
-                </span>
-              )}
-            </Link>
+              {/* Cart */}
+              <Link
+                to="/cart"
+                className="relative grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)]"
+                aria-label={`Cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`}
+              >
+                <svg className="h-5 w-5" {...iconProps}>
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                {itemCount > 0 && (
+                  <span className="absolute right-0 top-0 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white ring-2 ring-[var(--bg-header)]">
+                    {itemCount > 9 ? '9+' : itemCount}
+                  </span>
+                )}
+              </Link>
+            </div>
 
             {/* Account */}
             {!token ? (
               <Link
                 to="/login"
-                className="hidden min-h-[var(--control-sm)] items-center rounded-md bg-[var(--color-primary-600)] px-4 text-sm font-semibold text-[var(--on-primary)] transition-all hover:bg-[var(--color-primary-700)] hover:shadow-glow sm:inline-flex"
+                className="hidden min-h-[var(--control-sm)] items-center rounded-pill bg-[var(--color-primary-600)] px-5 text-sm font-semibold text-[var(--on-primary)] shadow-sm transition-all hover:bg-[var(--color-primary-700)] hover:shadow-glow focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)] sm:inline-flex"
               >
                 Login
               </Link>
@@ -154,7 +147,7 @@ function Navbar() {
                 <button
                   type="button"
                   onClick={() => setUserOpen((o) => !o)}
-                  className="flex items-center gap-2 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_18%,transparent)] py-1 pl-1 pr-3 transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)]"
+                  className="flex items-center gap-2 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_18%,transparent)] py-1 pl-1 pr-2 transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)] sm:pr-3"
                   aria-label="Open user menu"
                   aria-haspopup="menu"
                   aria-expanded={userOpen}
@@ -163,6 +156,9 @@ function Navbar() {
                     {(user?.name || '?').charAt(0).toUpperCase()}
                   </span>
                   <span className="hidden max-w-[110px] truncate text-sm font-medium text-[var(--on-header)] sm:inline">{user?.name}</span>
+                  <svg className={`hidden h-4 w-4 text-[var(--on-header-muted)] transition-transform sm:block ${userOpen ? 'rotate-180' : ''}`} {...iconProps}>
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
                 </button>
                 {userOpen && (
                   <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-56 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
@@ -199,8 +195,8 @@ function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] lg:hidden"
-              aria-label="Toggle menu"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--on-header)_14%,transparent)] text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] lg:hidden"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
             >
               <svg className="h-5 w-5" {...iconProps}>
@@ -213,16 +209,16 @@ function Navbar() {
 
       {/* Mobile / tablet panel */}
       {mobileOpen && (
-        <div className="glass animate-pop-in fixed inset-x-0 z-30 lg:hidden" style={{ top: 'var(--header-height)' }}>
-          <div className="mx-auto max-w-[var(--container-max)] space-y-3 px-[var(--page-padding)] py-4">
+        <div className="glass animate-pop-in fixed inset-x-0 z-30 border-b border-[color-mix(in_srgb,var(--on-header)_10%,transparent)] shadow-lg lg:hidden" style={{ top: 'var(--header-height)' }}>
+          <div className="mx-auto max-w-[var(--container-max)] space-y-4 px-[var(--page-padding)] py-4">
             <div className="md:hidden">{searchForm('mobile')}</div>
-            <nav className="flex flex-col" aria-label="Mobile">
+            <nav className="flex flex-col gap-1" aria-label="Mobile">
               {links.map((l) => (
                 <NavLink
                   key={l.to}
                   to={l.to}
                   className={({ isActive }) =>
-                    `rounded-md px-3 py-3 text-base font-semibold transition-colors ${isActive ? 'bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] text-[var(--on-header)]' : 'text-[var(--on-header-muted)] hover:text-[var(--on-header)]'}`
+                    `rounded-lg px-4 py-3 text-base font-semibold transition-colors ${isActive ? 'bg-[color-mix(in_srgb,var(--on-header)_12%,transparent)] text-[var(--on-header)]' : 'text-[var(--on-header-muted)] hover:bg-[color-mix(in_srgb,var(--on-header)_7%,transparent)] hover:text-[var(--on-header)]'}`
                   }
                 >
                   {l.label}

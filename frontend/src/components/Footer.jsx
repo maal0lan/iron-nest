@@ -48,9 +48,7 @@ function Footer() {
         <div>
           <h4 className="eyebrow !text-[var(--text-strong)]">Store rules</h4>
           <ul className="mt-4 space-y-2.5 text-sm text-[var(--text-muted)]">
-            <li>Free shipping on orders of $50+</li>
-            <li>Codes: SAVE10 · POWER15 · LIFT5</li>
-            <li>Demo checkout, no real payment</li>
+            <li>Free shipping on orders of ₹999+</li>
           </ul>
         </div>
       </div>
