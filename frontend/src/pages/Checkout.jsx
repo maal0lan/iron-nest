@@ -8,6 +8,14 @@ import { Input } from '../components/Input.jsx';
 import { PriceTag } from '../components/PriceTag.jsx';
 import { formatMoney } from '../utils/money.js';
 
+const validateMobileNumber = (value) => (
+  /^\d{10}$/.test(value) ? '' : 'Mobile number must contain exactly 10 digits.'
+);
+
+const validatePincode = (value) => (
+  /^\d{6}$/.test(value) ? '' : 'Pincode must contain exactly 6 digits.'
+);
+
 export default function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,14 +37,20 @@ export default function Checkout() {
   });
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const mobileError = (form.phone || hasSubmitted) ? validateMobileNumber(form.phone) : '';
+  const pincodeError = (form.pincode || hasSubmitted) ? validatePincode(form.pincode) : '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
     setError('');
     if (!form.fullName || !form.phone || !form.line1 || !form.city || !form.pincode) {
       setError('Please fill in all address fields.');
       return;
     }
+    if (validateMobileNumber(form.phone) || validatePincode(form.pincode)) return;
 
     setSubmitting(true);
     try {
@@ -73,9 +87,12 @@ export default function Checkout() {
             />
             <Input
               id="phone"
-              label="Phone"
+              label="Mobile number"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              error={mobileError}
+              inputMode="numeric"
+              autoComplete="tel"
               required
             />
             <Input
@@ -98,6 +115,9 @@ export default function Checkout() {
                 label="Pincode"
                 value={form.pincode}
                 onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+                error={pincodeError}
+                inputMode="numeric"
+                autoComplete="postal-code"
                 required
               />
             </div>

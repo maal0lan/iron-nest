@@ -5,6 +5,7 @@ import { fetchProducts } from '../features/products/productsSlice.js';
 import { ProductCard } from '../components/ProductCard.jsx';
 import { ProductCardSkeleton } from '../components/Skeleton.jsx';
 import { ErrorState } from '../components/ErrorState.jsx';
+import { BrandIcon } from '../components/BrandIcon.jsx';
 
 const CATEGORIES = [
   { slug: 'supplements', label: 'Supplements', blurb: 'Protein, pre-workout, creatine' },
@@ -58,6 +59,10 @@ export default function Home() {
         />
         <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
           <div>
+            <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold uppercase tracking-[.14em] text-white/90 backdrop-blur-sm">
+              <BrandIcon className="h-8 w-8 rounded-full" />
+              Iron Nest
+            </div>
             <span className="eyebrow !text-[var(--color-accent-600)] inline-flex items-center gap-2">
               <span className="h-px w-8 bg-current" /> This week only
             </span>

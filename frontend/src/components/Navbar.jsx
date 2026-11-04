@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice.js';
 import { selectItemCount } from '../features/cart/cartSlice.js';
+import { BrandIcon } from './BrandIcon.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
 
 const iconProps = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', viewBox: '0 0 24 24', 'aria-hidden': true };
@@ -96,9 +97,7 @@ function Navbar() {
         <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-6">
           {/* Logo */}
           <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label="IronNest home">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-secondary-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
-              I
-            </span>
+            <BrandIcon className="h-9 w-9 transition-transform duration-200 group-hover:-rotate-6" />
             <span className="font-display text-lg font-bold uppercase tracking-wider text-[var(--on-header)] sm:text-xl">
               Iron<span className="text-[var(--color-primary-600)]">Nest</span>
             </span>
