@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   setCoupon, clearCouponError, validateCoupon, clearCart,
   selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount,
   selectCartShipping, selectCartTotal, selectCartCoupon, selectCartCouponStatus, selectCartCouponError,
 } from '../features/cart/cartSlice.js';
-import { PriceTag } from '../components/PriceTag.jsx';
 import { QtyStepper } from '../components/QtyStepper.jsx';
-import { StockBadge } from '../components/StockBadge.jsx';
 import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
-import { ErrorState } from '../components/ErrorState.jsx';
 import { formatMoney } from '../utils/money.js';
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const items = useSelector(selectCartItems);
   const itemCount = useSelector(selectItemCount);
   const sub = useSelector(selectCartSubtotal);
@@ -146,21 +141,22 @@ export default function Cart() {
           </div>
         </div>
 
-            <div className="mt-6 pt-6 border-t border-[var(--border)]">
-              <div className="flex justify-between text-lg font-bold text-[var(--text-strong)] mb-2">
-                <span>Total</span>
-                <span>{formatMoney(tot)}</span>
-              </div>
-              {sub < 99900 && disc === 0 && (
-                <p className="text-xs text-[var(--color-primary-600)] mb-4 text-center">
-                  Add {formatMoney(99900 - sub)} more for free shipping
-                </p>
-              )}
-              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
-                Proceed to checkout
-              </Link>
-            </div>
+        <div className="mt-6 border-t border-[var(--border)] pt-6">
+          <div className="mb-2 flex justify-between text-lg font-bold text-[var(--text-strong)]">
+            <span>Total</span>
+            <span>{formatMoney(tot)}</span>
           </div>
+          {sub < 99900 && disc === 0 && (
+            <p className="mb-4 text-center text-xs text-[var(--color-primary-600)]">
+              Add {formatMoney(99900 - sub)} more for free shipping
+            </p>
+          )}
+          <Link
+            to="/checkout"
+            className="block w-full rounded-md bg-[var(--color-primary-600)] px-4 py-3 text-center text-lg font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)]"
+          >
+            Proceed to checkout
+          </Link>
         </div>
       </div>
     </div>
