@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { selectCartItems } from '../features/cart/cartSlice.js';
 import { formatMoney } from '../utils/money.js';
 
@@ -17,11 +17,11 @@ export default function OrderPlaced() {
           Thank you for your order! Order ID: <span className="font-semibold text-[var(--text-strong)]">{id}</span>
         </p>
         <p className="text-sm text-[var(--color-gray-500)] mb-8">
-          Your order is being processed. You can view it in <a href="/orders" className="text-[var(--color-primary-600)] hover:underline font-semibold">My orders</a>.
+          Your order is being processed. You can view it in <Link to="/orders" className="text-[var(--color-primary-600)] hover:underline font-semibold">My orders</Link>.
         </p>
-        <a href="/products" className="rounded-md bg-[var(--color-primary-600)] text-white px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+        <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
           Continue shopping
-        </a>
+        </Link>
       </div>
     </div>
   );

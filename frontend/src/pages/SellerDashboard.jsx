@@ -99,7 +99,18 @@ export default function SellerDashboard() {
       </div>
 
       {activeTab === 'products' ? (
-        <ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm, editId, setEditId, handleSubmit, CATEGORIES }) || <ProductsTab />}
+        <ProductsTab
+          products={products}
+          dispatch={dispatch}
+          openForm={openForm}
+          setOpenForm={setOpenForm}
+          form={form}
+          setForm={setForm}
+          editId={editId}
+          setEditId={setEditId}
+          handleSubmit={handleSubmit}
+          CATEGORIES={CATEGORIES}
+        />
       ) : (
         <OrdersTab orders={orders} dispatch={dispatch} />
       )}

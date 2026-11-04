@@ -1,0 +1,3401 @@
+diff --git a/frontend/package-lock.json b/frontend/package-lock.json
+index c876bbf..879be13 100644
+--- a/frontend/package-lock.json
++++ b/frontend/package-lock.json
+@@ -17,9 +17,25 @@
+       },
+       "devDependencies": {
+         "@vitejs/plugin-react": "^4.3.4",
++        "autoprefixer": "^10.6.2",
++        "postcss": "^8.5.32",
++        "tailwindcss": "^3.4.19",
+         "vite": "^6.0.7"
+       }
+     },
++    "node_modules/@alloc/quick-lru": {
++      "version": "5.3.0",
++      "resolved": "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.3.0.tgz",
++      "integrity": "sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/@babel/code-frame": {
+       "version": "7.29.7",
+       "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.29.7.tgz",
+@@ -811,6 +827,44 @@
+         "node": "^22.20 || ^24.12 || >=25"
+       }
+     },
++    "node_modules/@nodelib/fs.scandir": {
++      "version": "2.1.5",
++      "resolved": "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz",
++      "integrity": "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@nodelib/fs.stat": "2.0.5",
++        "run-parallel": "^1.1.9"
++      },
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/@nodelib/fs.stat": {
++      "version": "2.0.5",
++      "resolved": "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz",
++      "integrity": "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/@nodelib/fs.walk": {
++      "version": "1.2.8",
++      "resolved": "https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz",
++      "integrity": "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@nodelib/fs.scandir": "2.1.5",
++        "fastq": "^1.6.0"
++      },
++      "engines": {
++        "node": ">= 8"
++      }
++    },
+     "node_modules/@reduxjs/toolkit": {
+       "version": "2.13.0",
+       "resolved": "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-2.13.0.tgz",
+@@ -1299,6 +1353,84 @@
+         "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+       }
+     },
++    "node_modules/any-promise": {
++      "version": "1.3.0",
++      "resolved": "https://registry.npmjs.org/any-promise/-/any-promise-1.3.0.tgz",
++      "integrity": "sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/anymatch": {
++      "version": "3.1.3",
++      "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
++      "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "normalize-path": "^3.0.0",
++        "picomatch": "^2.0.4"
++      },
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/anymatch/node_modules/picomatch": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz",
++      "integrity": "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8.6"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
++    "node_modules/arg": {
++      "version": "5.0.2",
++      "resolved": "https://registry.npmjs.org/arg/-/arg-5.0.2.tgz",
++      "integrity": "sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/autoprefixer": {
++      "version": "10.6.2",
++      "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.6.2.tgz",
++      "integrity": "sha512-VOw9/yGTGwPPgzFcODtcv6zhEPIeIWkRSe10L2ri2f5vZ7ID7lCt6jZzRF5/ubgOZ+szYydmEF5AYsA5jxX1tA==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/autoprefixer"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "browserslist": "^4.28.9",
++        "caniuse-lite": "^1.0.30001810",
++        "fraction.js": "^5.3.4",
++        "picocolors": "^1.1.1",
++        "postcss-value-parser": "^4.2.0"
++      },
++      "bin": {
++        "autoprefixer": "bin/autoprefixer"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      },
++      "peerDependencies": {
++        "postcss": "^8.1.0"
++      }
++    },
+     "node_modules/baseline-browser-mapping": {
+       "version": "2.11.35",
+       "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.11.35.tgz",
+@@ -1312,6 +1444,32 @@
+         "node": ">=6.0.0"
+       }
+     },
++    "node_modules/binary-extensions": {
++      "version": "2.3.0",
++      "resolved": "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.3.0.tgz",
++      "integrity": "sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/braces": {
++      "version": "3.0.3",
++      "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.3.tgz",
++      "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "fill-range": "^7.1.1"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/browserslist": {
+       "version": "4.29.5",
+       "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.29.5.tgz",
+@@ -1346,6 +1504,16 @@
+         "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
+       }
+     },
++    "node_modules/camelcase-css": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/camelcase-css/-/camelcase-css-2.0.1.tgz",
++      "integrity": "sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 6"
++      }
++    },
+     "node_modules/caniuse-lite": {
+       "version": "1.0.30001820",
+       "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001820.tgz",
+@@ -1367,6 +1535,54 @@
+       ],
+       "license": "CC-BY-4.0"
+     },
++    "node_modules/chokidar": {
++      "version": "3.6.0",
++      "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
++      "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "anymatch": "~3.1.2",
++        "braces": "~3.0.2",
++        "glob-parent": "~5.1.2",
++        "is-binary-path": "~2.1.0",
++        "is-glob": "~4.0.1",
++        "normalize-path": "~3.0.0",
++        "readdirp": "~3.6.0"
++      },
++      "engines": {
++        "node": ">= 8.10.0"
++      },
++      "funding": {
++        "url": "https://paulmillr.com/funding/"
++      },
++      "optionalDependencies": {
++        "fsevents": "~2.3.2"
++      }
++    },
++    "node_modules/chokidar/node_modules/glob-parent": {
++      "version": "5.1.2",
++      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz",
++      "integrity": "sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "is-glob": "^4.0.1"
++      },
++      "engines": {
++        "node": ">= 6"
++      }
++    },
++    "node_modules/commander": {
++      "version": "4.1.1",
++      "resolved": "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz",
++      "integrity": "sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 6"
++      }
++    },
+     "node_modules/convert-source-map": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz",
+@@ -1387,6 +1603,19 @@
+         "url": "https://opencollective.com/express"
+       }
+     },
++    "node_modules/cssesc": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz",
++      "integrity": "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==",
++      "dev": true,
++      "license": "MIT",
++      "bin": {
++        "cssesc": "bin/cssesc"
++      },
++      "engines": {
++        "node": ">=4"
++      }
++    },
+     "node_modules/debug": {
+       "version": "4.4.3",
+       "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+@@ -1405,6 +1634,20 @@
+         }
+       }
+     },
++    "node_modules/didyoumean": {
++      "version": "1.2.2",
++      "resolved": "https://registry.npmjs.org/didyoumean/-/didyoumean-1.2.2.tgz",
++      "integrity": "sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==",
++      "dev": true,
++      "license": "Apache-2.0"
++    },
++    "node_modules/dlv": {
++      "version": "1.1.3",
++      "resolved": "https://registry.npmjs.org/dlv/-/dlv-1.1.3.tgz",
++      "integrity": "sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/electron-to-chromium": {
+       "version": "1.5.473",
+       "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.473.tgz",
+@@ -1412,6 +1655,16 @@
+       "dev": true,
+       "license": "ISC"
+     },
++    "node_modules/es-errors": {
++      "version": "1.3.0",
++      "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
++      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.4"
++      }
++    },
+     "node_modules/esbuild": {
+       "version": "0.25.12",
+       "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.25.12.tgz",
+@@ -1464,6 +1717,46 @@
+         "node": ">=6"
+       }
+     },
++    "node_modules/fast-glob": {
++      "version": "3.3.3",
++      "resolved": "https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.3.tgz",
++      "integrity": "sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@nodelib/fs.stat": "^2.0.2",
++        "@nodelib/fs.walk": "^1.2.3",
++        "glob-parent": "^5.1.2",
++        "merge2": "^1.3.0",
++        "micromatch": "^4.0.8"
++      },
++      "engines": {
++        "node": ">=8.6.0"
++      }
++    },
++    "node_modules/fast-glob/node_modules/glob-parent": {
++      "version": "5.1.2",
++      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz",
++      "integrity": "sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "is-glob": "^4.0.1"
++      },
++      "engines": {
++        "node": ">= 6"
++      }
++    },
++    "node_modules/fastq": {
++      "version": "1.20.3",
++      "resolved": "https://registry.npmjs.org/fastq/-/fastq-1.20.3.tgz",
++      "integrity": "sha512-XKv5nnLs6nLF71NgiKJLIZFLkPyIEuOselLG7ujZnGrRfQK8HpvY+WqKhAJUAdLomwVHErVS4LfxFlPq0/FTAw==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "reusify": "^1.0.4"
++      }
++    },
+     "node_modules/fdir": {
+       "version": "6.5.0",
+       "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+@@ -1482,6 +1775,33 @@
+         }
+       }
+     },
++    "node_modules/fill-range": {
++      "version": "7.1.1",
++      "resolved": "https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz",
++      "integrity": "sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "to-regex-range": "^5.0.1"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/fraction.js": {
++      "version": "5.3.4",
++      "resolved": "https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz",
++      "integrity": "sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": "*"
++      },
++      "funding": {
++        "type": "github",
++        "url": "https://github.com/sponsors/rawify"
++      }
++    },
+     "node_modules/fsevents": {
+       "version": "2.3.3",
+       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+@@ -1497,6 +1817,16 @@
+         "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+       }
+     },
++    "node_modules/function-bind": {
++      "version": "1.1.2",
++      "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
++      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
++      "dev": true,
++      "license": "MIT",
++      "funding": {
++        "url": "https://github.com/sponsors/ljharb"
++      }
++    },
+     "node_modules/gensync": {
+       "version": "1.0.0-beta.2",
+       "resolved": "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz",
+@@ -1507,6 +1837,32 @@
+         "node": ">=6.9.0"
+       }
+     },
++    "node_modules/glob-parent": {
++      "version": "6.0.2",
++      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz",
++      "integrity": "sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "is-glob": "^4.0.3"
++      },
++      "engines": {
++        "node": ">=10.13.0"
++      }
++    },
++    "node_modules/hasown": {
++      "version": "2.0.4",
++      "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.4.tgz",
++      "integrity": "sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "function-bind": "^1.1.2"
++      },
++      "engines": {
++        "node": ">= 0.4"
++      }
++    },
+     "node_modules/immer": {
+       "version": "11.2.9",
+       "resolved": "https://registry.npmjs.org/immer/-/immer-11.2.9.tgz",
+@@ -1517,6 +1873,78 @@
+         "url": "https://opencollective.com/immer"
+       }
+     },
++    "node_modules/is-binary-path": {
++      "version": "2.1.0",
++      "resolved": "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz",
++      "integrity": "sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "binary-extensions": "^2.0.0"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/is-core-module": {
++      "version": "2.18.0",
++      "resolved": "https://registry.npmjs.org/is-core-module/-/is-core-module-2.18.0.tgz",
++      "integrity": "sha512-qyax9fgaKOEC4qK8WZn7Q4IcoZC9RC1O1fFxRcRTq/oMMkWT/uXpqpXa12kzWR409zAt1drYN9N9BO26UmBCmw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "hasown": "^2.0.4"
++      },
++      "engines": {
++        "node": ">= 0.4"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/ljharb"
++      }
++    },
++    "node_modules/is-extglob": {
++      "version": "2.1.1",
++      "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz",
++      "integrity": "sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/is-glob": {
++      "version": "4.0.3",
++      "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
++      "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "is-extglob": "^2.1.1"
++      },
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/is-number": {
++      "version": "7.0.0",
++      "resolved": "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz",
++      "integrity": "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.12.0"
++      }
++    },
++    "node_modules/jiti": {
++      "version": "1.21.7",
++      "resolved": "https://registry.npmjs.org/jiti/-/jiti-1.21.7.tgz",
++      "integrity": "sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==",
++      "dev": true,
++      "license": "MIT",
++      "bin": {
++        "jiti": "bin/jiti.js"
++      }
++    },
+     "node_modules/js-tokens": {
+       "version": "4.0.0",
+       "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz",
+@@ -1549,6 +1977,26 @@
+         "node": ">=6"
+       }
+     },
++    "node_modules/lilconfig": {
++      "version": "3.1.4",
++      "resolved": "https://registry.npmjs.org/lilconfig/-/lilconfig-3.1.4.tgz",
++      "integrity": "sha512-zJZyBmQhArDRefuWTypZxwDpFDIYmrj8ypSBvwGD5P13Y95s6DjzKgu4DVdGbeQa5PDEsAOCAPNk4X+QOR006w==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=14"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/antonk52"
++      }
++    },
++    "node_modules/lines-and-columns": {
++      "version": "1.2.4",
++      "resolved": "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz",
++      "integrity": "sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/loose-envify": {
+       "version": "1.4.0",
+       "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
+@@ -1571,6 +2019,43 @@
+         "yallist": "^3.0.2"
+       }
+     },
++    "node_modules/merge2": {
++      "version": "1.4.1",
++      "resolved": "https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz",
++      "integrity": "sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/micromatch": {
++      "version": "4.0.8",
++      "resolved": "https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz",
++      "integrity": "sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "braces": "^3.0.3",
++        "picomatch": "^2.3.1"
++      },
++      "engines": {
++        "node": ">=8.6"
++      }
++    },
++    "node_modules/micromatch/node_modules/picomatch": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz",
++      "integrity": "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8.6"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
+     "node_modules/ms": {
+       "version": "2.1.3",
+       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+@@ -1578,6 +2063,18 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/mz": {
++      "version": "2.7.0",
++      "resolved": "https://registry.npmjs.org/mz/-/mz-2.7.0.tgz",
++      "integrity": "sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "any-promise": "^1.0.0",
++        "object-assign": "^4.0.1",
++        "thenify-all": "^1.0.0"
++      }
++    },
+     "node_modules/nanoid": {
+       "version": "3.3.20",
+       "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz",
+@@ -1607,6 +2104,43 @@
+         "node": ">=18"
+       }
+     },
++    "node_modules/normalize-path": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz",
++      "integrity": "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/object-assign": {
++      "version": "4.1.1",
++      "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
++      "integrity": "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/object-hash": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/object-hash/-/object-hash-3.0.0.tgz",
++      "integrity": "sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 6"
++      }
++    },
++    "node_modules/path-parse": {
++      "version": "1.0.7",
++      "resolved": "https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz",
++      "integrity": "sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/picocolors": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+@@ -1627,6 +2161,16 @@
+         "url": "https://github.com/sponsors/jonschlinkert"
+       }
+     },
++    "node_modules/pirates": {
++      "version": "4.0.7",
++      "resolved": "https://registry.npmjs.org/pirates/-/pirates-4.0.7.tgz",
++      "integrity": "sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 6"
++      }
++    },
+     "node_modules/postcss": {
+       "version": "8.5.32",
+       "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.32.tgz",
+@@ -1656,6 +2200,161 @@
+         "node": "^10 || ^12 || >=14"
+       }
+     },
++    "node_modules/postcss-import": {
++      "version": "15.1.0",
++      "resolved": "https://registry.npmjs.org/postcss-import/-/postcss-import-15.1.0.tgz",
++      "integrity": "sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "postcss-value-parser": "^4.0.0",
++        "read-cache": "^1.0.0",
++        "resolve": "^1.1.7"
++      },
++      "engines": {
++        "node": ">=14.0.0"
++      },
++      "peerDependencies": {
++        "postcss": "^8.0.0"
++      }
++    },
++    "node_modules/postcss-js": {
++      "version": "4.1.0",
++      "resolved": "https://registry.npmjs.org/postcss-js/-/postcss-js-4.1.0.tgz",
++      "integrity": "sha512-oIAOTqgIo7q2EOwbhb8UalYePMvYoIeRY2YKntdpFQXNosSu3vLrniGgmH9OKs/qAkfoj5oB3le/7mINW1LCfw==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "camelcase-css": "^2.0.1"
++      },
++      "engines": {
++        "node": "^12 || ^14 || >= 16"
++      },
++      "peerDependencies": {
++        "postcss": "^8.4.21"
++      }
++    },
++    "node_modules/postcss-load-config": {
++      "version": "6.0.1",
++      "resolved": "https://registry.npmjs.org/postcss-load-config/-/postcss-load-config-6.0.1.tgz",
++      "integrity": "sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "lilconfig": "^3.1.1"
++      },
++      "engines": {
++        "node": ">= 18"
++      },
++      "peerDependencies": {
++        "jiti": ">=1.21.0",
++        "postcss": ">=8.0.9",
++        "tsx": "^4.8.1",
++        "yaml": "^2.4.2"
++      },
++      "peerDependenciesMeta": {
++        "jiti": {
++          "optional": true
++        },
++        "postcss": {
++          "optional": true
++        },
++        "tsx": {
++          "optional": true
++        },
++        "yaml": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/postcss-nested": {
++      "version": "6.2.0",
++      "resolved": "https://registry.npmjs.org/postcss-nested/-/postcss-nested-6.2.0.tgz",
++      "integrity": "sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "postcss-selector-parser": "^6.1.1"
++      },
++      "engines": {
++        "node": ">=12.0"
++      },
++      "peerDependencies": {
++        "postcss": "^8.2.14"
++      }
++    },
++    "node_modules/postcss-selector-parser": {
++      "version": "6.1.5",
++      "resolved": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.1.5.tgz",
++      "integrity": "sha512-TEHFzb5KRDKaOgJ4TYE+0jyJtFbjLvkdVOu0fZ2b6MTWzoqZd4Le+61aEppWkvTlYePgOX4ATL1wsAIPMLTw6Q==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "cssesc": "^3.0.0",
++        "util-deprecate": "^1.0.2"
++      },
++      "engines": {
++        "node": ">=4"
++      }
++    },
++    "node_modules/postcss-value-parser": {
++      "version": "4.2.0",
++      "resolved": "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz",
++      "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/queue-microtask": {
++      "version": "1.2.3",
++      "resolved": "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz",
++      "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "MIT"
++    },
+     "node_modules/react": {
+       "version": "18.3.1",
+       "resolved": "https://registry.npmjs.org/react/-/react-18.3.1.tgz",
+@@ -1752,6 +2451,39 @@
+         "react-dom": ">=18"
+       }
+     },
++    "node_modules/read-cache": {
++      "version": "1.0.2",
++      "resolved": "https://registry.npmjs.org/read-cache/-/read-cache-1.0.2.tgz",
++      "integrity": "sha512-/peqiBB/n07gQGLsWaHho3WfvUyRscw0gYTsEFMhrIe/nWLkYaf5SbKYjGYqtRV3aPwykJgF2VEMo1ac4bnsGA==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/readdirp": {
++      "version": "3.6.0",
++      "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
++      "integrity": "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "picomatch": "^2.2.1"
++      },
++      "engines": {
++        "node": ">=8.10.0"
++      }
++    },
++    "node_modules/readdirp/node_modules/picomatch": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz",
++      "integrity": "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8.6"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
+     "node_modules/redux": {
+       "version": "5.0.1",
+       "resolved": "https://registry.npmjs.org/redux/-/redux-5.0.1.tgz",
+@@ -1782,6 +2514,39 @@
+       "integrity": "sha512-XGoLeRAVzUTcJ1qkxPQhDJyIZ5d6zzZD9nT7AEZOaaU9UbWclhycElmhO+VD5bFeLuzhPBaOV2oXC8uG35ZSpg==",
+       "license": "MIT"
+     },
++    "node_modules/resolve": {
++      "version": "1.22.14",
++      "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.22.14.tgz",
++      "integrity": "sha512-1ZjYvR9sbkiwC5+9QHetqW5HmA2pHRMaoupD01t2HlYnV/vydC2zPwLixhsMieSWVZt0JJRg5LVIk0Ow1D/TrA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "es-errors": "^1.3.0",
++        "is-core-module": "^2.18.0",
++        "path-parse": "^1.0.7",
++        "supports-preserve-symlinks-flag": "^1.0.0"
++      },
++      "bin": {
++        "resolve": "bin/resolve"
++      },
++      "engines": {
++        "node": ">= 0.4"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/ljharb"
++      }
++    },
++    "node_modules/reusify": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz",
++      "integrity": "sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "iojs": ">=1.0.0",
++        "node": ">=0.10.0"
++      }
++    },
+     "node_modules/rollup": {
+       "version": "4.67.4",
+       "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.67.4.tgz",
+@@ -1829,6 +2594,30 @@
+         "fsevents": "~2.3.2"
+       }
+     },
++    "node_modules/run-parallel": {
++      "version": "1.2.0",
++      "resolved": "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz",
++      "integrity": "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "queue-microtask": "^1.2.2"
++      }
++    },
+     "node_modules/scheduler": {
+       "version": "0.23.2",
+       "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz",
+@@ -1864,6 +2653,103 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/sucrase": {
++      "version": "3.35.1",
++      "resolved": "https://registry.npmjs.org/sucrase/-/sucrase-3.35.1.tgz",
++      "integrity": "sha512-DhuTmvZWux4H1UOnWMB3sk0sbaCVOoQZjv8u1rDoTV0HTdGem9hkAZtl4JZy8P2z4Bg0nT+YMeOFyVr4zcG5Tw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/gen-mapping": "^0.3.2",
++        "commander": "^4.0.0",
++        "lines-and-columns": "^1.1.6",
++        "mz": "^2.7.0",
++        "pirates": "^4.0.1",
++        "tinyglobby": "^0.2.11",
++        "ts-interface-checker": "^0.1.9"
++      },
++      "bin": {
++        "sucrase": "bin/sucrase",
++        "sucrase-node": "bin/sucrase-node"
++      },
++      "engines": {
++        "node": ">=16 || 14 >=14.17"
++      }
++    },
++    "node_modules/supports-preserve-symlinks-flag": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz",
++      "integrity": "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.4"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/ljharb"
++      }
++    },
++    "node_modules/tailwindcss": {
++      "version": "3.4.19",
++      "resolved": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.19.tgz",
++      "integrity": "sha512-3ofp+LL8E+pK/JuPLPggVAIaEuhvIz4qNcf3nA1Xn2o/7fb7s/TYpHhwGDv1ZU3PkBluUVaF8PyCHcm48cKLWQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@alloc/quick-lru": "^5.2.0",
++        "arg": "^5.0.2",
++        "chokidar": "^3.6.0",
++        "didyoumean": "^1.2.2",
++        "dlv": "^1.1.3",
++        "fast-glob": "^3.3.2",
++        "glob-parent": "^6.0.2",
++        "is-glob": "^4.0.3",
++        "jiti": "^1.21.7",
++        "lilconfig": "^3.1.3",
++        "micromatch": "^4.0.8",
++        "normalize-path": "^3.0.0",
++        "object-hash": "^3.0.0",
++        "picocolors": "^1.1.1",
++        "postcss": "^8.4.47",
++        "postcss-import": "^15.1.0",
++        "postcss-js": "^4.0.1",
++        "postcss-load-config": "^4.0.2 || ^5.0 || ^6.0",
++        "postcss-nested": "^6.2.0",
++        "postcss-selector-parser": "^6.1.2",
++        "resolve": "^1.22.8",
++        "sucrase": "^3.35.0"
++      },
++      "bin": {
++        "tailwind": "lib/cli.js",
++        "tailwindcss": "lib/cli.js"
++      },
++      "engines": {
++        "node": ">=14.0.0"
++      }
++    },
++    "node_modules/thenify": {
++      "version": "3.3.1",
++      "resolved": "https://registry.npmjs.org/thenify/-/thenify-3.3.1.tgz",
++      "integrity": "sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "any-promise": "^1.0.0"
++      }
++    },
++    "node_modules/thenify-all": {
++      "version": "1.6.0",
++      "resolved": "https://registry.npmjs.org/thenify-all/-/thenify-all-1.6.0.tgz",
++      "integrity": "sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "thenify": ">= 3.1.0 < 4"
++      },
++      "engines": {
++        "node": ">=0.8"
++      }
++    },
+     "node_modules/tinyglobby": {
+       "version": "0.2.17",
+       "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+@@ -1881,6 +2767,26 @@
+         "url": "https://github.com/sponsors/SuperchupuDev"
+       }
+     },
++    "node_modules/to-regex-range": {
++      "version": "5.0.1",
++      "resolved": "https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz",
++      "integrity": "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "is-number": "^7.0.0"
++      },
++      "engines": {
++        "node": ">=8.0"
++      }
++    },
++    "node_modules/ts-interface-checker": {
++      "version": "0.1.13",
++      "resolved": "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz",
++      "integrity": "sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==",
++      "dev": true,
++      "license": "Apache-2.0"
++    },
+     "node_modules/update-browserslist-db": {
+       "version": "1.3.4",
+       "resolved": "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.3.4.tgz",
+@@ -1921,6 +2827,13 @@
+         "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+       }
+     },
++    "node_modules/util-deprecate": {
++      "version": "1.0.2",
++      "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
++      "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/vite": {
+       "version": "6.4.5",
+       "resolved": "https://registry.npmjs.org/vite/-/vite-6.4.5.tgz",
+diff --git a/frontend/package.json b/frontend/package.json
+index 61f48b1..8f22ad7 100644
+--- a/frontend/package.json
++++ b/frontend/package.json
+@@ -18,6 +18,9 @@
+   },
+   "devDependencies": {
+     "@vitejs/plugin-react": "^4.3.4",
++    "autoprefixer": "^10.6.2",
++    "postcss": "^8.5.32",
++    "tailwindcss": "^3.4.19",
+     "vite": "^6.0.7"
+   }
+ }
+diff --git a/frontend/postcss.config.js b/frontend/postcss.config.js
+new file mode 100644
+index 0000000..2aa7205
+--- /dev/null
++++ b/frontend/postcss.config.js
+@@ -0,0 +1,6 @@
++export default {
++  plugins: {
++    tailwindcss: {},
++    autoprefixer: {},
++  },
++};
+diff --git a/frontend/src/App.jsx b/frontend/src/App.jsx
+index 14b0826..971c6f2 100644
+--- a/frontend/src/App.jsx
++++ b/frontend/src/App.jsx
+@@ -1,18 +1,16 @@
+ import { useEffect } from 'react';
+ import { useSelector } from 'react-redux';
+-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
++import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+ import { Provider, useDispatch } from 'react-redux';
+ import { PersistGate } from 'redux-persist/integration/react';
+ import { store, persistor } from './app/store.js';
+ import { loadMe } from './features/auth/authSlice.js';
+-import { setTheme } from './features/theme/themeSlice.js';
+ import { selectTheme } from './features/theme/themeSlice.js';
+ 
+ import Navbar from './components/Navbar.jsx';
+ import Footer from './components/Footer.jsx';
+ import CursorFx from './components/CursorFx.jsx';
+ import ProtectedRoute from './components/ProtectedRoute.jsx';
+-import ThemeToggle from './components/ThemeToggle.jsx';
+ 
+ import Home from './pages/Home.jsx';
+ import ProductList from './pages/ProductList.jsx';
+@@ -27,6 +25,12 @@ import Wishlist from './pages/Wishlist.jsx';
+ import SellerDashboard from './pages/SellerDashboard.jsx';
+ import AdminDashboard from './pages/AdminDashboard.jsx';
+ 
++function ScrollToTop() {
++  const { pathname } = useLocation();
++  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
++  return null;
++}
++
+ function AppContent() {
+   const dispatch = useDispatch();
+   const theme = useSelector(selectTheme);
+@@ -35,12 +39,19 @@ function AppContent() {
+     dispatch(loadMe());
+   }, [dispatch]);
+ 
++  // Re-apply the saved theme on every load (not only when the user switches it).
++  useEffect(() => {
++    const root = document.documentElement;
++    if (theme && theme !== 'light') root.setAttribute('data-theme', theme);
++    else root.removeAttribute('data-theme');
++  }, [theme]);
++
+   return (
+-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-body)' }}>
++    <div className="flex min-h-screen flex-col bg-[var(--bg-page)] text-[var(--text-body)]">
++      <ScrollToTop />
+       <CursorFx enabled />
+       <Navbar />
+-      <ThemeToggle />
+-      <main className="flex-1">
++      <main className="pt-header flex-1">
+         <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/products" element={<ProductList />} />
+diff --git a/frontend/src/app/store.js b/frontend/src/app/store.js
+index d86e031..081d070 100644
+--- a/frontend/src/app/store.js
++++ b/frontend/src/app/store.js
+@@ -9,7 +9,7 @@ import ordersReducer from '../features/orders/ordersSlice.js';
+ import wishlistReducer from '../features/wishlist/wishlistSlice.js';
+ import sellerReducer from '../features/seller/sellerSlice.js';
+ import adminReducer from '../features/admin/adminSlice.js';
+-import { setTokenGetter } from '../../utils/api.js';
++import { setTokenGetter } from '../utils/api.js';
+ 
+ const persistConfig = {
+   key: 'ironnest',
+diff --git a/frontend/src/components/Badge.jsx b/frontend/src/components/Badge.jsx
+index 29f5db9..4358d4f 100644
+--- a/frontend/src/components/Badge.jsx
++++ b/frontend/src/components/Badge.jsx
+@@ -1,17 +1,20 @@
+-export default function Badge({ children, variant = 'neutral', className }) {
++function Badge({ children, variant = 'neutral', className }) {
+   const variants = {
+-    discount: 'bg-[var(--color-accent-50)] text-[var(--color-accent-600)] border border-[var(--color-accent-50)]',
+-    success: 'bg-[var(--color-success-50)] text-[var(--color-success-700)] border border-[var(--color-success-50)]',
+-    warning: 'bg-[var(--color-warning-50)] text-[var(--color-warning-700)] border border-[var(--color-warning-50)]',
+-    danger: 'bg-[var(--color-danger-50)] text-[var(--color-danger-700)] border border-[var(--color-danger-50)]',
+-    neutral: 'bg-[var(--color-gray-100)] text-[var(--color-gray-700)] border border-[var(--border)]',
+-    primary: 'bg-[var(--color-primary-50)] text-[var(--color-primary-600)] border border-[var(--color-primary-100)]',
++    discount: 'bg-[var(--color-accent-50)] text-[var(--color-accent-600)] border-[color-mix(in_srgb,currentColor_28%,transparent)]',
++    success: 'bg-[var(--color-success-50)] text-[var(--color-success-700)] border-[color-mix(in_srgb,currentColor_28%,transparent)]',
++    warning: 'bg-[var(--color-warning-50)] text-[var(--color-warning-700)] border-[color-mix(in_srgb,currentColor_28%,transparent)]',
++    danger: 'bg-[var(--color-danger-50)] text-[var(--color-danger-700)] border-[color-mix(in_srgb,currentColor_28%,transparent)]',
++    neutral: 'bg-[var(--color-gray-100)] text-[var(--color-gray-700)] border-[var(--border)]',
++    primary: 'bg-[var(--color-primary-50)] text-[var(--color-primary-600)] border-[var(--color-primary-100)]',
+   };
+   return (
+     <span
+-      className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide border ${variants[variant]} ${className || ''}`}
++      className={`inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 text-xs leading-4 font-semibold uppercase tracking-wide ${variants[variant] || variants.neutral} ${className || ''}`}
+     >
+       {children}
+     </span>
+   );
+ }
++
++export { Badge };
++export default Badge;
+diff --git a/frontend/src/components/Breadcrumb.jsx b/frontend/src/components/Breadcrumb.jsx
+index a27c596..a3e9bf2 100644
+--- a/frontend/src/components/Breadcrumb.jsx
++++ b/frontend/src/components/Breadcrumb.jsx
+@@ -1,6 +1,6 @@
+ import { useNavigate } from 'react-router-dom';
+ 
+-export default function Breadcrumb({ items }) {
++function Breadcrumb({ items }) {
+   const navigate = useNavigate();
+   return (
+     <nav aria-label="Breadcrumb" className="text-sm text-[var(--color-gray-500)] mb-4">
+@@ -27,3 +27,6 @@ export default function Breadcrumb({ items }) {
+     </nav>
+   );
+ }
++
++export { Breadcrumb };
++export default Breadcrumb;
+diff --git a/frontend/src/components/Button.jsx b/frontend/src/components/Button.jsx
+index eebef2e..24f8793 100644
+--- a/frontend/src/components/Button.jsx
++++ b/frontend/src/components/Button.jsx
+@@ -1,44 +1,39 @@
+-import { useEffect } from 'react';
+-
+-export default function Button({ children, variant = 'primary', size = 'md', disabled, className, ...rest }) {
++function Button({ children, variant = 'primary', size = 'md', disabled, className, type = 'button', ...rest }) {
++  // Control heights from the design system: sm 36 · md 44 · lg 52
+   const sizes = {
+-    sm: 'px-3 py-1.5 text-xs min-h-[36px]',
+-    md: 'px-5 py-2 min-h-[44px]',
+-    lg: 'px-6 py-2.5 text-base min-h-[52px]',
++    sm: 'px-3 text-xs min-h-[var(--control-sm)]',
++    md: 'px-5 text-sm min-h-[var(--control-md)]',
++    lg: 'px-7 text-base min-h-[var(--control-lg)]',
+   };
+ 
+   const base =
+-    'inline-block font-semibold text-sm rounded-md transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+-
+-  let style = {};
+-  let extraClass = '';
++    'inline-flex items-center justify-center gap-2 select-none font-semibold rounded-md ' +
++    'transition-all duration-150 ease-out active:translate-y-0 ' +
++    'focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-page)] ' +
++    'disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none';
+ 
+-  if (variant === 'primary') {
+-    extraClass = 'bg-[var(--color-primary-600)] text-white hover:bg-[var(--color-primary-700)]';
+-    style = {
+-      '--ring-color': 'var(--color-focus-ring)',
+-    };
+-  } else if (variant === 'secondary') {
+-    extraClass = 'border border-[var(--color-primary-600)] text-[var(--color-primary-600)] bg-transparent hover:bg-[var(--color-primary-50)]';
+-  } else if (variant === 'ghost') {
+-    extraClass = 'text-[var(--text-muted)] hover:text-[var(--text-strong)]';
+-  } else if (variant === 'danger') {
+-    extraClass = 'bg-[var(--color-danger-700)] text-white hover:bg-[var(--color-danger-700)]';
+-  }
++  const variants = {
++    primary:
++      'bg-[var(--color-primary-600)] text-[var(--on-primary)] hover:bg-[var(--color-primary-700)] hover:-translate-y-0.5 hover:shadow-glow',
++    secondary:
++      'border border-[var(--color-primary-600)] text-[var(--color-primary-600)] bg-transparent hover:bg-[var(--color-primary-50)] hover:-translate-y-0.5',
++    ghost:
++      'text-[var(--text-muted)] hover:text-[var(--text-strong)] hover:bg-[var(--color-gray-100)]',
++    danger:
++      'bg-[var(--danger-solid)] text-white hover:brightness-110 hover:-translate-y-0.5',
++  };
+ 
+   return (
+     <button
+-      className={`${base} ${sizes[size]} ${extraClass} ${className || ''}`.trim()}
++      type={type}
++      className={`${base} ${sizes[size] || sizes.md} ${variants[variant] || variants.primary} ${className || ''}`.trim()}
+       disabled={disabled}
+-      style={{
+-        ...style,
+-        ...(variant === 'primary' && {
+-          outlineColor: 'var(--color-focus-ring)',
+-        }),
+-      }}
+       {...rest}
+     >
+       {children}
+     </button>
+   );
+ }
++
++export { Button };
++export default Button;
+diff --git a/frontend/src/components/Chip.jsx b/frontend/src/components/Chip.jsx
+index 5530e3d..ccdd728 100644
+--- a/frontend/src/components/Chip.jsx
++++ b/frontend/src/components/Chip.jsx
+@@ -1,15 +1,16 @@
+-export default function Chip({ children, selected = false, removable, onRemove, className }) {
+-  const base = 'inline-flex items-center gap-1 rounded-pill px-3 py-1 text-xs font-semibold border transition';
++function Chip({ children, selected = false, removable, onRemove, className }) {
++  const base = 'inline-flex items-center gap-1 rounded-pill px-3.5 py-1.5 text-xs font-semibold border transition-all duration-150';
+   const selectedStyle = 'bg-[var(--color-primary-100)] text-[var(--color-primary-600)] border-[var(--color-primary-600)]';
+-  const defaultStyle = 'bg-[var(--color-gray-200)] text-[var(--color-gray-700)] border-[var(--border)]';
++  const defaultStyle = 'bg-[var(--bg-card)] text-[var(--text-body)] border-[var(--border)] hover:border-[var(--color-primary-600)] hover:text-[var(--color-primary-600)]';
+ 
+   return (
+     <span className={`${base} ${selected ? selectedStyle : defaultStyle} ${className || ''}`}>
+       {children}
+       {removable && onRemove ? (
+         <button
++          type="button"
+           onClick={(e) => { e.stopPropagation(); onRemove(); }}
+-          className="ml-1 -mr-1 text-[var(--color-gray-500)] hover:text-[var(--color-danger-700)] leading-none p-0.5"
++          className="ml-1 -mr-1 grid h-5 w-5 place-items-center rounded-full text-[var(--text-muted)] hover:bg-[var(--color-danger-50)] hover:text-[var(--color-danger-700)] leading-none"
+           aria-label="Remove filter"
+         >
+           &times;
+@@ -18,3 +19,6 @@ export default function Chip({ children, selected = false, removable, onRemove,
+     </span>
+   );
+ }
++
++export { Chip };
++export default Chip;
+diff --git a/frontend/src/components/CursorFx.jsx b/frontend/src/components/CursorFx.jsx
+index 68a83f6..3d3d22a 100644
+--- a/frontend/src/components/CursorFx.jsx
++++ b/frontend/src/components/CursorFx.jsx
+@@ -1,75 +1,88 @@
+ import { useEffect } from 'react';
+ 
+-export default function CursorFx({ enabled = true }) {
++const INTERACTIVE = 'a, button, [role="button"], input, select, textarea, label, summary, article';
++
++/**
++ * Cursor ring + dot that eases toward the pointer (requestAnimationFrame),
++ * grows over interactive elements, and shrinks while pressed.
++ * Skipped on touch devices and when prefers-reduced-motion is set.
++ * The native cursor is left visible for accessibility.
++ */
++function CursorFx({ enabled = true }) {
+   useEffect(() => {
+     if (!enabled) return;
+-    if (window.matchMedia('(pointer: coarse)').matches) return;
+-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
++    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
++    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
++    if (motion.matches) return;
+ 
+-    const cursor = document.createElement('div');
+-    Object.assign(cursor.style, {
+-      position: 'fixed',
+-      top: '0',
+-      left: '0',
+-      width: '20px',
+-      height: '20px',
+-      border: '2px solid var(--color-primary-600)',
+-      borderRadius: '50%',
+-      pointerEvents: 'none',
+-      zIndex: '99999',
+-      transition: 'transform 0.15s ease-out, width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out',
+-      backgroundColor: 'transparent',
+-      boxSizing: 'border-box',
+-    });
+-    document.body.style.cursor = 'none';
+-    document.body.appendChild(cursor);
++    const ring = document.createElement('div');
++    const dot = document.createElement('div');
++    ring.className = 'cursor-ring';
++    dot.className = 'cursor-dot';
++    ring.setAttribute('aria-hidden', 'true');
++    dot.setAttribute('aria-hidden', 'true');
++    document.body.append(ring, dot);
+ 
+-    let x = 0, y = 0;
+-    let cx = 0, cy = 0;
++    let tx = -100, ty = -100; // pointer target
++    let rx = -100, ry = -100; // eased ring position
++    let raf = 0;
++    let shown = false;
+ 
+-    const move = (e) => {
+-      x = e.clientX;
+-      y = e.clientY;
++    const show = () => {
++      if (shown) return;
++      shown = true;
++      ring.classList.add('is-visible');
++      dot.classList.add('is-visible');
++    };
++    const hide = () => {
++      shown = false;
++      ring.classList.remove('is-visible');
++      dot.classList.remove('is-visible');
+     };
+ 
+-    const over = () => {
+-      cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+-      cursor.style.backgroundColor = 'var(--color-primary-100)';
++    const onMove = (e) => {
++      tx = e.clientX;
++      ty = e.clientY;
++      if (!shown) { rx = tx; ry = ty; show(); }
++      dot.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+     };
+-    const out = () => {
+-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+-      cursor.style.backgroundColor = 'transparent';
++    // Event delegation, so elements added after mount (route changes) are handled too.
++    const onOver = (e) => {
++      ring.classList.toggle('is-active', !!(e.target instanceof Element && e.target.closest(INTERACTIVE)));
+     };
++    const onDown = () => ring.classList.add('is-down');
++    const onUp = () => ring.classList.remove('is-down');
+ 
+-    document.addEventListener('mousemove', move);
+-    document.addEventListener('mouseenter', over, true);
+-    document.addEventListener('mouseleave', out, true);
+-
+-    const animate = () => {
+-      cx += (x - cx) * 0.2;
+-      cy += (y - cy) * 0.2;
+-      cursor.style.left = `${cx}px`;
+-      cursor.style.top = `${cy}px`;
+-      requestAnimationFrame(animate);
++    const tick = () => {
++      rx += (tx - rx) * 0.2;
++      ry += (ty - ry) * 0.2;
++      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
++      raf = requestAnimationFrame(tick);
+     };
+-    requestAnimationFrame(animate);
++    raf = requestAnimationFrame(tick);
+ 
+-    const els = document.querySelectorAll('button, a, [role="button"], input, select, textarea');
+-    els.forEach((el) => {
+-      el.addEventListener('mouseenter', over);
+-      el.addEventListener('mouseleave', out);
+-    });
++    document.addEventListener('mousemove', onMove, { passive: true });
++    document.addEventListener('mouseover', onOver, { passive: true });
++    document.addEventListener('mousedown', onDown);
++    document.addEventListener('mouseup', onUp);
++    document.documentElement.addEventListener('mouseleave', hide);
++    document.documentElement.addEventListener('mouseenter', show);
+ 
+     return () => {
+-      document.removeEventListener('mousemove', move);
+-      document.removeEventListener('mouseenter', over, true);
+-      document.removeEventListener('mouseleave', out, true);
+-      document.body.style.cursor = '';
+-      if (document.body.contains(cursor)) document.body.removeChild(cursor);
+-      els.forEach((el) => {
+-        el.removeEventListener('mouseenter', over);
+-        el.removeEventListener('mouseleave', out);
+-      });
++      cancelAnimationFrame(raf);
++      document.removeEventListener('mousemove', onMove);
++      document.removeEventListener('mouseover', onOver);
++      document.removeEventListener('mousedown', onDown);
++      document.removeEventListener('mouseup', onUp);
++      document.documentElement.removeEventListener('mouseleave', hide);
++      document.documentElement.removeEventListener('mouseenter', show);
++      ring.remove();
++      dot.remove();
+     };
+   }, [enabled]);
++
++  return null;
+ }
++
++export { CursorFx };
++export default CursorFx;
+diff --git a/frontend/src/components/ErrorState.jsx b/frontend/src/components/ErrorState.jsx
+index ce1dc8c..dc2573e 100644
+--- a/frontend/src/components/ErrorState.jsx
++++ b/frontend/src/components/ErrorState.jsx
+@@ -1,14 +1,14 @@
+-export default function ErrorState({ message = 'Could not load products.', onRetry }) {
++function ErrorState({ message = 'Could not load products.', onRetry }) {
+   return (
+     <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
+-      <div className="rounded-full bg-[var(--color-danger-50)] p-4 text-[var(--color-danger-700)]" role="img" aria-label="Error">
++      <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--color-danger-50)] text-2xl text-[var(--color-danger-700)]" role="img" aria-label="Error">
+         &times;
+       </div>
+       <h3 className="text-lg font-semibold text-[var(--text-strong)]">{message}</h3>
+       {onRetry && (
+         <button
+           onClick={onRetry}
+-          className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-primary-600)] bg-[var(--color-primary-600)] text-white px-4 py-1.5 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition"
++          className="inline-flex items-center gap-1.5 min-h-[var(--control-md)] rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-5 text-sm font-semibold hover:bg-[var(--color-primary-700)] hover:shadow-glow transition-all"
+         >
+           <span>↻</span> Retry
+         </button>
+@@ -16,3 +16,6 @@ export default function ErrorState({ message = 'Could not load products.', onRet
+     </div>
+   );
+ }
++
++export { ErrorState };
++export default ErrorState;
+diff --git a/frontend/src/components/Footer.jsx b/frontend/src/components/Footer.jsx
+index 5bc5edb..1f08eee 100644
+--- a/frontend/src/components/Footer.jsx
++++ b/frontend/src/components/Footer.jsx
+@@ -1,17 +1,69 @@
+-export default function Footer() {
++import { Link } from 'react-router-dom';
++
++const SHOP = [
++  ['Supplements', 'supplements'],
++  ['Equipment', 'equipment'],
++  ['Apparel', 'apparel'],
++  ['Footwear', 'footwear'],
++  ['Accessories', 'accessories'],
++  ['Recovery', 'recovery'],
++];
++
++function Footer() {
+   return (
+-    <footer
+-      className="border-t border-[var(--border)] bg-[var(--bg-card)] py-6 mt-auto"
+-      style={{
+-        backgroundColor: 'var(--bg-card)',
+-        color: 'var(--text-body)',
+-        borderColor: 'var(--border)',
+-      }}
+-    >
+-      <div className="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--color-gray-500)]">
+-        <p>© {new Date().getFullYear()} IronNest · Fitness Marketplace</p>
+-        <p className="text-xs">Fake checkout · Images by URL · Built with React + Node + MongoDB</p>
++    <footer className="mt-16 border-t border-[var(--border)] bg-[var(--bg-card)]">
++      <div className="container grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
++        <div>
++          <Link to="/" className="inline-flex items-center gap-2.5" aria-label="IronNest home">
++            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)]">I</span>
++            <span className="font-display text-xl font-bold uppercase tracking-wider text-[var(--text-strong)]">
++              Iron<span className="text-[var(--color-primary-600)]">Nest</span>
++            </span>
++          </Link>
++          <p className="mt-4 max-w-xs text-sm text-[var(--text-muted)]">
++            A fitness marketplace for training, recovery and everyday movement. Independent sellers, one store.
++          </p>
++        </div>
++
++        <nav aria-label="Shop">
++          <h4 className="eyebrow !text-[var(--text-strong)]">Shop</h4>
++          <ul className="mt-4 space-y-2.5 text-sm">
++            {SHOP.map(([label, slug]) => (
++              <li key={slug}>
++                <Link to={`/products?category=${slug}`} className="text-[var(--text-muted)] transition-colors hover:text-[var(--color-primary-600)]">{label}</Link>
++              </li>
++            ))}
++          </ul>
++        </nav>
++
++        <nav aria-label="Account">
++          <h4 className="eyebrow !text-[var(--text-strong)]">Account</h4>
++          <ul className="mt-4 space-y-2.5 text-sm">
++            {[['/login', 'Login'], ['/register', 'Create account'], ['/orders', 'My orders'], ['/wishlist', 'Wishlist'], ['/cart', 'Cart']].map(([to, label]) => (
++              <li key={to}><Link to={to} className="text-[var(--text-muted)] transition-colors hover:text-[var(--color-primary-600)]">{label}</Link></li>
++            ))}
++          </ul>
++        </nav>
++
++        <div>
++          <h4 className="eyebrow !text-[var(--text-strong)]">Store rules</h4>
++          <ul className="mt-4 space-y-2.5 text-sm text-[var(--text-muted)]">
++            <li>Free shipping on orders of $50+</li>
++            <li>Codes: SAVE10 · POWER15 · LIFT5</li>
++            <li>Demo checkout, no real payment</li>
++          </ul>
++        </div>
++      </div>
++
++      <div className="border-t border-[var(--border)]">
++        <div className="container flex flex-col items-center justify-between gap-2 py-5 text-xs text-[var(--text-muted)] md:flex-row">
++          <p>© {new Date().getFullYear()} IronNest · Fitness Marketplace</p>
++          <p>Demo project · Built with React, Node and MongoDB</p>
++        </div>
+       </div>
+     </footer>
+   );
+ }
++
++export { Footer };
++export default Footer;
+diff --git a/frontend/src/components/Input.jsx b/frontend/src/components/Input.jsx
+index e2b43de..073fdb8 100644
+--- a/frontend/src/components/Input.jsx
++++ b/frontend/src/components/Input.jsx
+@@ -1,4 +1,4 @@
+-export default function Input({ id, label, type = 'text', placeholder, value, onChange, error, required, className }) {
++function Input({ id, label, type = 'text', placeholder, value, onChange, error, required, className, ...rest }) {
+   return (
+     <div className={`flex flex-col gap-2 ${className || ''}`}>
+       {label && (
+@@ -10,14 +10,21 @@ export default function Input({ id, label, type = 'text', placeholder, value, on
+         id={id}
+         type={type}
+         placeholder={placeholder || ''}
+-        value={value || ''}
++        value={value ?? ''}
+         onChange={onChange}
+         required={required}
+-        className={`w-full min-h-[44px] rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-body)] px-3 text-sm transition focus:border-[var(--color-primary-600)] focus:ring focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] ${error ? 'border-[var(--color-danger-700)] focus:border-[var(--color-danger-700)]' : ''} ${className || ''}`}
++        aria-invalid={error ? 'true' : undefined}
++        className={`w-full min-h-[var(--control-md)] rounded-md border bg-[var(--bg-card)] px-3.5 text-sm text-[var(--text-body)] placeholder:text-[var(--text-muted)] transition-all duration-150 focus:outline-none focus:ring-[3px] focus:ring-[var(--color-focus-ring)] ${
++          error
++            ? 'border-[var(--color-danger-700)] focus:border-[var(--color-danger-700)]'
++            : 'border-[var(--color-gray-300)] focus:border-[var(--color-primary-600)]'
++        }`}
++        {...rest}
+       />
+-      {error && (
+-        <span className="text-xs text-[var(--color-danger-700)]">{error}</span>
+-      )}
++      {error && <span className="text-xs font-medium text-[var(--color-danger-700)]">{error}</span>}
+     </div>
+   );
+ }
++
++export { Input };
++export default Input;
+diff --git a/frontend/src/components/Navbar.jsx b/frontend/src/components/Navbar.jsx
+index 368ff5a..e3e5491 100644
+--- a/frontend/src/components/Navbar.jsx
++++ b/frontend/src/components/Navbar.jsx
+@@ -1,158 +1,248 @@
+-import { useState } from 'react';
++import { useEffect, useRef, useState } from 'react';
+ import { useDispatch, useSelector } from 'react-redux';
+-import { Link, useLocation } from 'react-router-dom';
++import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+ import { logout } from '../features/auth/authSlice.js';
+-import { setTheme, selectTheme } from '../features/theme/themeSlice.js';
+ import { selectItemCount } from '../features/cart/cartSlice.js';
++import ThemeToggle from './ThemeToggle.jsx';
+ 
+-export default function Navbar() {
++const iconProps = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', viewBox: '0 0 24 24', 'aria-hidden': true };
++
++function SearchIcon({ className = 'h-5 w-5' }) {
++  return (
++    <svg className={className} {...iconProps}>
++      <circle cx="11" cy="11" r="7" />
++      <path d="M21 21l-4.3-4.3" />
++    </svg>
++  );
++}
++
++function Navbar() {
+   const location = useLocation();
++  const navigate = useNavigate();
++  const dispatch = useDispatch();
+   const { user, token } = useSelector((state) => state.auth);
+-  const theme = useSelector(selectTheme);
+   const itemCount = useSelector(selectItemCount);
+-  const dispatch = useDispatch();
+ 
+-  const [menuOpen, setMenuOpen] = useState(false);
++  const [userOpen, setUserOpen] = useState(false);
++  const [mobileOpen, setMobileOpen] = useState(false);
+   const [search, setSearch] = useState('');
++  const userRef = useRef(null);
+ 
+-  const themes = [
+-    { name: 'light', label: 'Light', icon: '☀' },
+-    { name: 'dark', label: 'Dark', icon: '☾' },
+-    { name: 'iron', label: 'Iron', icon: '⚡' },
+-    { name: 'neon', label: 'Neon', icon: '✦' },
+-  ];
++  const role = user?.role;
++  const isSeller = role === 'seller' || role === 'admin';
+ 
+-  const isListPage = location.pathname === '/' || location.pathname === '/products';
++  // close menus on navigation
++  useEffect(() => {
++    setUserOpen(false);
++    setMobileOpen(false);
++  }, [location.pathname]);
++
++  useEffect(() => {
++    if (!userOpen) return;
++    const onDown = (e) => { if (userRef.current && !userRef.current.contains(e.target)) setUserOpen(false); };
++    const onKey = (e) => { if (e.key === 'Escape') setUserOpen(false); };
++    document.addEventListener('mousedown', onDown);
++    document.addEventListener('keydown', onKey);
++    return () => {
++      document.removeEventListener('mousedown', onDown);
++      document.removeEventListener('keydown', onKey);
++    };
++  }, [userOpen]);
+ 
+   const handleSearchSubmit = (e) => {
+     e.preventDefault();
+-    if (!search.trim()) return;
+-    window.location.href = `/products?search=${encodeURIComponent(search.trim())}`;
++    const q = search.trim();
++    if (!q) return;
++    navigate(`/products?search=${encodeURIComponent(q)}`);
++    setMobileOpen(false);
+   };
+ 
++  const links = [
++    { to: '/products', label: 'Products' },
++    ...(token
++      ? [
++          { to: '/orders', label: 'My orders' },
++          { to: '/wishlist', label: 'Wishlist' },
++          ...(isSeller ? [{ to: '/seller', label: 'Seller' }] : []),
++          ...(role === 'admin' ? [{ to: '/admin', label: 'Admin' }] : []),
++        ]
++      : []),
++  ];
++
++  const navClass = ({ isActive }) =>
++    `nav-link rounded-md px-3 py-2 text-sm font-semibold transition-colors ${
++      isActive ? 'text-[var(--on-header)]' : 'text-[var(--on-header-muted)] hover:text-[var(--on-header)]'
++    }`;
++
++  const searchForm = (idSuffix) => (
++    <form onSubmit={handleSearchSubmit} role="search" className="relative w-full">
++      <label htmlFor={`site-search-${idSuffix}`} className="sr-only">Search products</label>
++      <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--on-header-muted)]">
++        <SearchIcon className="h-[18px] w-[18px]" />
++      </span>
++      <input
++        id={`site-search-${idSuffix}`}
++        value={search}
++        onChange={(e) => setSearch(e.target.value)}
++        placeholder="Search for products, brands and more"
++        className="min-h-[var(--control-md)] w-full rounded-pill border border-[color-mix(in_srgb,var(--on-header)_16%,transparent)] bg-[color-mix(in_srgb,var(--on-header)_8%,transparent)] pl-10 pr-4 text-sm text-[var(--on-header)] placeholder:text-[var(--on-header-muted)] transition-all focus:border-[var(--color-primary-600)] focus:bg-[color-mix(in_srgb,var(--on-header)_12%,transparent)] focus:outline-none focus:ring-[3px] focus:ring-[var(--color-focus-ring)]"
++      />
++    </form>
++  );
++
+   return (
+-    <header
+-      className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)] shadow-sm"
+-      style={{
+-        height: 'var(--header-height)',
+-        backgroundColor: 'var(--bg-header)',
+-        color: 'var(--text-strong)',
+-      }}
+-    >
+-      <div className="flex items-center justify-between h-full px-4 max-w-[1200px] mx-auto">
+-        <Link to="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+-          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-white">I</span>
+-          <span className="font-heading font-bold text-lg tracking-tight text-[var(--text-strong)]">IronNest</span>
+-        </Link>
+-
+-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+-          <Link
+-            to="/products"
+-            className={`px-3 py-2 rounded-md transition ${isListPage ? 'bg-[var(--color-primary-50)] text-[var(--color-primary-700)]' : 'text-[var(--text-body)] hover:text-[var(--color-primary-600)]'}`}
+-          >
+-            Products
++    <>
++      <header className="glass fixed inset-x-0 top-0 z-40 text-[var(--on-header)]" style={{ height: 'var(--header-height)' }}>
++        <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-6">
++          {/* Logo */}
++          <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label="IronNest home">
++            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
++              I
++            </span>
++            <span className="font-display text-xl font-bold uppercase tracking-wider text-[var(--on-header)]">
++              Iron<span className="text-[var(--color-primary-600)]">Nest</span>
++            </span>
+           </Link>
+-          {token && (
+-            <>
+-              <Link to="/orders" className="text-[var(--text-body)] hover:text-[var(--color-primary-600)]">My orders</Link>
+-              <Link to="/wishlist" className="text-[var(--text-body)] hover:text-[var(--color-primary-600)]">Wishlist</Link>
+-              {(user.role === 'seller' || user.role === 'admin') && (
+-                <Link to="/seller" className="text-[var(--text-body)] hover:text-[var(--color-primary-600)]">Seller</Link>
+-              )}
+-              {user.role === 'admin' && (
+-                <Link to="/admin" className="text-[var(--text-body)] hover:text-[var(--color-primary-600)]">Admin</Link>
++
++          {/* Desktop search (wide, per design system) */}
++          <div className="hidden max-w-xl flex-1 md:block">{searchForm('desktop')}</div>
++
++          {/* Desktop nav */}
++          <nav className="hidden items-center lg:flex" aria-label="Primary">
++            {links.map((l) => (
++              <NavLink key={l.to} to={l.to} className={navClass}>{l.label}</NavLink>
++            ))}
++          </nav>
++
++          <div className="ml-auto flex items-center gap-2">
++            {/* Mobile search toggle */}
++            <button
++              type="button"
++              onClick={() => setMobileOpen((o) => !o)}
++              className="grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] md:hidden"
++              aria-label="Search products"
++              aria-expanded={mobileOpen}
++            >
++              <SearchIcon />
++            </button>
++
++            <ThemeToggle />
++
++            {/* Cart */}
++            <Link
++              to="/cart"
++              className="relative grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)]"
++              aria-label={`Cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`}
++            >
++              <svg className="h-5 w-5" {...iconProps}>
++                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
++              </svg>
++              {itemCount > 0 && (
++                <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white ring-2 ring-[var(--bg-header)]">
++                  {itemCount > 9 ? '9+' : itemCount}
++                </span>
+               )}
+-            </>
+-          )}
+-        </nav>
+-
+-        <div className="flex items-center gap-3">
+-          {!token ? (
+-            <Link to="/login" className="rounded-md bg-[var(--color-primary-600)] text-white px-4 py-1.5 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition">
+-              Login
+             </Link>
+-          ) : (
+-            <div className="relative">
+-              <button
+-                onClick={() => setMenuOpen(!menuOpen)}
+-                className="flex items-center gap-2 rounded-full bg-[var(--color-gray-200)] px-3 py-1.5 text-sm text-[var(--text-strong)] hover:bg-[var(--color-gray-300)] transition"
+-                aria-label="Open user menu"
++
++            {/* Account */}
++            {!token ? (
++              <Link
++                to="/login"
++                className="hidden min-h-[var(--control-sm)] items-center rounded-md bg-[var(--color-primary-600)] px-4 text-sm font-semibold text-[var(--on-primary)] transition-all hover:bg-[var(--color-primary-700)] hover:shadow-glow sm:inline-flex"
+               >
+-                <span className="w-6 h-6 rounded-full bg-[var(--color-primary-600)] flex items-center justify-center text-xs font-bold text-white">
+-                  {user.name.charAt(0).toUpperCase()}
+-                </span>
+-                <span className="hidden md:inline text-[var(--text-body)]">{user.name}</span>
+-              </button>
+-              {menuOpen && (
+-                <div className="absolute right-0 mt-2 w-48 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-lg py-2 z-50">
+-                  <Link to="/orders" className="block px-4 py-2 text-sm text-[var(--text-body)] hover:bg-[var(--color-gray-50)]">My orders</Link>
+-                  <Link to="/wishlist" className="block px-4 py-2 text-sm text-[var(--text-body)] hover:bg-[var(--color-gray-50)]">Wishlist</Link>
+-                  {(user.role === 'seller' || user.role === 'admin') && (
+-                    <Link to="/seller" className="block px-4 py-2 text-sm text-[var(--text-body)] hover:bg-[var(--color-gray-50)]">Seller dashboard</Link>
+-                  )}
+-                  {user.role === 'admin' && (
+-                    <Link to="/admin" className="block px-4 py-2 text-sm text-[var(--text-body)] hover:bg-[var(--color-gray-50)]">Admin dashboard</Link>
+-                  )}
+-                  <div className="border-t border-[var(--border)] mt-2 pt-2">
+-                    <button
+-                      onClick={() => { dispatch(logout()); setMenuOpen(false); }}
+-                      className="w-full text-left px-4 py-2 text-sm text-[var(--color-danger-700)] hover:bg-[var(--color-danger-50)]"
+-                    >
+-                      Logout
+-                    </button>
++                Login
++              </Link>
++            ) : (
++              <div className="relative" ref={userRef}>
++                <button
++                  type="button"
++                  onClick={() => setUserOpen((o) => !o)}
++                  className="flex items-center gap-2 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_18%,transparent)] py-1 pl-1 pr-3 transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)]"
++                  aria-label="Open user menu"
++                  aria-haspopup="menu"
++                  aria-expanded={userOpen}
++                >
++                  <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--color-primary-600)] text-sm font-bold text-[var(--on-primary)]">
++                    {(user?.name || '?').charAt(0).toUpperCase()}
++                  </span>
++                  <span className="hidden max-w-[110px] truncate text-sm font-medium text-[var(--on-header)] sm:inline">{user?.name}</span>
++                </button>
++                {userOpen && (
++                  <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-56 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
++                    <div className="border-b border-[var(--border)] px-4 pb-2 pt-1.5">
++                      <p className="truncate text-sm font-semibold text-[var(--text-strong)]">{user?.name}</p>
++                      <p className="text-xs capitalize text-[var(--text-muted)]">{role}</p>
++                    </div>
++                    {[
++                      ['/orders', 'My orders'],
++                      ['/wishlist', 'Wishlist'],
++                      ...(isSeller ? [['/seller', 'Seller dashboard']] : []),
++                      ...(role === 'admin' ? [['/admin', 'Admin dashboard']] : []),
++                    ].map(([to, label]) => (
++                      <Link key={to} to={to} role="menuitem" className="block px-4 py-2 text-sm text-[var(--text-body)] transition-colors hover:bg-[var(--color-gray-100)] hover:text-[var(--text-strong)]">
++                        {label}
++                      </Link>
++                    ))}
++                    <div className="mt-1 border-t border-[var(--border)] pt-1">
++                      <button
++                        type="button"
++                        role="menuitem"
++                        onClick={() => { dispatch(logout()); setUserOpen(false); }}
++                        className="w-full px-4 py-2 text-left text-sm font-medium text-[var(--color-danger-700)] transition-colors hover:bg-[var(--color-danger-50)]"
++                      >
++                        Logout
++                      </button>
++                    </div>
+                   </div>
+-                </div>
+-              )}
+-            </div>
+-          )}
+-          <button
+-            onClick={() => {
+-              const idx = themes.findIndex((t) => t.name === theme);
+-              const next = themes[(idx + 1) % themes.length];
+-              dispatch(setTheme(next.name));
+-            }}
+-            className="w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--bg-card)] flex items-center justify-center text-[var(--color-gray-600)] hover:bg-[var(--color-gray-100)] transition"
+-            title="Change theme"
+-            aria-label="Theme switcher"
+-          >
+-            <span className="text-sm">{themes.find((t) => t.name === theme)?.icon}</span>
+-          </button>
+-          <form onSubmit={handleSearchSubmit} className="relative">
++                )}
++              </div>
++            )}
++
++            {/* Mobile menu */}
+             <button
+               type="button"
+-              onClick={() => setSearch((s) => (s ? '' : 'search'))}
+-              className="relative w-8 h-8"
++              onClick={() => setMobileOpen((o) => !o)}
++              className="grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] lg:hidden"
++              aria-label="Toggle menu"
++              aria-expanded={mobileOpen}
+             >
+-              <svg className="w-5 h-5 text-[var(--color-gray-600)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
++              <svg className="h-5 w-5" {...iconProps}>
++                {mobileOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+               </svg>
+             </button>
+-            {search && (
+-              <input
+-                autoFocus
+-                value={search}
+-                onChange={(e) => setSearch(e.target.value)}
+-                placeholder="Search products"
+-                className="absolute right-full mr-2 w-64 min-h-[44px] rounded-md border border-[var(--border)] bg-[var(--bg-card)] px-3 text-sm text-[var(--text-body)] shadow-md focus:outline-none focus:border-[var(--color-primary-600)]"
+-              />
+-            )}
+-          </form>
+-          <Link
+-            to="/cart"
+-            className="relative w-8 h-8"
+-            title={`Cart (${itemCount})`}
+-          >
+-            <svg className="w-5 h-5 text-[var(--color-gray-600)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+-            </svg>
+-            {itemCount > 0 && (
+-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[var(--color-danger-700)] text-white text-[10px] font-bold flex items-center justify-center">
+-                {itemCount > 9 ? '9+' : itemCount}
+-              </span>
+-            )}
+-          </Link>
++          </div>
+         </div>
+-      </div>
+-    </header>
++      </header>
++
++      {/* Mobile / tablet panel */}
++      {mobileOpen && (
++        <div className="glass animate-pop-in fixed inset-x-0 z-30 lg:hidden" style={{ top: 'var(--header-height)' }}>
++          <div className="mx-auto max-w-[var(--container-max)] space-y-3 px-[var(--page-padding)] py-4">
++            <div className="md:hidden">{searchForm('mobile')}</div>
++            <nav className="flex flex-col" aria-label="Mobile">
++              {links.map((l) => (
++                <NavLink
++                  key={l.to}
++                  to={l.to}
++                  className={({ isActive }) =>
++                    `rounded-md px-3 py-3 text-base font-semibold transition-colors ${isActive ? 'bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] text-[var(--on-header)]' : 'text-[var(--on-header-muted)] hover:text-[var(--on-header)]'}`
++                  }
++                >
++                  {l.label}
++                </NavLink>
++              ))}
++              {!token && (
++                <Link to="/login" className="mt-2 inline-flex min-h-[var(--control-md)] items-center justify-center rounded-md bg-[var(--color-primary-600)] text-sm font-semibold text-[var(--on-primary)]">
++                  Login
++                </Link>
++              )}
++            </nav>
++          </div>
++        </div>
++      )}
++    </>
+   );
+ }
++
++export { Navbar };
++export default Navbar;
+diff --git a/frontend/src/components/PriceTag.jsx b/frontend/src/components/PriceTag.jsx
+index 12d518d..4a122ec 100644
+--- a/frontend/src/components/PriceTag.jsx
++++ b/frontend/src/components/PriceTag.jsx
+@@ -1,19 +1,27 @@
+ import { formatMoney } from '../utils/money.js';
++import { Badge } from './Badge.jsx';
+ 
+-export default function PriceTag({ priceCents, discountPercentage, className }) {
++function PriceTag({ priceCents, discountPercentage, className, compact = false }) {
+   const discounted = Math.round(priceCents * (1 - (discountPercentage || 0) / 100));
+-  const onSale = discountPercentage && discountPercentage > 0;
++  const onSale = Number(discountPercentage) > 0;
+   const saved = priceCents - discounted;
+   return (
+-    <div className={`flex items-center gap-2 ${className || ''}`}>
+-      <span className="font-semibold text-[var(--text-strong)]">{formatMoney(discounted)}</span>
++    <div className={`flex flex-wrap items-baseline gap-x-2 gap-y-1 ${className || ''}`}>
++      <span className="font-heading text-base font-bold text-[var(--text-strong)]">{formatMoney(discounted)}</span>
+       {onSale ? (
+         <>
+-          <span className="text-xs text-[var(--color-gray-500)] line-through">{formatMoney(priceCents)}</span>
+-          <Badge variant="discount">-{discountPercentage}%</Badge>
+-          <span className="text-xs text-[var(--color-success-700)] font-semibold">You save {formatMoney(saved)}</span>
++          <span className="text-xs text-[var(--text-muted)] line-through">{formatMoney(priceCents)}</span>
++          {!compact && (
++            <>
++              <Badge variant="discount">-{discountPercentage}%</Badge>
++              <span className="text-xs font-semibold text-[var(--color-success-700)]">You save {formatMoney(saved)}</span>
++            </>
++          )}
+         </>
+       ) : null}
+     </div>
+   );
+ }
++
++export { PriceTag };
++export default PriceTag;
+diff --git a/frontend/src/components/ProductCard.jsx b/frontend/src/components/ProductCard.jsx
+index 52b457e..4dcb820 100644
+--- a/frontend/src/components/ProductCard.jsx
++++ b/frontend/src/components/ProductCard.jsx
+@@ -1,15 +1,17 @@
+ import { useDispatch, useSelector } from 'react-redux';
+-import { addItem, selectCartQtyByProductId } from '../features/cart/cartSlice.js';
++import { Link } from 'react-router-dom';
++import { addItem, increase, decrease, selectCartQtyByProductId } from '../features/cart/cartSlice.js';
+ import { PriceTag } from './PriceTag.jsx';
+ import { StockBadge } from './StockBadge.jsx';
+ import { Badge } from './Badge.jsx';
+ 
+-export default function ProductCard({ product, showStepper = false }) {
++function ProductCard({ product, showStepper = true }) {
+   const dispatch = useDispatch();
+   const qty = useSelector((state) => selectCartQtyByProductId(state)(product._id));
+   const image = (product.images && product.images[0]) || product.thumbnail || '';
+-  const onSale = product.discountPercentage && product.discountPercentage > 0;
++  const onSale = Number(product.discountPercentage) > 0;
+   const outOfStock = product.stock === 0;
++  const rating = Number(product.rating || 0);
+ 
+   const handleAdd = () => {
+     if (outOfStock) return;
+@@ -18,65 +20,71 @@ export default function ProductCard({ product, showStepper = false }) {
+ 
+   return (
+     <article
+-      className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden shadow-sm transition hover:shadow-md group"
+-      style={{
+-        backgroundColor: 'var(--bg-card)',
+-        borderColor: 'var(--border)',
+-        color: 'var(--text-body)',
+-      }}
++      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border bg-[var(--bg-card)] shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-md ${
++        qty > 0 ? 'border-[var(--color-primary-600)]' : 'border-[var(--border)] hover:border-[var(--color-primary-200)]'
++      }`}
+     >
+-      <div className="relative overflow-hidden aspect-[4/5] bg-[var(--color-gray-100)]">
++      <Link to={`/product/${product._id}`} className="relative block aspect-[4/5] overflow-hidden bg-[var(--color-gray-100)]" aria-label={product.title}>
+         {onSale && (
+-          <Badge variant="discount" className="absolute top-3 left-3 z-10">
++          <Badge variant="discount" className="absolute left-3 top-3 z-10 shadow-sm">
+             -{product.discountPercentage}%
+           </Badge>
+         )}
+-        <img
+-          src={image}
+-          alt={product.title}
+-          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+-          loading="lazy"
+-        />
+-        <StockBadge stock={product.stock} className="absolute bottom-3 left-3 z-20 flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-md" />
+-      </div>
+-      <div className="p-4">
+-        <Badge variant="neutral" className="text-[10px] uppercase tracking-wide text-[var(--color-gray-500)] border-transparent">
+-          {product.category}
+-        </Badge>
+-        <h3 className="text-sm font-semibold text-[var(--text-strong)] mt-1 line-clamp-2">{product.title}</h3>
+-        <div className="mt-2 flex items-baseline gap-2">
+-          <PriceTag priceCents={product.priceCents} discountPercentage={product.discountPercentage} />
++        {image && (
++          <img
++            src={image}
++            alt={product.title}
++            className={`h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${outOfStock ? 'grayscale opacity-60' : ''}`}
++            loading="lazy"
++          />
++        )}
++        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
++        {product.stock < 10 && <StockBadge stock={product.stock} className="absolute bottom-3 left-3 z-10 shadow-sm" />}
++      </Link>
++
++      <div className="flex flex-1 flex-col p-4">
++        <span className="text-xs font-semibold uppercase leading-4 tracking-wider text-[var(--text-muted)]">{product.category}</span>
++        <h3 className="mt-1 line-clamp-2 min-h-[2.5rem] font-body text-sm font-semibold leading-5 text-[var(--text-strong)]">
++          <Link to={`/product/${product._id}`} className="hover:text-[var(--color-primary-600)] transition-colors">{product.title}</Link>
++        </h3>
++
++        <div className="mt-2 flex items-center gap-1.5 text-xs">
++          <span className="font-semibold text-[var(--color-warning-700)]" aria-label={`Rated ${rating.toFixed(1)} out of 5`}>★ {rating.toFixed(1)}</span>
++          {product.reviewCount != null && <span className="text-[var(--text-muted)]">({product.reviewCount})</span>}
+         </div>
+-        <div className="mt-3 flex items-center gap-1">
+-          <span className="text-[var(--color-warning-700)] text-xs font-semibold" aria-label="Rating">
+-            ★ {product.rating.toFixed(1)}
+-          </span>
+-          <span className="text-xs text-[var(--color-gray-500)]">({product.reviewCount})</span>
++
++        <div className="mt-2">
++          <PriceTag priceCents={product.priceCents} discountPercentage={product.discountPercentage} compact />
+         </div>
+-        <div className="mt-4">
++
++        <div className="mt-auto pt-4">
+           {showStepper && qty > 0 ? (
+-            <div className="flex items-center justify-between">
++            <div className="flex min-h-[var(--control-md)] items-center justify-between rounded-pill border border-[var(--color-primary-600)] bg-[var(--color-primary-50)] px-1.5">
+               <button
+-                onClick={() => dispatch(addItem({ product, quantity: 0 }))}
+-                disabled={outOfStock}
+-                className="w-8 h-8 rounded-pill border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-body)] text-sm font-bold hover:bg-[var(--color-gray-200)] disabled:opacity-50"
++                type="button"
++                onClick={() => dispatch(decrease(product._id))}
++                aria-label="Decrease quantity"
++                className="grid h-8 w-8 place-items-center rounded-full text-base font-bold text-[var(--color-primary-600)] transition-colors hover:bg-[var(--color-primary-100)]"
+               >
+                 −
+               </button>
+-              <span className="w-8 text-center text-sm font-semibold text-[var(--text-strong)]">{qty} in cart</span>
++              <span className="text-sm font-semibold text-[var(--text-strong)]">{qty} in cart</span>
+               <button
+-                onClick={() => dispatch(addItem({ product, quantity: 1 }))}
+-                disabled={outOfStock || qty >= product.stock}
+-                className="w-8 h-8 rounded-pill border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-body)] text-sm font-bold hover:bg-[var(--color-gray-200)] disabled:opacity-50"
++                type="button"
++                onClick={() => dispatch(increase(product._id))}
++                disabled={qty >= product.stock}
++                aria-label="Increase quantity"
++                className="grid h-8 w-8 place-items-center rounded-full text-base font-bold text-[var(--color-primary-600)] transition-colors hover:bg-[var(--color-primary-100)] disabled:opacity-40 disabled:cursor-not-allowed"
+               >
+                 +
+               </button>
+             </div>
+           ) : (
+             <button
++              type="button"
+               onClick={handleAdd}
+               disabled={outOfStock}
+-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-1.5 text-sm font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
++              className="inline-flex min-h-[var(--control-md)] w-full items-center justify-center rounded-md bg-[var(--color-primary-600)] px-4 text-sm font-semibold text-[var(--on-primary)] transition-all duration-150 hover:bg-[var(--color-primary-700)] hover:shadow-glow disabled:cursor-not-allowed disabled:bg-[var(--color-gray-200)] disabled:text-[var(--text-muted)] disabled:shadow-none"
+             >
+               {outOfStock ? 'Out of stock' : 'Add to cart'}
+             </button>
+@@ -86,3 +94,6 @@ export default function ProductCard({ product, showStepper = false }) {
+     </article>
+   );
+ }
++
++export { ProductCard };
++export default ProductCard;
+diff --git a/frontend/src/components/ProtectedRoute.jsx b/frontend/src/components/ProtectedRoute.jsx
+index 9ce7c18..6458130 100644
+--- a/frontend/src/components/ProtectedRoute.jsx
++++ b/frontend/src/components/ProtectedRoute.jsx
+@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom';
+ import { useSelector } from 'react-redux';
+ import { selectAuth } from '../features/auth/authSlice.js';
+ 
+-export default function ProtectedRoute({ children, roles }) {
++function ProtectedRoute({ children, roles }) {
+   const { user, status } = useSelector(selectAuth);
+   const location = useLocation();
+ 
+@@ -20,3 +20,6 @@ export default function ProtectedRoute({ children, roles }) {
+ 
+   return children;
+ }
++
++export { ProtectedRoute };
++export default ProtectedRoute;
+diff --git a/frontend/src/components/QtyStepper.jsx b/frontend/src/components/QtyStepper.jsx
+index eadef2d..8aece13 100644
+--- a/frontend/src/components/QtyStepper.jsx
++++ b/frontend/src/components/QtyStepper.jsx
+@@ -1,7 +1,7 @@
+ import { useDispatch, useSelector } from 'react-redux';
+ import { increase, decrease, removeItem, selectCartQtyByProductId } from '../features/cart/cartSlice.js';
+ 
+-export default function QtyStepper({ productId, stock, className }) {
++function QtyStepper({ productId, stock, className }) {
+   const dispatch = useDispatch();
+   const qty = useSelector((state) => selectCartQtyByProductId(state)(productId));
+ 
+@@ -31,3 +31,6 @@ export default function QtyStepper({ productId, stock, className }) {
+     </div>
+   );
+ }
++
++export { QtyStepper };
++export default QtyStepper;
+diff --git a/frontend/src/components/Skeleton.jsx b/frontend/src/components/Skeleton.jsx
+index 45b0afa..1545913 100644
+--- a/frontend/src/components/Skeleton.jsx
++++ b/frontend/src/components/Skeleton.jsx
+@@ -1,8 +1,23 @@
+-export default function Skeleton({ className, width = '100%', height = 16 }) {
++function Skeleton({ className, width = '100%', height = 16 }) {
++  return <div className={`shimmer rounded-md ${className || ''}`} style={{ width, height }} aria-hidden="true" />;
++}
++
++export { Skeleton };
++export default Skeleton;
++
++// Loading placeholder that matches the ProductCard footprint (4:5 image, text, button).
++function ProductCardSkeleton() {
+   return (
+-    <div
+-      className={`animate-pulse rounded-md ${className || ''}`}
+-      style={{ width, height, backgroundColor: 'var(--color-gray-200)' }}
+-    />
++    <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm" aria-hidden="true">
++      <div className="shimmer aspect-[4/5] w-full" />
++      <div className="space-y-3 p-4">
++        <div className="shimmer h-3 w-1/3 rounded" />
++        <div className="shimmer h-4 w-full rounded" />
++        <div className="shimmer h-4 w-2/3 rounded" />
++        <div className="shimmer mt-4 h-11 w-full rounded-md" />
++      </div>
++    </div>
+   );
+ }
++
++export { ProductCardSkeleton };
+diff --git a/frontend/src/components/StockBadge.jsx b/frontend/src/components/StockBadge.jsx
+index 7e008c5..2714e83 100644
+--- a/frontend/src/components/StockBadge.jsx
++++ b/frontend/src/components/StockBadge.jsx
+@@ -1,7 +1,10 @@
+ import { Badge } from './Badge.jsx';
+ 
+-export default function StockBadge({ stock, className }) {
++function StockBadge({ stock, className }) {
+   if (stock === 0) return <Badge variant="danger" className={className}>Out of stock</Badge>;
+   if (stock < 10) return <Badge variant="warning" className={className}>Only {stock} left</Badge>;
+   return <Badge variant="success" className={className}>In stock</Badge>;
+ }
++
++export { StockBadge };
++export default StockBadge;
+diff --git a/frontend/src/components/ThemeToggle.jsx b/frontend/src/components/ThemeToggle.jsx
+index 9f89ab9..0cb3d73 100644
+--- a/frontend/src/components/ThemeToggle.jsx
++++ b/frontend/src/components/ThemeToggle.jsx
+@@ -1,32 +1,83 @@
++import { useEffect, useRef, useState } from 'react';
+ import { useDispatch, useSelector } from 'react-redux';
+ import { setTheme, selectTheme } from '../features/theme/themeSlice.js';
+ 
+-export default function ThemeToggle() {
++// Swatches are previews only; the live look always comes from the data-theme tokens.
++const THEMES = [
++  { name: 'light', label: 'Light', bg: '#F9FAFB', fg: '#4338CA' },
++  { name: 'dark', label: 'Dark', bg: '#0B0F19', fg: '#6366F1' },
++  { name: 'iron', label: 'Iron', bg: '#0B0B0B', fg: '#DC2626' },
++  { name: 'neon', label: 'Neon', bg: '#0A0A0A', fg: '#A3E635' },
++];
++
++function Swatch({ t }) {
++  return (
++    <span
++      className="relative inline-block h-5 w-5 shrink-0 overflow-hidden rounded-full border border-[var(--border)]"
++      style={{ background: t.bg }}
++      aria-hidden="true"
++    >
++      <span className="absolute bottom-0 right-0 h-3 w-3 rounded-tl-full" style={{ background: t.fg }} />
++    </span>
++  );
++}
++
++function ThemeToggle() {
+   const dispatch = useDispatch();
+   const theme = useSelector(selectTheme);
+-  const themes = [
+-    { name: 'light', label: 'Light', icon: '☀' },
+-    { name: 'dark', label: 'Dark', icon: '☾' },
+-    { name: 'iron', label: 'Iron', icon: '⚡' },
+-    { name: 'neon', label: 'Neon', icon: '✦' },
+-  ];
+-
+-  const nextTheme = () => {
+-    const idx = themes.findIndex((t) => t.name === theme);
+-    const next = themes[(idx + 1) % themes.length];
+-    dispatch(setTheme(next.name));
+-  };
++  const [open, setOpen] = useState(false);
++  const ref = useRef(null);
++  const current = THEMES.find((t) => t.name === theme) || THEMES[0];
+ 
+-  const current = themes.find((t) => t.name === theme) || themes[0];
++  useEffect(() => {
++    if (!open) return;
++    const onDown = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
++    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
++    document.addEventListener('mousedown', onDown);
++    document.addEventListener('keydown', onKey);
++    return () => {
++      document.removeEventListener('mousedown', onDown);
++      document.removeEventListener('keydown', onKey);
++    };
++  }, [open]);
+ 
+   return (
+-    <button
+-      onClick={nextTheme}
+-      className="w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--bg-card)] flex items-center justify-center text-[var(--color-gray-600)] hover:bg-[var(--color-gray-100)] transition"
+-      title={`Switch to ${current.label} theme`}
+-      aria-label="Theme switcher"
+-    >
+-      <span className="text-sm">{current.icon}</span>
+-    </button>
++    <div className="relative" ref={ref}>
++      <button
++        type="button"
++        onClick={() => setOpen((o) => !o)}
++        className="grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--on-header)_18%,transparent)] text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)]"
++        aria-label={`Theme: ${current.label}. Change theme`}
++        aria-haspopup="menu"
++        aria-expanded={open}
++      >
++        <Swatch t={current} />
++      </button>
++      {open && (
++        <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-44 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-1.5 shadow-lg">
++          {THEMES.map((t) => (
++            <button
++              key={t.name}
++              type="button"
++              role="menuitemradio"
++              aria-checked={t.name === theme}
++              onClick={() => { dispatch(setTheme(t.name)); setOpen(false); }}
++              className={`flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
++                t.name === theme
++                  ? 'bg-[var(--color-primary-50)] text-[var(--color-primary-600)]'
++                  : 'text-[var(--text-body)] hover:bg-[var(--color-gray-100)]'
++              }`}
++            >
++              <Swatch t={t} />
++              <span className="flex-1 text-left">{t.label}</span>
++              {t.name === theme && <span aria-hidden="true">✓</span>}
++            </button>
++          ))}
++        </div>
++      )}
++    </div>
+   );
+ }
++
++export { ThemeToggle };
++export default ThemeToggle;
+diff --git a/frontend/src/components/Toast.jsx b/frontend/src/components/Toast.jsx
+index 9ce4bbe..95fb766 100644
+--- a/frontend/src/components/Toast.jsx
++++ b/frontend/src/components/Toast.jsx
+@@ -1,9 +1,10 @@
+ import { useEffect, useState } from 'react';
+ 
+-export default function Toast({ message, actionLabel, onAction, autoHide = true }) {
++function Toast({ message, actionLabel, onAction, autoHide = true }) {
+   const [visible, setVisible] = useState(!!message);
+ 
+   useEffect(() => {
++    setVisible(!!message);
+     if (!autoHide || !message) return;
+     const t = setTimeout(() => setVisible(false), 4000);
+     return () => clearTimeout(t);
+@@ -13,16 +14,15 @@ export default function Toast({ message, actionLabel, onAction, autoHide = true
+ 
+   return (
+     <div
+-      className="fixed top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-lg px-5 py-3 text-sm text-[var(--text-strong)]"
+-      style={{
+-        borderLeft: '4px solid var(--color-primary-600)',
+-      }}
++      role="status"
++      className="animate-pop-in fixed left-1/2 top-[calc(var(--header-height)+16px)] z-50 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-[var(--border)] border-l-4 border-l-[var(--color-primary-600)] bg-[var(--bg-card)] px-5 py-3 text-sm font-medium text-[var(--text-strong)] shadow-lg"
+     >
+       <span>{message}</span>
+       {actionLabel && onAction && (
+         <button
++          type="button"
+           onClick={onAction}
+-          className="text-sm font-semibold text-[var(--color-primary-600)] hover:text-[var(--color-primary-700)] underline ml-2"
++          className="ml-2 text-sm font-semibold text-[var(--color-primary-600)] underline underline-offset-4 hover:text-[var(--color-primary-700)]"
+         >
+           {actionLabel}
+         </button>
+@@ -30,3 +30,6 @@ export default function Toast({ message, actionLabel, onAction, autoHide = true
+     </div>
+   );
+ }
++
++export { Toast };
++export default Toast;
+diff --git a/frontend/src/main.jsx b/frontend/src/main.jsx
+index a786e7d..6a1135b 100644
+--- a/frontend/src/main.jsx
++++ b/frontend/src/main.jsx
+@@ -2,6 +2,7 @@ import React from 'react';
+ import ReactDOM from 'react-dom/client';
+ import App from './App.jsx';
+ import './styles/tokens.css';
++import './styles/index.css';
+ 
+ ReactDOM.createRoot(document.getElementById('root')).render(
+   <React.StrictMode>
+diff --git a/frontend/src/pages/Cart.jsx b/frontend/src/pages/Cart.jsx
+index 40656de..cb7b563 100644
+--- a/frontend/src/pages/Cart.jsx
++++ b/frontend/src/pages/Cart.jsx
+@@ -34,7 +34,7 @@ export default function Cart() {
+           <div className="rounded-full bg-[var(--color-gray-100)] p-6 text-[var(--color-gray-500)] inline-block mb-4">🛒</div>
+           <h3 className="text-lg font-semibold text-[var(--text-strong)] mb-2">Your cart is empty</h3>
+           <p className="text-[var(--color-gray-500)] mb-6">Add some gear to get started.</p>
+-          <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-white px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
++          <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+             Continue shopping
+           </Link>
+         </div>
+@@ -158,7 +158,7 @@ export default function Cart() {
+                   Add {formatMoney(5000 - sub)} more for free shipping
+                 </p>
+               )}
+-              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
++              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
+                 Proceed to checkout
+               </Link>
+             </div>
+diff --git a/frontend/src/pages/Checkout.jsx b/frontend/src/pages/Checkout.jsx
+index 32c7f48..9225995 100644
+--- a/frontend/src/pages/Checkout.jsx
++++ b/frontend/src/pages/Checkout.jsx
+@@ -1,7 +1,8 @@
+ import { useState } from 'react';
+ import { useDispatch, useSelector } from 'react-redux';
+ import { useNavigate } from 'react-router-dom';
+-import { placeOrder, selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon } from '../features/cart/cartSlice.js';
++import { selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon } from '../features/cart/cartSlice.js';
++import { placeOrder } from '../features/orders/ordersSlice.js';
+ import { Button } from '../components/Button.jsx';
+ import { Input } from '../components/Input.jsx';
+ import { PriceTag } from '../components/PriceTag.jsx';
+@@ -110,7 +111,7 @@ export default function Checkout() {
+             <button
+               type="submit"
+               disabled={submitting}
+-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
++              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
+             >
+               {submitting ? 'Placing order…' : 'Place order'}
+             </button>
+diff --git a/frontend/src/pages/Home.jsx b/frontend/src/pages/Home.jsx
+index 5c71d66..3da8d50 100644
+--- a/frontend/src/pages/Home.jsx
++++ b/frontend/src/pages/Home.jsx
+@@ -3,77 +3,177 @@ import { useDispatch, useSelector } from 'react-redux';
+ import { Link } from 'react-router-dom';
+ import { fetchProducts } from '../features/products/productsSlice.js';
+ import { ProductCard } from '../components/ProductCard.jsx';
+-import { Skeleton } from '../components/Skeleton.jsx';
++import { ProductCardSkeleton } from '../components/Skeleton.jsx';
++import { ErrorState } from '../components/ErrorState.jsx';
++
++const CATEGORIES = [
++  { slug: 'supplements', label: 'Supplements', blurb: 'Protein, pre-workout, creatine' },
++  { slug: 'equipment', label: 'Equipment', blurb: 'Dumbbells, bands, home gym' },
++  { slug: 'apparel', label: 'Apparel', blurb: 'Tops and shorts' },
++  { slug: 'footwear', label: 'Footwear', blurb: 'Training shoes' },
++  { slug: 'accessories', label: 'Accessories', blurb: 'Shakers, lifting straps' },
++  { slug: 'recovery', label: 'Recovery', blurb: 'Foam rollers and more' },
++];
++
++// Store rules (README): shipping, coupons.
++const PERKS = [
++  'Free shipping over $50',
++  'SAVE10 · 10% off',
++  'POWER15 · 15% off $100+',
++  'LIFT5 · $5 off $20+',
++  'Independent fitness sellers',
++  'Demo checkout',
++];
++
++const COUPONS = [
++  { code: 'SAVE10', title: '10% off', note: 'On your whole cart' },
++  { code: 'POWER15', title: '15% off', note: 'Orders of $100 or more' },
++  { code: 'LIFT5', title: '$5 off', note: 'Orders of $20 or more' },
++];
++
++const btnPrimary =
++  'inline-flex min-h-[var(--control-lg)] items-center justify-center rounded-md bg-[var(--color-primary-600)] px-7 text-base font-semibold text-[var(--on-primary)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[var(--color-primary-700)] hover:shadow-glow';
++const btnOutlineLight =
++  'inline-flex min-h-[var(--control-lg)] items-center justify-center rounded-md border border-white/40 px-7 text-base font-semibold text-white transition-all duration-150 hover:-translate-y-0.5 hover:bg-white/10';
+ 
+ export default function Home() {
+   const dispatch = useDispatch();
+   const { items, status, error } = useSelector((state) => state.products);
++  const load = () => dispatch(fetchProducts({ sort: 'featured', limit: 8 }));
+ 
+   useEffect(() => {
+-    dispatch(fetchProducts({ sort: 'featured', limit: 8 }));
++    load();
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [dispatch]);
+ 
+-  if (status === 'loading') {
+-    return (
+-      <div className="container page py-6">
+-        <div className="flex gap-6">
+-          {[...Array(4)].map((_, i) => (
+-            <div key={i} className="flex-1 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm overflow-hidden">
+-              <div className="aspect-[4/5] bg-[var(--color-gray-200)] animate-pulse" />
+-              <div className="p-4">
+-                <div className="h-4 bg-[var(--color-gray-200)] rounded w-3/4 animate-pulse mb-2" />
+-                <div className="h-4 bg-[var(--color-gray-200)] rounded w-full animate-pulse" />
+-                <div className="h-4 bg-[var(--color-gray-200)] rounded w-1/2 animate-pulse mt-2" />
+-              </div>
++  return (
++    <div className="container page pb-4 pt-6">
++      {/* Hero */}
++      <section className="hero animate-fade-in px-6 py-12 sm:px-10 md:py-20 lg:px-14">
++        <img
++          className="hero__img"
++          src="https://images.unsplash.com/photo-1534438327275-194e9ad50e25?w=1400&q=80"
++          alt=""
++          aria-hidden="true"
++        />
++        <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
++          <div>
++            <span className="eyebrow !text-[var(--color-accent-600)] inline-flex items-center gap-2">
++              <span className="h-px w-8 bg-current" /> This week only
++            </span>
++            <h1 className="mt-4 font-display text-5xl font-bold uppercase leading-[.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
++              Train harder.
++              <br />
++              <span className="text-gradient">Save smarter.</span>
++            </h1>
++            <p className="mt-5 max-w-lg text-base text-white/80 sm:text-lg">
++              Gear from independent fitness sellers. Use code <strong className="text-white">SAVE10</strong> for 10% off your cart,
++              and ship free on orders of $50 or more.
++            </p>
++            <div className="mt-8 flex flex-wrap gap-3">
++              <Link to="/products" className={btnPrimary}>Shop deals</Link>
++              <a href="#categories" className={btnOutlineLight}>Browse categories</a>
+             </div>
+-          ))}
++          </div>
++
++          {/* Coupon stack */}
++          <div className="hidden gap-3 lg:grid" aria-label="Current offers">
++            {COUPONS.map((c, i) => (
++              <div
++                key={c.code}
++                className="animate-fade-up flex items-center justify-between rounded-lg border border-white/15 bg-white/10 px-5 py-4 backdrop-blur-md"
++                style={{ animationDelay: `${150 + i * 110}ms`, marginLeft: `${i * 18}px` }}
++              >
++                <div>
++                  <p className="font-display text-2xl font-semibold uppercase tracking-wide text-white">{c.title}</p>
++                  <p className="text-xs text-white/70">{c.note}</p>
++                </div>
++                <code className="rounded-md border border-dashed border-white/50 px-3 py-1.5 text-sm font-bold tracking-widest text-white">{c.code}</code>
++              </div>
++            ))}
++          </div>
+         </div>
+-      </div>
+-    );
+-  }
++      </section>
+ 
+-  if (error) {
+-    return (
+-      <div className="container page py-20 text-center">
+-        <p className="text-[var(--color-danger-700)]">{error}</p>
++      {/* Perks ticker */}
++      <div className="marquee my-8 border-y border-[var(--border)] py-3" aria-hidden="true">
++        <div className="marquee__track animate-marquee">
++          {[0, 1].map((n) => (
++            <ul key={n} className="flex shrink-0 items-center">
++              {PERKS.map((p) => (
++                <li key={p} className="flex items-center whitespace-nowrap font-display text-sm font-semibold uppercase tracking-[.18em] text-[var(--text-muted)]">
++                  <span className="px-6">{p}</span>
++                  <span className="text-[var(--color-primary-600)]">◆</span>
++                </li>
++              ))}
++            </ul>
++          ))}
++        </div>
+       </div>
+-    );
+-  }
+ 
+-  return (
+-    <div className="container page py-6">
+-      <section className="rounded-xl bg-[var(--color-primary-50)] p-8 md:p-12 mb-10 overflow-hidden relative" style={{ color: '#1e1b4b' }}>
+-        <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+-          <div className="flex-1">
+-            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent-600)]">This week only</span>
+-            <h1 className="font-heading text-3xl md:text-4xl font-bold text-[var(--text-strong)] mb-3 leading-tight">
+-              Train harder, save smarter
+-            </h1>
+-            <p className="text-[var(--text-body)] mb-6 max-w-md">
+-              Use code <strong>SAVE10</strong> for 10% off your cart. Free shipping on orders of $50 or more.
+-            </p>
+-            <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-white px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+-              Shop deals
++      {/* Categories */}
++      <section id="categories" className="mb-14 scroll-mt-[calc(var(--header-height)+16px)]">
++        <div className="mb-6 flex items-end justify-between gap-4">
++          <h2 className="section-title text-2xl md:text-3xl">Shop by category</h2>
++          <Link to="/products" className="text-sm font-semibold text-[var(--color-primary-600)] hover:underline">All products →</Link>
++        </div>
++        <div className="grid grid-cols-2 gap-[var(--grid-gap)] md:grid-cols-3 lg:grid-cols-6">
++          {CATEGORIES.map((c, i) => (
++            <Link
++              key={c.slug}
++              to={`/products?category=${c.slug}`}
++              className="tile group rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary-600)] hover:shadow-md md:p-5"
++            >
++              <span className="font-display text-4xl font-bold leading-none text-[var(--color-gray-300)] transition-colors group-hover:text-[var(--color-primary-600)]">
++                {String(i + 1).padStart(2, '0')}
++              </span>
++              <h3 className="mt-6 font-heading text-base font-semibold text-[var(--text-strong)]">{c.label}</h3>
++              <p className="mt-1 text-xs leading-4 text-[var(--text-muted)]">{c.blurb}</p>
++              <span className="mt-4 inline-block text-sm font-semibold text-[var(--color-primary-600)] transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+             </Link>
++          ))}
++        </div>
++      </section>
++
++      {/* Featured */}
++      <section className="mb-14">
++        <div className="mb-6 flex items-end justify-between gap-4">
++          <h2 className="section-title text-2xl md:text-3xl">Featured</h2>
++          <Link to="/products" className="text-sm font-semibold text-[var(--color-primary-600)] hover:underline">View all →</Link>
++        </div>
++
++        {status === 'failed' || error ? (
++          <ErrorState onRetry={load} />
++        ) : status === 'loading' || status === 'idle' ? (
++          <div className="grid grid-cols-2 gap-[var(--grid-gap)] md:grid-cols-3 lg:grid-cols-4">
++            {[...Array(8)].map((_, i) => <ProductCardSkeleton key={i} />)}
+           </div>
+-          <div className="hidden md:block w-1/3">
+-            <div className="aspect-[4/5] rounded-lg bg-[var(--color-gray-200)] overflow-hidden">
+-              <img src="https://images.unsplash.com/photo-1534438327275-194e9ad50e25?w=600&q=80" alt="Gym gear" className="w-full h-full object-cover" />
+-            </div>
++        ) : items.length === 0 ? (
++          <p className="text-[var(--text-muted)]">No featured products yet.</p>
++        ) : (
++          <div className="grid grid-cols-2 gap-[var(--grid-gap)] md:grid-cols-3 lg:grid-cols-4">
++            {items.map((product, i) => (
++              <div key={product._id} className="animate-fade-up" style={{ animationDelay: `${Math.min(i, 7) * 60}ms` }}>
++                <ProductCard product={product} />
++              </div>
++            ))}
+           </div>
+-        </div>
++        )}
+       </section>
+ 
+-      <section className="mb-10">
+-        <h2 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">Featured</h2>
+-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+-          {items.map((product) => (
+-            <ProductCard key={product._id} product={product} />
++      {/* Coupon banner */}
++      <section className="mb-6 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
++        <div className="grid gap-px bg-[var(--border)] md:grid-cols-3">
++          {COUPONS.map((c) => (
++            <div key={c.code} className="flex items-center justify-between gap-4 bg-[var(--bg-card)] p-6">
++              <div>
++                <p className="font-display text-3xl font-bold uppercase text-[var(--text-strong)]">{c.title}</p>
++                <p className="text-sm text-[var(--text-muted)]">{c.note}</p>
++              </div>
++              <code className="rounded-md border border-dashed border-[var(--color-primary-600)] bg-[var(--color-primary-50)] px-3 py-1.5 text-sm font-bold tracking-widest text-[var(--color-primary-600)]">{c.code}</code>
++            </div>
+           ))}
+         </div>
+-        {items.length === 0 && status === 'succeeded' && (
+-          <p className="text-[var(--color-gray-500)]">No featured products.</p>
+-        )}
+       </section>
+     </div>
+   );
+diff --git a/frontend/src/pages/Login.jsx b/frontend/src/pages/Login.jsx
+index e8bb9a3..b8295a1 100644
+--- a/frontend/src/pages/Login.jsx
++++ b/frontend/src/pages/Login.jsx
+@@ -24,7 +24,7 @@ export default function Login() {
+     <div className="container page py-10 flex items-center justify-center min-h-[calc(100vh-var(--header-height))]">
+       <div className="w-full max-w-md rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-8 md:p-10 shadow-md">
+         <div className="text-center mb-8">
+-          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-white">I</span>
++          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-[var(--on-primary)]">I</span>
+           <h1 className="font-heading text-2xl font-bold text-[var(--text-strong)] mt-3">Welcome back</h1>
+           <p className="text-[var(--color-gray-500)] text-sm">Sign in to your IronNest account</p>
+         </div>
+@@ -62,7 +62,7 @@ export default function Login() {
+ 
+             <button
+               type="submit"
+-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
++              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
+               disabled={status === 'loading'}
+             >
+               Sign in
+diff --git a/frontend/src/pages/OrderPlaced.jsx b/frontend/src/pages/OrderPlaced.jsx
+index f5f38b5..ac112aa 100644
+--- a/frontend/src/pages/OrderPlaced.jsx
++++ b/frontend/src/pages/OrderPlaced.jsx
+@@ -1,5 +1,5 @@
+ import { useSelector } from 'react-redux';
+-import { useParams } from 'react-router-dom';
++import { Link, useParams } from 'react-router-dom';
+ import { selectCartItems } from '../features/cart/cartSlice.js';
+ import { formatMoney } from '../utils/money.js';
+ 
+@@ -17,11 +17,11 @@ export default function OrderPlaced() {
+           Thank you for your order! Order ID: <span className="font-semibold text-[var(--text-strong)]">{id}</span>
+         </p>
+         <p className="text-sm text-[var(--color-gray-500)] mb-8">
+-          Your order is being processed. You can view it in <a href="/orders" className="text-[var(--color-primary-600)] hover:underline font-semibold">My orders</a>.
++          Your order is being processed. You can view it in <Link to="/orders" className="text-[var(--color-primary-600)] hover:underline font-semibold">My orders</Link>.
+         </p>
+-        <a href="/products" className="rounded-md bg-[var(--color-primary-600)] text-white px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
++        <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+           Continue shopping
+-        </a>
++        </Link>
+       </div>
+     </div>
+   );
+diff --git a/frontend/src/pages/ProductDetail.jsx b/frontend/src/pages/ProductDetail.jsx
+index 7280946..f474e63 100644
+--- a/frontend/src/pages/ProductDetail.jsx
++++ b/frontend/src/pages/ProductDetail.jsx
+@@ -7,6 +7,7 @@ import { addItem, selectCartQtyByProductId } from '../features/cart/cartSlice.js
+ import { PriceTag } from '../components/PriceTag.jsx';
+ import { StockBadge } from '../components/StockBadge.jsx';
+ import { Badge } from '../components/Badge.jsx';
++import { ProductCard } from '../components/ProductCard.jsx';
+ import { Button } from '../components/Button.jsx';
+ import { Skeleton } from '../components/Skeleton.jsx';
+ import { ErrorState } from '../components/ErrorState.jsx';
+@@ -149,7 +150,7 @@ export default function ProductDetail() {
+               <button
+                 onClick={() => handleAdd(1)}
+                 disabled={outOfStock || inCartQty >= product.stock}
+-                className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-6 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
++                className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
+               >
+                 {outOfStock ? 'Out of stock' : 'Add to cart'}
+               </button>
+diff --git a/frontend/src/pages/Register.jsx b/frontend/src/pages/Register.jsx
+index 8dfba7e..c742561 100644
+--- a/frontend/src/pages/Register.jsx
++++ b/frontend/src/pages/Register.jsx
+@@ -30,7 +30,7 @@ export default function Register() {
+     <div className="container page py-10 flex items-center justify-center min-h-[calc(100vh-var(--header-height))]">
+       <div className="w-full max-w-md rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-8 md:p-10 shadow-md">
+         <div className="text-center mb-8">
+-          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-white">I</span>
++          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-[var(--on-primary)]">I</span>
+           <h1 className="font-heading text-2xl font-bold text-[var(--text-strong)] mt-3">Create account</h1>
+           <p className="text-[var(--color-gray-500)] text-sm">Join IronNest and start training</p>
+         </div>
+@@ -113,7 +113,7 @@ export default function Register() {
+ 
+             <button
+               type="submit"
+-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
++              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
+               disabled={status === 'loading'}
+             >
+               Create account
+diff --git a/frontend/src/pages/SellerDashboard.jsx b/frontend/src/pages/SellerDashboard.jsx
+index f71ca88..4a86a04 100644
+--- a/frontend/src/pages/SellerDashboard.jsx
++++ b/frontend/src/pages/SellerDashboard.jsx
+@@ -99,7 +99,18 @@ export default function SellerDashboard() {
+       </div>
+ 
+       {activeTab === 'products' ? (
+-        <ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm, editId, setEditId, handleSubmit, CATEGORIES }) || <ProductsTab />}
++        <ProductsTab
++          products={products}
++          dispatch={dispatch}
++          openForm={openForm}
++          setOpenForm={setOpenForm}
++          form={form}
++          setForm={setForm}
++          editId={editId}
++          setEditId={setEditId}
++          handleSubmit={handleSubmit}
++          CATEGORIES={CATEGORIES}
++        />
+       ) : (
+         <OrdersTab orders={orders} dispatch={dispatch} />
+       )}
+diff --git a/frontend/src/styles/index.css b/frontend/src/styles/index.css
+new file mode 100644
+index 0000000..c747ece
+--- /dev/null
++++ b/frontend/src/styles/index.css
+@@ -0,0 +1,174 @@
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
++
++/* ---------- Base ---------- */
++@layer base {
++  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
++
++  body {
++    min-width: 320px;
++    min-height: 100vh;
++    background: var(--bg-page);
++    color: var(--text-body);
++    font-family: var(--font-body);
++    font-size: 16px;
++    line-height: 1.5;
++    -webkit-font-smoothing: antialiased;
++    transition: background-color var(--transition), color var(--transition);
++  }
++
++  h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-strong); }
++  button { cursor: pointer; }
++  button:disabled { cursor: not-allowed; }
++  img { max-width: 100%; }
++
++  ::selection { background: var(--color-primary-600); color: var(--on-primary); }
++
++  :focus-visible {
++    outline: 3px solid var(--color-focus-ring);
++    outline-offset: 3px;
++    border-radius: var(--radius-sm);
++  }
++
++  /* themed scrollbar */
++  * { scrollbar-width: thin; scrollbar-color: var(--color-gray-300) transparent; }
++}
++
++/* ---------- Layout (Knowledge §2.6) ---------- */
++@layer components {
++  .container {
++    width: 100%;
++    max-width: var(--container-max);
++    margin-inline: auto;
++    padding-inline: var(--page-padding);
++  }
++  .page { min-height: calc(100vh - var(--header-height)); }
++
++  /* section heading with a brand accent bar */
++  .section-title {
++    position: relative;
++    padding-left: var(--space-4);
++    font-family: var(--font-heading);
++    font-weight: 700;
++    color: var(--text-strong);
++    line-height: 1.15;
++  }
++  .section-title::before {
++    content: '';
++    position: absolute; left: 0; top: .12em; bottom: .12em;
++    width: 5px; border-radius: var(--radius-pill);
++    background: linear-gradient(180deg, var(--color-primary-600), var(--color-accent-600));
++  }
++
++  .eyebrow {
++    font-size: 12px; line-height: 16px; font-weight: 600;
++    letter-spacing: .14em; text-transform: uppercase;
++    color: var(--color-accent-600);
++  }
++
++  .text-gradient {
++    background: linear-gradient(100deg, var(--color-white) 10%, var(--color-focus-ring) 55%, var(--color-accent-600));
++    -webkit-background-clip: text; background-clip: text; color: transparent;
++  }
++
++  /* hero */
++  .hero {
++    position: relative; isolation: isolate; overflow: hidden;
++    border-radius: var(--radius-xl);
++    color: var(--color-white);
++    background: linear-gradient(120deg, var(--hero-from), var(--hero-to));
++    box-shadow: var(--shadow-lg);
++  }
++  .hero__img {
++    position: absolute; inset: 0; z-index: -2;
++    width: 100%; height: 100%; object-fit: cover; opacity: .45;
++    mix-blend-mode: luminosity;
++  }
++  .hero::before { /* colour wash */
++    content: ''; position: absolute; inset: 0; z-index: -1;
++    background:
++      radial-gradient(60% 80% at 85% 10%, color-mix(in srgb, var(--color-primary-600) 55%, transparent), transparent 70%),
++      radial-gradient(50% 70% at 0% 100%, color-mix(in srgb, var(--color-accent-600) 40%, transparent), transparent 70%),
++      linear-gradient(90deg, var(--hero-from) 25%, transparent 85%);
++  }
++  .hero::after { /* grain */
++    content: ''; position: absolute; inset: 0; z-index: -1; opacity: .12; pointer-events: none;
++    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
++  }
++
++  /* glass surface (header, floating panels) */
++  .glass {
++    background: color-mix(in srgb, var(--bg-header) 82%, transparent);
++    -webkit-backdrop-filter: saturate(180%) blur(14px);
++    backdrop-filter: saturate(180%) blur(14px);
++    border-bottom: 1px solid color-mix(in srgb, var(--on-header) 12%, transparent);
++  }
++
++  /* animated underline for nav links */
++  .nav-link { position: relative; }
++  .nav-link::after {
++    content: ''; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 2px;
++    background: var(--color-primary-600); border-radius: var(--radius-pill);
++    transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
++  }
++  .nav-link:hover::after, .nav-link[aria-current='page']::after { transform: scaleX(1); }
++
++  /* skeleton shimmer */
++  .shimmer { position: relative; overflow: hidden; background: var(--color-gray-200); }
++  .shimmer::after {
++    content: ''; position: absolute; inset: 0; transform: translateX(-100%);
++    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--bg-card) 70%, transparent), transparent);
++    animation: shimmer-run 1.4s infinite;
++  }
++  @keyframes shimmer-run { 100% { transform: translateX(100%); } }
++
++  /* marquee ticker */
++  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
++  .marquee__track { display: flex; width: max-content; }
++
++  /* category tile */
++  .tile { position: relative; overflow: hidden; isolation: isolate; }
++  .tile::before {
++    content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
++    background: radial-gradient(120% 120% at 100% 0%, color-mix(in srgb, var(--color-primary-600) 28%, transparent), transparent 60%);
++    transition: opacity var(--transition);
++  }
++  .tile:hover::before { opacity: 1; }
++
++  /* cursor (see CursorFx) */
++  .cursor-ring, .cursor-dot {
++    position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
++    border-radius: 50%; will-change: transform;
++  }
++  .cursor-ring {
++    width: 36px; height: 36px; margin: -18px 0 0 -18px;
++    border: 2px solid var(--color-primary-600);
++    transition: width .18s ease-out, height .18s ease-out, margin .18s ease-out, background-color .18s ease-out, opacity .18s;
++    opacity: 0;
++  }
++  .cursor-ring.is-visible { opacity: .9; }
++  .cursor-ring.is-active {
++    width: 56px; height: 56px; margin: -28px 0 0 -28px;
++    background: color-mix(in srgb, var(--color-primary-600) 18%, transparent);
++  }
++  .cursor-ring.is-down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
++  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--color-primary-600); opacity: 0; }
++  .cursor-dot.is-visible { opacity: 1; }
++}
++
++@layer utilities {
++  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
++  .scrollbar-hide::-webkit-scrollbar { display: none; }
++  .pt-header { padding-top: var(--header-height); }
++}
++
++/* ---------- Accessibility: reduced motion ---------- */
++@media (prefers-reduced-motion: reduce) {
++  html { scroll-behavior: auto; }
++  *, *::before, *::after {
++    animation-duration: .01ms !important;
++    animation-iteration-count: 1 !important;
++    transition-duration: .01ms !important;
++  }
++}
+diff --git a/frontend/src/styles/tokens.css b/frontend/src/styles/tokens.css
+index 27b2c89..67a4b3d 100644
+--- a/frontend/src/styles/tokens.css
++++ b/frontend/src/styles/tokens.css
+@@ -1,4 +1,10 @@
+-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
++@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Poppins:wght@600;700&display=swap');
++
++/* ==========================================================================
++   IronNest design tokens
++   Structure follows the staff design system (Knowledge §2). Components use the
++   semantic aliases below; themes only override variables, never components.
++   ========================================================================== */
+ 
+ :root {
+   color-scheme: light;
+@@ -6,6 +12,7 @@
+   /* brand */
+   --color-primary-700: #3730A3;
+   --color-primary-600: #4338CA;
++  --color-primary-200: #C7D2FE;
+   --color-primary-100: #E0E7FF;
+   --color-primary-50: #EEF2FF;
+   --color-accent-600: #C2410C;
+@@ -18,6 +25,7 @@
+   --color-warning-50: #FFF7E6;
+   --color-danger-700: #B91C1C;
+   --color-danger-50: #FEF2F2;
++  --danger-solid: #B91C1C; /* filled danger surfaces (button, badge) in every theme */
+ 
+   /* neutral */
+   --color-gray-900: #111827;
+@@ -40,9 +48,15 @@
+   --text-body: var(--color-gray-700);
+   --text-muted: var(--color-gray-500);
+   --border: var(--color-gray-200);
++  --on-primary: #FFFFFF;          /* text on a primary-600 surface */
++  --on-header: #F9FAFB;           /* text on the header surface */
++  --on-header-muted: #9CA3AF;
++  --hero-from: #0B1020;           /* hero overlay gradient */
++  --hero-to: #1E1B4B;
+ 
+   /* type */
+   --font-heading: 'Poppins', system-ui, sans-serif;
++  --font-display: 'Oswald', 'Poppins', system-ui, sans-serif;
+   --font-body: 'Inter', system-ui, sans-serif;
+ 
+   /* spacing */
+@@ -53,9 +67,10 @@
+   --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 24px; --radius-pill: 999px;
+ 
+   /* elevation */
+-  --shadow-sm: 0 1px 2px rgba(17,24,39,.06);
+-  --shadow-md: 0 6px 16px rgba(17,24,39,.08);
+-  --shadow-lg: 0 16px 40px rgba(17,24,39,.12);
++  --shadow-sm: 0 1px 2px rgba(17, 24, 39, .06);
++  --shadow-md: 0 6px 16px rgba(17, 24, 39, .08);
++  --shadow-lg: 0 16px 40px rgba(17, 24, 39, .12);
++  --shadow-glow: 0 12px 32px -12px color-mix(in srgb, var(--color-primary-600) 60%, transparent);
+ 
+   /* layout */
+   --container-max: 1200px;
+@@ -78,162 +93,103 @@
+   }
+ }
+ 
+-/* Themes — override semantic aliases only */
+-[data-theme="dark"] {
++/* ==========================================================================
++   Themes. light = :root (no data-theme). dark / iron / neon share an inverted
++   neutral scale so every component that reads --color-gray-* stays legible.
++   ========================================================================== */
++
++[data-theme='dark'],
++[data-theme='iron'],
++[data-theme='neon'] {
++  color-scheme: dark;
++
++  --color-gray-50: #0F1424;
++  --color-gray-100: #1A2133;
++  --color-gray-200: #263047;
++  --color-gray-300: #3A455E;
++  --color-gray-500: #9CA3AF;
++  --color-gray-600: #B4BBC8;
++  --color-gray-700: #D1D5DB;
++
++  --color-success-700: #4ADE80;  --color-success-50: #0F2A1B;
++  --color-warning-700: #FBBF24;  --color-warning-50: #2B2108;
++  --color-danger-700: #F87171;   --color-danger-50: #2D1212;
++  --color-accent-600: #FB923C;   --color-accent-50: #2B1708;
++
++  --on-header: #F9FAFB;
++  --on-header-muted: #9CA3AF;
++
++  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
++  --shadow-md: 0 8px 20px rgba(0, 0, 0, .45);
++  --shadow-lg: 0 20px 48px rgba(0, 0, 0, .55);
++}
++
++[data-theme='dark'] {
+   --bg-page: #0B0F19;
+   --bg-card: #151B2B;
+-  --bg-header: #000;
++  --bg-header: #000000;
+   --text-strong: #F9FAFB;
+   --text-body: #D1D5DB;
+   --text-muted: #9CA3AF;
+   --border: #263047;
++
++  --color-primary-600: #6366F1;
++  --color-primary-700: #4F46E5;
++  --color-primary-200: #3730A3;
++  --color-primary-100: #312E81;
++  --color-primary-50: #1E1B4B;
++  --color-focus-ring: #A5B4FC;
+ }
+ 
+-[data-theme="iron"] {
+-  --color-primary-600: #DC2626;
+-  --color-primary-700: #B91C1C;
+-  --color-primary-100: #FEE2E2;
+-  --color-primary-50: #FEF2F2;
+-  --color-focus-ring: #FCA5A5;
+-  --bg-header: #0A0A0A;
++[data-theme='iron'] {
+   --bg-page: #0B0B0B;
+   --bg-card: #131313;
++  --bg-header: #0A0A0A;
+   --text-strong: #FFFFFF;
+   --text-body: #E5E5E5;
+   --text-muted: #9CA3AF;
+   --border: #262626;
++
++  --color-primary-600: #DC2626;
++  --color-primary-700: #B91C1C;
++  --color-primary-200: #7F1D1D;
++  --color-primary-100: #451212;
++  --color-primary-50: #2A0D0D;
++  --color-focus-ring: #FCA5A5;
++
++  --color-gray-50: #101010;
++  --color-gray-100: #1A1A1A;
++  --color-gray-200: #262626;
++  --color-gray-300: #3F3F3F;
++
++  --font-heading: var(--font-display);
++  --hero-from: #0A0A0A;
++  --hero-to: #3B0A0A;
+ }
+ 
+-[data-theme="neon"] {
++[data-theme='neon'] {
+   --bg-page: #0A0A0A;
+   --bg-card: #141414;
+-  --bg-header: #000;
+-  --color-primary-600: #A3E635;
+-  --color-primary-700: #84CC16;
+-  --color-primary-100: #1F2A0B;
+-  --color-primary-50: #141C08;
+-  --color-focus-ring: #BEF264;
++  --bg-header: #000000;
+   --text-strong: #FAFAFA;
+   --text-body: #D4D4D4;
+   --text-muted: #A1A1AA;
+   --border: #262626;
+-}
+ 
+-* {
+-  box-sizing: border-box;
+-}
+-
+-html {
+-  scroll-behavior: smooth;
+-}
+-
+-body {
+-  min-width: 320px;
+-  min-height: 100vh;
+-  margin: 0;
+-  padding: 0;
+-  background: var(--bg-page);
+-  color: var(--text-body);
+-  font-family: var(--font-body);
+-  font-size: 16px;
+-  line-height: 1.5;
+-  transition: background-color var(--transition), color var(--transition);
+-}
+-
+-button, a, input, select, textarea {
+-  font: inherit;
+-}
+-
+-a {
+-  color: inherit;
+-  text-decoration: none;
+-}
+-
+-button {
+-  background: none;
+-  border: none;
+-  margin: 0;
+-  padding: 0;
+-  cursor: pointer;
+-  font: inherit;
+-}
+-
+-:focus-visible {
+-  outline: 3px solid var(--color-focus-ring);
+-  outline-offset: 3px;
+-}
+-
+-/* Typography utilities */
+-.text-strong { color: var(--text-strong); }
+-.text-body { color: var(--text-body); }
+-.text-muted { color: var(--text-muted); }
+-
+-.font-heading { font-family: var(--font-heading); }
+-
+-/* Layout */
+-.container {
+-  max-width: var(--container-max);
+-  margin: 0 auto;
+-  padding: 0 var(--page-padding);
+-}
++  --color-primary-600: #A3E635;
++  --color-primary-700: #84CC16;
++  --color-primary-200: #365314;
++  --color-primary-100: #1F2A0B;
++  --color-primary-50: #141C08;
++  --color-focus-ring: #BEF264;
++  --on-primary: #0A0A0A; /* dark text on lime, per Knowledge contrast note */
+ 
+-.page {
+-  min-height: calc(100vh - var(--header-height));
+-}
++  --color-gray-50: #101010;
++  --color-gray-100: #1A1A1A;
++  --color-gray-200: #262626;
++  --color-gray-300: #3F3F3F;
+ 
+-/* Utilities */
+-.flex { display: flex; }
+-.flex-col { flex-direction: column; }
+-.items-center { align-items: center; }
+-.justify-between { justify-content: space-between; }
+-.justify-center { justify-content: center; }
+-.gap-2 { gap: var(--space-2); }
+-.gap-3 { gap: var(--space-3); }
+-.gap-4 { gap: var(--space-4); }
+-.gap-5 { gap: var(--space-5); }
+-.gap-6 { gap: var(--space-6); }
+-
+-.block { display: block; }
+-.inline-block { display: inline-block; }
+-.hidden { display: none; }
+-
+-.w-full { width: 100%; }
+-.h-full { height: 100%; }
+-
+-.mt-4 { margin-top: var(--space-4); }
+-.mb-4 { margin-bottom: var(--space-4); }
+-.mb-6 { margin-bottom: var(--space-6); }
+-.mx-auto { margin-left: auto; margin-right: auto; }
+-
+-.rounded-sm { border-radius: var(--radius-sm); }
+-.rounded-md { border-radius: var(--radius-md); }
+-.rounded-lg { border-radius: var(--radius-lg); }
+-.rounded-xl { border-radius: var(--radius-xl); }
+-.rounded-pill { border-radius: var(--radius-pill); }
+-
+-.border { border: 1px solid var(--border); }
+-.border-b { border-bottom: 1px solid var(--border); }
+-
+-.shadow-sm { box-shadow: var(--shadow-sm); }
+-.shadow-md { box-shadow: var(--shadow-md); }
+-.shadow-lg { box-shadow: var(--shadow-lg); }
+-
+-.transition { transition: all var(--transition); }
+-
+-.uppercase { text-transform: uppercase; }
+-
+-.overflow-hidden { overflow: hidden; }
+-.relative { position: relative; }
+-
+-/* Visually hidden helper for accessibility */
+-.sr-only {
+-  position: absolute;
+-  width: 1px;
+-  height: 1px;
+-  padding: 0;
+-  margin: -1px;
+-  overflow: hidden;
+-  clip: rect(0, 0, 0, 0);
+-  white-space: nowrap;
+-  border-width: 0;
++  --font-heading: var(--font-display);
++  --hero-from: #050505;
++  --hero-to: #1A2E05;
+ }
+diff --git a/frontend/tailwind.config.js b/frontend/tailwind.config.js
+new file mode 100644
+index 0000000..d02fcef
+--- /dev/null
++++ b/frontend/tailwind.config.js
+@@ -0,0 +1,47 @@
++/** @type {import('tailwindcss').Config} */
++// Tailwind is wired to the design tokens in src/styles/tokens.css so that
++// utilities and themes stay in sync. Components should keep using var(--token).
++export default {
++  content: ['./index.html', './src/**/*.{js,jsx}'],
++  corePlugins: { container: false }, // `.container` is defined in src/styles/index.css
++  theme: {
++    // Breakpoints from the staff design system: 640 · 768 · 1024 · 1280
++    screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1280px' },
++    extend: {
++      fontFamily: {
++        heading: ['var(--font-heading)'],
++        display: ['var(--font-display)'],
++        body: ['var(--font-body)'],
++      },
++      borderRadius: {
++        sm: 'var(--radius-sm)',
++        md: 'var(--radius-md)',
++        lg: 'var(--radius-lg)',
++        xl: 'var(--radius-xl)',
++        pill: 'var(--radius-pill)',
++      },
++      boxShadow: {
++        sm: 'var(--shadow-sm)',
++        md: 'var(--shadow-md)',
++        lg: 'var(--shadow-lg)',
++        glow: 'var(--shadow-glow)',
++      },
++      transitionDuration: { DEFAULT: '150ms' },
++      transitionTimingFunction: { DEFAULT: 'ease-out' },
++      keyframes: {
++        'fade-up': { from: { opacity: 0, transform: 'translateY(16px)' }, to: { opacity: 1, transform: 'none' } },
++        'fade-in': { from: { opacity: 0 }, to: { opacity: 1 } },
++        shimmer: { '100%': { transform: 'translateX(100%)' } },
++        marquee: { to: { transform: 'translateX(-50%)' } },
++        'pop-in': { from: { opacity: 0, transform: 'translateY(-8px) scale(.96)' }, to: { opacity: 1, transform: 'none' } },
++      },
++      animation: {
++        'fade-up': 'fade-up .6s cubic-bezier(.2,.7,.2,1) both',
++        'fade-in': 'fade-in .4s ease-out both',
++        marquee: 'marquee 32s linear infinite',
++        'pop-in': 'pop-in .18s ease-out both',
++      },
++    },
++  },
++  plugins: [],
++};

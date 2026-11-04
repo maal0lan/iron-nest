@@ -34,7 +34,7 @@ export default function Cart() {
           <div className="rounded-full bg-[var(--color-gray-100)] p-6 text-[var(--color-gray-500)] inline-block mb-4">🛒</div>
           <h3 className="text-lg font-semibold text-[var(--text-strong)] mb-2">Your cart is empty</h3>
           <p className="text-[var(--color-gray-500)] mb-6">Add some gear to get started.</p>
-          <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-white px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+          <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
             Continue shopping
           </Link>
         </div>
@@ -158,7 +158,7 @@ export default function Cart() {
                   Add {formatMoney(5000 - sub)} more for free shipping
                 </p>
               )}
-              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
+              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
                 Proceed to checkout
               </Link>
             </div>

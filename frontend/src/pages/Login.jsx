@@ -24,7 +24,7 @@ export default function Login() {
     <div className="container page py-10 flex items-center justify-center min-h-[calc(100vh-var(--header-height))]">
       <div className="w-full max-w-md rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-8 md:p-10 shadow-md">
         <div className="text-center mb-8">
-          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-white">I</span>
+          <span className="rounded-lg bg-[var(--color-primary-600)] px-2 py-0.5 text-xs font-bold text-[var(--on-primary)]">I</span>
           <h1 className="font-heading text-2xl font-bold text-[var(--text-strong)] mt-3">Welcome back</h1>
           <p className="text-[var(--color-gray-500)] text-sm">Sign in to your IronNest account</p>
         </div>
@@ -62,7 +62,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
+              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition disabled:opacity-50"
               disabled={status === 'loading'}
             >
               Sign in
