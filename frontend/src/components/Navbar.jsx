@@ -61,6 +61,9 @@ function Navbar() {
     { to: '/products', label: 'Products' },
     ...(token
       ? [
+          { to: '/orders', label: 'My orders' },
+          { to: '/wishlist', label: 'Wishlist' },
+          ...(isSeller ? [{ to: '/seller', label: 'Seller' }] : []),
           ...(role === 'admin' ? [{ to: '/admin', label: 'Admin' }] : []),
         ]
       : []),

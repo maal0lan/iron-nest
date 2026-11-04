@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdminStats, fetchAdminSellers } from '../features/admin/adminSlice.js';
 import { formatMoney } from '../utils/money.js';
+import { StatCard } from '../components/StatCard.jsx';
 
 export default function AdminDashboard() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export default function AdminDashboard() {
       <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">Admin dashboard</h1>
 
       {stats && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
           <StatCard title="Total revenue" value={formatMoney(stats.totalRevenueCents || 0)} icon="¥" />
           <StatCard title="Total orders" value={stats.totalOrders || 0} icon="🧾" />
           <StatCard title="Total users" value={stats.totalUsers || 0} icon="👤" />
@@ -33,7 +34,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
         <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm">
           <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-4">Top products</h2>
           <div className="space-y-3">
@@ -65,20 +66,6 @@ export default function AdminDashboard() {
             {sellers?.length === 0 && <p className="text-[var(--color-gray-500)] text-sm">No sellers yet.</p>}
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function StatCard({ title, value, icon }) {
-  return (
-    <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm flex items-center justify-between">
-      <div>
-        <p className="text-xs text-[var(--color-gray-500)] uppercase font-semibold">{title}</p>
-        <p className="text-lg font-bold text-[var(--text-strong)]">{value}</p>
-      </div>
-      <div className="w-8 h-8 rounded-full bg-[var(--color-primary-50)] flex items-center justify-center text-[var(--color-primary-600)] text-lg">
-        {icon}
       </div>
     </div>
   );

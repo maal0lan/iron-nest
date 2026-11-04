@@ -11,6 +11,7 @@ import { ProductCard } from '../components/ProductCard.jsx';
 import { Button } from '../components/Button.jsx';
 import { Skeleton } from '../components/Skeleton.jsx';
 import { ErrorState } from '../components/ErrorState.jsx';
+import { PageHeader } from '../components/PageHeader.jsx';
 import { formatMoney } from '../utils/money.js';
 import { WishlistButton } from '../components/WishlistButton.jsx';
 
@@ -69,6 +70,10 @@ export default function ProductDetail() {
   return (
     <div className="container page py-6">
       <BreadcrumbItems product={product} />
+      <PageHeader
+        title={product.title}
+        subtitle={`${product.category} · ${product.stock === 0 ? 'Out of stock' : product.stock < 10 ? `Only ${product.stock} left` : 'In stock'}`}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Gallery */}
