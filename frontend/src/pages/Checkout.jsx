@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon } from '../features/cart/cartSlice.js';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { selectCartItems, selectItemCount, selectCartSubtotal, selectCartDiscount, selectCartShipping, selectCartTotal, selectCartCoupon, clearCart } from '../features/cart/cartSlice.js';
 import { placeOrder } from '../features/orders/ordersSlice.js';
 import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
@@ -19,16 +19,15 @@ export default function Checkout() {
   const tot = useSelector(selectCartTotal);
   const couponCode = useSelector(selectCartCoupon);
 
-  if (itemCount === 0) {
-    navigate('/cart');
-    return null;
-  }
-
   const [form, setForm] = useState({
     fullName: '', phone: '', line1: '', city: '', pincode: '',
   });
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  if (itemCount === 0) {
+    return <Navigate to="/cart" replace />;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +45,10 @@ export default function Checkout() {
         shippingAddress: form,
       }));
       if (placeOrder.fulfilled.match(result)) {
+        dispatch(clearCart());
         navigate(`/order/${result.payload._id}`);
+      } else {
+        setError(result.payload?.message || result.error?.message || 'Checkout failed. Try again.');
       }
     } catch (err) {
       setError(err.message || 'Checkout failed. Try again.');
@@ -108,13 +110,14 @@ export default function Checkout() {
               </div>
             )}
 
-            <button
+            <Button
               type="submit"
+              size="lg"
               disabled={submitting}
-              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
+              className="w-full"
             >
               {submitting ? 'Placing order…' : 'Place order'}
-            </button>
+            </Button>
             <p className="text-xs text-[var(--color-gray-500)] mt-3 text-center">This is a demo store — no card is charged.</p>
           </form>
         </div>
@@ -123,6 +126,23 @@ export default function Checkout() {
         <div className="lg:w-80 flex-shrink-0">
           <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm sticky top-6">
             <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-6">Order summary</h2>
+
+            <div className="space-y-4 mb-6">
+              {items.map((item) => (
+                <div key={item.productId}>
+                  <div className="flex justify-between gap-3 text-sm">
+                    <span className="font-medium text-[var(--text-strong)]">{item.title}</span>
+                    <span className="shrink-0 text-[var(--color-gray-500)]">× {item.quantity}</span>
+                  </div>
+                  <PriceTag
+                    priceCents={item.priceCents}
+                    discountPercentage={item.discountPercentage}
+                    compact
+                    className="mt-1"
+                  />
+                </div>
+              ))}
+            </div>
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-sm">
