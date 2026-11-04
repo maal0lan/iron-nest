@@ -108,7 +108,7 @@
 | `backend/src/routes/seller.js` | /api/seller routes |
 | `backend/src/routes/admin.js` | /api/admin routes |
 | `backend/src/routes/wishlist.js` | /api/wishlist routes |
-| `backend/src/seed/seed.js` | Seed script: users, coupons (SAVE10, POWER15, LIFT5), 32 gym products |
+| `backend/src/seed/seed.js` | Seed script: users, coupons (BHUVAN, GAINZ20, LEGDAY, IRON25, FREESHIP), 32 gym products |
 | `backend/package.json` | Backend dependencies + scripts (dev, start, seed) |
 | `backend/package-lock.json` | Locked dependencies |
 | `backend/.env.example` | PORT, MONGO_URI, JWT_SECRET, CORS_ORIGINS |
@@ -267,9 +267,11 @@ total = subtotal - discount + shipping
 ### Coupons
 | Code | Rule |
 |------|------|
-| SAVE10 | 10% off subtotal (staff rule) |
-| POWER15 | 15% off when subtotal >= $100 |
-| LIFT5 | flat $5 off, minimum $20 |
+| BHUVAN | 100% off subtotal (staff rule) |
+| GAINZ20 | 20% off subtotal |
+| LEGDAY | flat ₹100 off, minimum ₹500 |
+| IRON25 | 25% off subtotal, minimum ₹2000 |
+| FREESHIP | free shipping any order |
 | anything else | "Invalid coupon code" |
 
 ### Stock
@@ -285,7 +287,7 @@ total = subtotal - discount + shipping
 
 ### Demo-critical must-work (Knowledge §9)
 1. Browse + filter + product detail
-2. Cart + SAVE10 + checkout + order saved
+2. Cart + BHUVAN + checkout + order saved
 3. Seller adds a product and it appears in the store
 
 ---
@@ -393,7 +395,7 @@ Button, Chip, Badge, ProductCard, QtyStepper, Skeleton, Toast, ErrorState, Navba
 - Product browsing with filters, sort, pagination
 - Product detail with gallery, tabs, related products
 - Cart with add/increase/decrease/remove, persisted (redux-persist)
-- Coupon validation (SAVE10, POWER15, LIFT5)
+- Coupon validation (BHUVAN, GAINZ20, LEGDAY, IRON25, FREESHIP)
 - Checkout (fake, address form, order creation)
 - Order confirmation page
 - My orders with status chips

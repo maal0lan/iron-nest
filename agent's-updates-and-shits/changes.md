@@ -32,7 +32,7 @@ The repo started as a skeleton: a health-check-only `server.js`, empty `src/` su
 | `backend/src/routes/seller.js` | /api/seller routes |
 | `backend/src/routes/admin.js` | /api/admin routes |
 | `backend/src/routes/wishlist.js` | /api/wishlist routes |
-| `backend/src/seed/seed.js` | Seed script: users (customer, sellers, admin), coupons (SAVE10, POWER15, LIFT5), 32 gym products |
+| `backend/src/seed/seed.js` | Seed script: users (customer, sellers, admin), coupons (BHUVAN, GAINZ20, LEGDAY, IRON25, FREESHIP), 32 gym products |
 | `backend/src/server.js` | Rewired: mounts DB connection, CORS, all route routers, 404 + global error handler, starts listening after DB connect |
 | `backend/package.json` | Added `"seed": "node src/seed/seed.js"` script |
 
@@ -42,7 +42,7 @@ The repo started as a skeleton: a health-check-only `server.js`, empty `src/` su
 - `GET /api/products` → paginated items with `total`/`page`/`pages`
 - `GET /api/products/categories` → category counts
 - `GET /api/products/:id` → single product
-- `POST /api/coupons/validate` → SAVE10 on 23398 cents = 2340 cents ($23.40) — matches the staff worked example; bogus code → "Invalid coupon code"
+- `POST /api/coupons/validate` → BHUVAN on 23398 cents = 0 cents — matches the staff worked example; bogus code → "Invalid coupon code"
 - `POST /api/auth/login` → returns `{ token, user }`
 
 ## What's still to do (plan going forward)
@@ -50,4 +50,4 @@ The repo started as a skeleton: a health-check-only `server.js`, empty `src/` su
 - Implement cart + coupon + checkout (P1-owned), seller dashboard, wishlist, orders, admin dashboard
 - Themes + cursor animation (wow extras)
 - Deploy backend to Render, frontend to Vercel, configure CORS with the live Vercel URL
-- Smoke test browse/filter/detail, cart+SAVE10+checkout, seller adds product, mobile 390px
+- Smoke test browse/filter/detail, cart+BHUVAN+checkout, seller adds product, mobile 390px

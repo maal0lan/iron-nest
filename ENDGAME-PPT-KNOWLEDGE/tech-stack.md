@@ -118,9 +118,11 @@ total      = subtotal - discount + shipping
 
 | Code | Rule |
 |------|------|
-| SAVE10 | 10% off subtotal |
-| POWER15 | 15% off when subtotal >= ₹1000 |
-| LIFT5 | Flat ₹50 off, minimum subtotal ₹500 |
+| BHUVAN | 100% off subtotal |
+| GAINZ20 | 20% off subtotal |
+| LEGDAY | Flat ₹100 off, minimum subtotal ₹500 |
+| IRON25 | 25% off subtotal, minimum subtotal ₹2000 |
+| FREESHIP | Free shipping any order |
 
 - Validated at `POST /coupons/validate` and recomputed server-side at `POST /orders`.
 - Invalid/unknown codes → error message, no discount.

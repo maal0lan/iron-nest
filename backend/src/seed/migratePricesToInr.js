@@ -44,8 +44,11 @@ const productPrices = {
 };
 
 const coupons = [
-  { code: 'POWER15', type: 'percent', value: 15, minSubtotalCents: 200000 },
-  { code: 'LIFT5', type: 'flat', value: 5000, minSubtotalCents: 50000 },
+  { code: 'BHUVAN', type: 'percent', value: 100, minSubtotalCents: 0 },
+  { code: 'GAINZ20', type: 'percent', value: 20, minSubtotalCents: 0 },
+  { code: 'LEGDAY', type: 'flat', value: 10000, minSubtotalCents: 50000 },
+  { code: 'IRON25', type: 'percent', value: 25, minSubtotalCents: 200000 },
+  { code: 'FREESHIP', type: 'freeShipping', value: 0, minSubtotalCents: 0 },
 ];
 
 const migrate = async () => {

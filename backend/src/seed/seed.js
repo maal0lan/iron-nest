@@ -41,9 +41,11 @@ const users = [
 ];
 
 const coupons = [
-  { code: 'SAVE10', type: 'percent', value: 10, minSubtotalCents: 0, active: true },
-  { code: 'POWER15', type: 'percent', value: 15, minSubtotalCents: 200000, active: true },
-  { code: 'LIFT5', type: 'flat', value: 5000, minSubtotalCents: 50000, active: true },
+  { code: 'BHUVAN', type: 'percent', value: 100, minSubtotalCents: 0, active: true },
+  { code: 'GAINZ20', type: 'percent', value: 20, minSubtotalCents: 0, active: true },
+  { code: 'LEGDAY', type: 'flat', value: 10000, minSubtotalCents: 50000, active: true },
+  { code: 'IRON25', type: 'percent', value: 25, minSubtotalCents: 200000, active: true },
+  { code: 'FREESHIP', type: 'freeShipping', value: 0, minSubtotalCents: 0, active: true },
 ];
 
 const products = [
