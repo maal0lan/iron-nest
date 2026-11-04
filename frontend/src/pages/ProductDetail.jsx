@@ -7,6 +7,7 @@ import { addItem, selectCartQtyByProductId } from '../features/cart/cartSlice.js
 import { PriceTag } from '../components/PriceTag.jsx';
 import { StockBadge } from '../components/StockBadge.jsx';
 import { Badge } from '../components/Badge.jsx';
+import { ProductCard } from '../components/ProductCard.jsx';
 import { Button } from '../components/Button.jsx';
 import { Skeleton } from '../components/Skeleton.jsx';
 import { ErrorState } from '../components/ErrorState.jsx';
@@ -149,7 +150,7 @@ export default function ProductDetail() {
               <button
                 onClick={() => handleAdd(1)}
                 disabled={outOfStock || inCartQty >= product.stock}
-                className="w-full rounded-md bg-[var(--color-primary-600)] text-white px-6 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
+                className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
               >
                 {outOfStock ? 'Out of stock' : 'Add to cart'}
               </button>

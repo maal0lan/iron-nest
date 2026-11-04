@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export default function Toast({ message, actionLabel, onAction, autoHide = true }) {
+function Toast({ message, actionLabel, onAction, autoHide = true }) {
   const [visible, setVisible] = useState(!!message);
 
   useEffect(() => {
+    setVisible(!!message);
     if (!autoHide || !message) return;
     const t = setTimeout(() => setVisible(false), 4000);
     return () => clearTimeout(t);
@@ -13,16 +14,15 @@ export default function Toast({ message, actionLabel, onAction, autoHide = true 
 
   return (
     <div
-      className="fixed top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-lg px-5 py-3 text-sm text-[var(--text-strong)]"
-      style={{
-        borderLeft: '4px solid var(--color-primary-600)',
-      }}
+      role="status"
+      className="animate-pop-in fixed left-1/2 top-[calc(var(--header-height)+16px)] z-50 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-[var(--border)] border-l-4 border-l-[var(--color-primary-600)] bg-[var(--bg-card)] px-5 py-3 text-sm font-medium text-[var(--text-strong)] shadow-lg"
     >
       <span>{message}</span>
       {actionLabel && onAction && (
         <button
+          type="button"
           onClick={onAction}
-          className="text-sm font-semibold text-[var(--color-primary-600)] hover:text-[var(--color-primary-700)] underline ml-2"
+          className="ml-2 text-sm font-semibold text-[var(--color-primary-600)] underline underline-offset-4 hover:text-[var(--color-primary-700)]"
         >
           {actionLabel}
         </button>
@@ -30,3 +30,6 @@ export default function Toast({ message, actionLabel, onAction, autoHide = true 
     </div>
   );
 }
+
+export { Toast };
+export default Toast;

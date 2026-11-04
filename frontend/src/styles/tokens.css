@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Poppins:wght@600;700&display=swap');
+
+/* ==========================================================================
+   IronNest design tokens
+   Structure follows the staff design system (Knowledge §2). Components use the
+   semantic aliases below; themes only override variables, never components.
+   ========================================================================== */
 
 :root {
   color-scheme: light;
@@ -6,6 +12,7 @@
   /* brand */
   --color-primary-700: #3730A3;
   --color-primary-600: #4338CA;
+  --color-primary-200: #C7D2FE;
   --color-primary-100: #E0E7FF;
   --color-primary-50: #EEF2FF;
   --color-accent-600: #C2410C;
@@ -18,6 +25,7 @@
   --color-warning-50: #FFF7E6;
   --color-danger-700: #B91C1C;
   --color-danger-50: #FEF2F2;
+  --danger-solid: #B91C1C; /* filled danger surfaces (button, badge) in every theme */
 
   /* neutral */
   --color-gray-900: #111827;
@@ -40,9 +48,15 @@
   --text-body: var(--color-gray-700);
   --text-muted: var(--color-gray-500);
   --border: var(--color-gray-200);
+  --on-primary: #FFFFFF;          /* text on a primary-600 surface */
+  --on-header: #F9FAFB;           /* text on the header surface */
+  --on-header-muted: #9CA3AF;
+  --hero-from: #0B1020;           /* hero overlay gradient */
+  --hero-to: #1E1B4B;
 
   /* type */
   --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-display: 'Oswald', 'Poppins', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
   /* spacing */
@@ -53,9 +67,10 @@
   --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 24px; --radius-pill: 999px;
 
   /* elevation */
-  --shadow-sm: 0 1px 2px rgba(17,24,39,.06);
-  --shadow-md: 0 6px 16px rgba(17,24,39,.08);
-  --shadow-lg: 0 16px 40px rgba(17,24,39,.12);
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, .06);
+  --shadow-md: 0 6px 16px rgba(17, 24, 39, .08);
+  --shadow-lg: 0 16px 40px rgba(17, 24, 39, .12);
+  --shadow-glow: 0 12px 32px -12px color-mix(in srgb, var(--color-primary-600) 60%, transparent);
 
   /* layout */
   --container-max: 1200px;
@@ -78,162 +93,103 @@
   }
 }
 
-/* Themes — override semantic aliases only */
-[data-theme="dark"] {
+/* ==========================================================================
+   Themes. light = :root (no data-theme). dark / iron / neon share an inverted
+   neutral scale so every component that reads --color-gray-* stays legible.
+   ========================================================================== */
+
+[data-theme='dark'],
+[data-theme='iron'],
+[data-theme='neon'] {
+  color-scheme: dark;
+
+  --color-gray-50: #0F1424;
+  --color-gray-100: #1A2133;
+  --color-gray-200: #263047;
+  --color-gray-300: #3A455E;
+  --color-gray-500: #9CA3AF;
+  --color-gray-600: #B4BBC8;
+  --color-gray-700: #D1D5DB;
+
+  --color-success-700: #4ADE80;  --color-success-50: #0F2A1B;
+  --color-warning-700: #FBBF24;  --color-warning-50: #2B2108;
+  --color-danger-700: #F87171;   --color-danger-50: #2D1212;
+  --color-accent-600: #FB923C;   --color-accent-50: #2B1708;
+
+  --on-header: #F9FAFB;
+  --on-header-muted: #9CA3AF;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, .45);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, .55);
+}
+
+[data-theme='dark'] {
   --bg-page: #0B0F19;
   --bg-card: #151B2B;
-  --bg-header: #000;
+  --bg-header: #000000;
   --text-strong: #F9FAFB;
   --text-body: #D1D5DB;
   --text-muted: #9CA3AF;
   --border: #263047;
+
+  --color-primary-600: #6366F1;
+  --color-primary-700: #4F46E5;
+  --color-primary-200: #3730A3;
+  --color-primary-100: #312E81;
+  --color-primary-50: #1E1B4B;
+  --color-focus-ring: #A5B4FC;
 }
 
-[data-theme="iron"] {
-  --color-primary-600: #DC2626;
-  --color-primary-700: #B91C1C;
-  --color-primary-100: #FEE2E2;
-  --color-primary-50: #FEF2F2;
-  --color-focus-ring: #FCA5A5;
-  --bg-header: #0A0A0A;
+[data-theme='iron'] {
   --bg-page: #0B0B0B;
   --bg-card: #131313;
+  --bg-header: #0A0A0A;
   --text-strong: #FFFFFF;
   --text-body: #E5E5E5;
   --text-muted: #9CA3AF;
   --border: #262626;
+
+  --color-primary-600: #DC2626;
+  --color-primary-700: #B91C1C;
+  --color-primary-200: #7F1D1D;
+  --color-primary-100: #451212;
+  --color-primary-50: #2A0D0D;
+  --color-focus-ring: #FCA5A5;
+
+  --color-gray-50: #101010;
+  --color-gray-100: #1A1A1A;
+  --color-gray-200: #262626;
+  --color-gray-300: #3F3F3F;
+
+  --font-heading: var(--font-display);
+  --hero-from: #0A0A0A;
+  --hero-to: #3B0A0A;
 }
 
-[data-theme="neon"] {
+[data-theme='neon'] {
   --bg-page: #0A0A0A;
   --bg-card: #141414;
-  --bg-header: #000;
-  --color-primary-600: #A3E635;
-  --color-primary-700: #84CC16;
-  --color-primary-100: #1F2A0B;
-  --color-primary-50: #141C08;
-  --color-focus-ring: #BEF264;
+  --bg-header: #000000;
   --text-strong: #FAFAFA;
   --text-body: #D4D4D4;
   --text-muted: #A1A1AA;
   --border: #262626;
-}
 
-* {
-  box-sizing: border-box;
-}
+  --color-primary-600: #A3E635;
+  --color-primary-700: #84CC16;
+  --color-primary-200: #365314;
+  --color-primary-100: #1F2A0B;
+  --color-primary-50: #141C08;
+  --color-focus-ring: #BEF264;
+  --on-primary: #0A0A0A; /* dark text on lime, per Knowledge contrast note */
 
-html {
-  scroll-behavior: smooth;
-}
+  --color-gray-50: #101010;
+  --color-gray-100: #1A1A1A;
+  --color-gray-200: #262626;
+  --color-gray-300: #3F3F3F;
 
-body {
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: var(--bg-page);
-  color: var(--text-body);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  transition: background-color var(--transition), color var(--transition);
-}
-
-button, a, input, select, textarea {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-}
-
-:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 3px;
-}
-
-/* Typography utilities */
-.text-strong { color: var(--text-strong); }
-.text-body { color: var(--text-body); }
-.text-muted { color: var(--text-muted); }
-
-.font-heading { font-family: var(--font-heading); }
-
-/* Layout */
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--page-padding);
-}
-
-.page {
-  min-height: calc(100vh - var(--header-height));
-}
-
-/* Utilities */
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-.gap-2 { gap: var(--space-2); }
-.gap-3 { gap: var(--space-3); }
-.gap-4 { gap: var(--space-4); }
-.gap-5 { gap: var(--space-5); }
-.gap-6 { gap: var(--space-6); }
-
-.block { display: block; }
-.inline-block { display: inline-block; }
-.hidden { display: none; }
-
-.w-full { width: 100%; }
-.h-full { height: 100%; }
-
-.mt-4 { margin-top: var(--space-4); }
-.mb-4 { margin-bottom: var(--space-4); }
-.mb-6 { margin-bottom: var(--space-6); }
-.mx-auto { margin-left: auto; margin-right: auto; }
-
-.rounded-sm { border-radius: var(--radius-sm); }
-.rounded-md { border-radius: var(--radius-md); }
-.rounded-lg { border-radius: var(--radius-lg); }
-.rounded-xl { border-radius: var(--radius-xl); }
-.rounded-pill { border-radius: var(--radius-pill); }
-
-.border { border: 1px solid var(--border); }
-.border-b { border-bottom: 1px solid var(--border); }
-
-.shadow-sm { box-shadow: var(--shadow-sm); }
-.shadow-md { box-shadow: var(--shadow-md); }
-.shadow-lg { box-shadow: var(--shadow-lg); }
-
-.transition { transition: all var(--transition); }
-
-.uppercase { text-transform: uppercase; }
-
-.overflow-hidden { overflow: hidden; }
-.relative { position: relative; }
-
-/* Visually hidden helper for accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  --font-heading: var(--font-display);
+  --hero-from: #050505;
+  --hero-to: #1A2E05;
 }

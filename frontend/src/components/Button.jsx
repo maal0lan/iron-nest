@@ -1,44 +1,39 @@
-import { useEffect } from 'react';
-
-export default function Button({ children, variant = 'primary', size = 'md', disabled, className, ...rest }) {
+function Button({ children, variant = 'primary', size = 'md', disabled, className, type = 'button', ...rest }) {
+  // Control heights from the design system: sm 36 · md 44 · lg 52
   const sizes = {
-    sm: 'px-3 py-1.5 text-xs min-h-[36px]',
-    md: 'px-5 py-2 min-h-[44px]',
-    lg: 'px-6 py-2.5 text-base min-h-[52px]',
+    sm: 'px-3 text-xs min-h-[var(--control-sm)]',
+    md: 'px-5 text-sm min-h-[var(--control-md)]',
+    lg: 'px-7 text-base min-h-[var(--control-lg)]',
   };
 
   const base =
-    'inline-block font-semibold text-sm rounded-md transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 select-none font-semibold rounded-md ' +
+    'transition-all duration-150 ease-out active:translate-y-0 ' +
+    'focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-page)] ' +
+    'disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none';
 
-  let style = {};
-  let extraClass = '';
-
-  if (variant === 'primary') {
-    extraClass = 'bg-[var(--color-primary-600)] text-white hover:bg-[var(--color-primary-700)]';
-    style = {
-      '--ring-color': 'var(--color-focus-ring)',
-    };
-  } else if (variant === 'secondary') {
-    extraClass = 'border border-[var(--color-primary-600)] text-[var(--color-primary-600)] bg-transparent hover:bg-[var(--color-primary-50)]';
-  } else if (variant === 'ghost') {
-    extraClass = 'text-[var(--text-muted)] hover:text-[var(--text-strong)]';
-  } else if (variant === 'danger') {
-    extraClass = 'bg-[var(--color-danger-700)] text-white hover:bg-[var(--color-danger-700)]';
-  }
+  const variants = {
+    primary:
+      'bg-[var(--color-primary-600)] text-[var(--on-primary)] hover:bg-[var(--color-primary-700)] hover:-translate-y-0.5 hover:shadow-glow',
+    secondary:
+      'border border-[var(--color-primary-600)] text-[var(--color-primary-600)] bg-transparent hover:bg-[var(--color-primary-50)] hover:-translate-y-0.5',
+    ghost:
+      'text-[var(--text-muted)] hover:text-[var(--text-strong)] hover:bg-[var(--color-gray-100)]',
+    danger:
+      'bg-[var(--danger-solid)] text-white hover:brightness-110 hover:-translate-y-0.5',
+  };
 
   return (
     <button
-      className={`${base} ${sizes[size]} ${extraClass} ${className || ''}`.trim()}
+      type={type}
+      className={`${base} ${sizes[size] || sizes.md} ${variants[variant] || variants.primary} ${className || ''}`.trim()}
       disabled={disabled}
-      style={{
-        ...style,
-        ...(variant === 'primary' && {
-          outlineColor: 'var(--color-focus-ring)',
-        }),
-      }}
       {...rest}
     >
       {children}
     </button>
   );
 }
+
+export { Button };
+export default Button;

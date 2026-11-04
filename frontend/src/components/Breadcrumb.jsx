@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function Breadcrumb({ items }) {
+function Breadcrumb({ items }) {
   const navigate = useNavigate();
   return (
     <nav aria-label="Breadcrumb" className="text-sm text-[var(--color-gray-500)] mb-4">
@@ -27,3 +27,6 @@ export default function Breadcrumb({ items }) {
     </nav>
   );
 }
+
+export { Breadcrumb };
+export default Breadcrumb;

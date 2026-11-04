@@ -14,7 +14,7 @@ import { notFound, errorHandler } from './middleware/error.js';
 
 const app = express();
 const port = Number(process.env.PORT) || 5000;
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173')
+const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173,http://localhost:5175')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);

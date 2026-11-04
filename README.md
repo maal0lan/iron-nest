@@ -115,6 +115,8 @@ npm run dev
 ```
 
 Open the local URL printed by Vite (normally `http://localhost:5173`). The
+backend allows local frontend origins on ports 5173 and 5175 by default. If Vite
+uses another port, add that origin to `CORS_ORIGINS` in `backend/.env`. The
 frontend API base URL is `VITE_API_BASE_URL` in `frontend/.env`.
 
 ### Build the frontend

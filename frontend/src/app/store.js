@@ -9,7 +9,7 @@ import ordersReducer from '../features/orders/ordersSlice.js';
 import wishlistReducer from '../features/wishlist/wishlistSlice.js';
 import sellerReducer from '../features/seller/sellerSlice.js';
 import adminReducer from '../features/admin/adminSlice.js';
-import { setTokenGetter } from '../../utils/api.js';
+import { setTokenGetter } from '../utils/api.js';
 
 const persistConfig = {
   key: 'ironnest',
