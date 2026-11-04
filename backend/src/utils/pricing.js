@@ -1,6 +1,6 @@
 /**
  * Server-side pricing — the source of truth for all money math.
- * All values in integer cents. Round half up per calculation.
+ * All values in integer paise. Round half up per calculation.
  */
 
 /** Discounted unit price for a single product. */
@@ -23,11 +23,11 @@ export const couponDiscount = (subtotalCents, coupon) => {
   return 0;
 };
 
-/** Shipping cost: free at subtotal >= $50 or with a freeShipping coupon, else $4.99. */
+/** Shipping is ₹49 below ₹999, unless a free-shipping coupon applies. */
 export const shipping = (subtotalCents, coupon) => {
-  if (subtotalCents >= 5000) return 0;
+  if (subtotalCents >= 99900) return 0;
   if (coupon && coupon.type === 'freeShipping') return 0;
-  return 499;
+  return 4900;
 };
 
 /** Final total. */

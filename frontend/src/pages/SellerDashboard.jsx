@@ -69,11 +69,17 @@ export default function SellerDashboard() {
 
       {/* Stats cards */}
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-          <StatCard title="Products" value={stats.productCount || 0} icon="📦" />
-          <StatCard title="Orders" value={stats.orderCount || 0} icon="🧾" />
-          <StatCard title="Top product" value={stats.topProduct?.title || '—'} icon="🏆" />
-          <StatCard title="Revenue" value={stats.revenueCents ?? 0} icon="¥" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {[stats.productCount, stats.orderCount, null, stats.revenueCents].map((val, i) => {
+            const labels = ['Products', 'Orders', 'Top product', 'Revenue'];
+            const values = [stats.productCount, stats.orderCount, stats.topProduct?.title || '—', stats.revenueCents !== undefined ? formatMoney(stats.revenueCents) : formatMoney(0)];
+            return (
+              <div key={i} className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm">
+                <p className="text-xs text-[var(--color-gray-500)] uppercase font-semibold">{labels[i]}</p>
+                <p className="text-lg font-bold text-[var(--text-strong)]">{values[i]}</p>
+              </div>
+            );
+          })}
         </div>
       )}
 

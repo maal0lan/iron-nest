@@ -38,12 +38,12 @@ without medical or miracle-result claims. The intended seed dataset contains
 
 ### Store rules
 
-- Prices are stored as integer cents; convert to dollars only for display.
+- Prices are stored as integer paise; convert to Indian rupees only for display.
 - A discounted unit price is rounded from `priceCents * (1 - discountPercentage / 100)`.
 - `SAVE10` gives 10% off. `POWER15` gives 15% off orders with a subtotal of at
-  least $100. `LIFT5` gives $5 off with a subtotal of at least $20.
-- Shipping is free when the pre-coupon subtotal is at least $50; otherwise it
-  costs $4.99. The technical notes also mention a free-shipping coupon type,
+  least ₹2,000. `LIFT5` gives ₹50 off with a subtotal of at least ₹500.
+- Shipping is free when the pre-coupon subtotal is at least ₹999; otherwise it
+  costs ₹49. The technical notes also mention a free-shipping coupon type,
   but do not define a coupon code for it.
 - Show “Only N left” when stock is below 10. Out-of-stock items cannot be added
   to the cart, and cart quantity cannot exceed stock.
@@ -80,6 +80,9 @@ Edit `backend/.env` with your own MongoDB connection string and a long,
 private `JWT_SECRET` before implementing or running database-backed features.
 Do not commit `.env` or share production secrets in source control. Add the
 frontend origin to `CORS_ORIGINS` as a comma-separated list when deploying.
+
+To update an existing seeded catalogue to the current INR demo prices without
+deleting users or orders, run `npm run migrate:inr-prices` from `backend`.
 
 The starter API listens on `http://localhost:5000`. Verify it in a browser or
 with:

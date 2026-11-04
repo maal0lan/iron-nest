@@ -168,7 +168,7 @@ export default function ProductDetail() {
           </div>
 
           <div className="bg-[var(--color-success-50)] border border-[var(--color-success-50)] rounded-lg p-4 text-xs text-[var(--color-success-700)]">
-            Free shipping on orders of $50 or more · 30-day returns
+            Free shipping on orders of ₹999 or more · 30-day returns
           </div>
         </div>
       </div>

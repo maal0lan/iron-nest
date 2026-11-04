@@ -146,19 +146,21 @@ export default function Cart() {
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-[var(--border)]">
-          <div className="flex justify-between text-lg font-bold text-[var(--text-strong)] mb-2">
-            <span>Total</span>
-            <span>{formatMoney(tot)}</span>
+            <div className="mt-6 pt-6 border-t border-[var(--border)]">
+              <div className="flex justify-between text-lg font-bold text-[var(--text-strong)] mb-2">
+                <span>Total</span>
+                <span>{formatMoney(tot)}</span>
+              </div>
+              {sub < 99900 && disc === 0 && (
+                <p className="text-xs text-[var(--color-primary-600)] mb-4 text-center">
+                  Add {formatMoney(99900 - sub)} more for free shipping
+                </p>
+              )}
+              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
+                Proceed to checkout
+              </Link>
+            </div>
           </div>
-          {sub < 5000 && disc === 0 && (
-            <p className="text-xs text-[var(--color-primary-600)] mb-4 text-center">
-              Add {formatMoney(5000 - sub)} more for free shipping
-            </p>
-          )}
-          <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
-            Proceed to checkout
-          </Link>
         </div>
       </div>
     </div>
