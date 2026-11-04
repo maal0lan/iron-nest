@@ -11,12 +11,17 @@ export default function Login() {
   const location = useLocation();
   const { status, error } = useSelector((state) => state.auth);
   const [form, setForm] = useState({ email: '', password: '' });
+  const [serverError, setServerError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await dispatch(login({ ...form, email: form.email.trim() }));
-    if (login.fulfilled.match(result)) {
-      navigate(location.state?.from || '/', { replace: true });
+    setServerError('');
+    try {
+      await dispatch(login({ ...form, email: form.email.trim() })).unwrap();
+      const from = location.state?.from;
+      navigate(from ? `${from.pathname}${from.search || ''}${from.hash || ''}` : '/', { replace: true });
+    } catch (err) {
+      setServerError(err.message || 'Login failed.');
     }
   };
 
