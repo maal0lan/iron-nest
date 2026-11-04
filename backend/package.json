@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
-    "seed": "node src/seed/seed.js"
+    "seed": "node src/seed/seed.js",
+    "migrate:inr-prices": "node src/seed/migratePricesToInr.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
