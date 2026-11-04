@@ -4,8 +4,8 @@ import { setTheme, selectTheme } from '../features/theme/themeSlice.js';
 
 // Swatches are previews only; the live look always comes from the data-theme tokens.
 const THEMES = [
-  { name: 'light', label: 'Light', bg: '#F9FAFB', fg: '#4338CA' },
-  { name: 'dark', label: 'Dark', bg: '#0B0F19', fg: '#6366F1' },
+  { name: 'light', label: 'Light', bg: '#F9FAFB', fg: '#C2410C' },
+  { name: 'dark', label: 'Dark', bg: '#0B0F19', fg: '#FB923C' },
   { name: 'iron', label: 'Iron', bg: '#0B0B0B', fg: '#DC2626' },
   { name: 'neon', label: 'Neon', bg: '#0A0A0A', fg: '#A3E635' },
 ];

@@ -280,11 +280,16 @@ export default function ProductList() {
 
   return (
     <div className="container page py-6">
-      <div className="mb-4 lg:hidden">
-        <Button variant="secondary" size="sm" onClick={() => setOpenFilters(true)}>
-          Filters{activeFilters.length > 0 ? ` (${activeFilters.length})` : ''}
-        </Button>
-      </div>
+      <Button
+        variant="secondary"
+        size="sm"
+        className="mb-4 w-full lg:hidden"
+        onClick={() => setOpenFilters((open) => !open)}
+        aria-expanded={openFilters}
+        aria-controls="product-filters"
+      >
+        {openFilters ? 'Hide filters' : 'Show filters'}
+      </Button>
 
       <div className="flex flex-col gap-8 lg:flex-row">
         <aside className="hidden flex-shrink-0 lg:block lg:w-72">
@@ -297,9 +302,7 @@ export default function ProductList() {
         <main className="min-w-0 flex-1">
           <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <div>
-              <h1 className="font-heading text-xl font-bold text-[var(--text-strong)] md:text-2xl">
-                All products
-              </h1>
+              <h1 className="page-title">All products</h1>
               <p className="text-sm text-[var(--color-gray-500)]">{total} products</p>
             </div>
             {activeFilters.length > 0 && (

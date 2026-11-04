@@ -23,7 +23,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="container page py-6">
-      <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">Admin dashboard</h1>
+      <h1 className="page-title mb-6">Admin dashboard</h1>
 
       {stats && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">

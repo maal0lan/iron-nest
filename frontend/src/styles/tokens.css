@@ -10,11 +10,15 @@
   color-scheme: light;
 
   /* brand */
-  --color-primary-700: #3730A3;
-  --color-primary-600: #4338CA;
-  --color-primary-200: #C7D2FE;
-  --color-primary-100: #E0E7FF;
-  --color-primary-50: #EEF2FF;
+  --color-primary-700: #9A3412;
+  --color-primary-600: #C2410C;
+  --color-primary-200: #FED7AA;
+  --color-primary-100: #FFEDD5;
+  --color-primary-50: #FFF7ED;
+  --color-secondary-700: #3730A3;
+  --color-secondary-600: #4338CA;
+  --color-secondary-100: #E0E7FF;
+  --color-secondary-50: #EEF2FF;
   --color-accent-600: #C2410C;
   --color-accent-50: #FFF1E8;
 
@@ -38,7 +42,7 @@
   --color-gray-50: #F9FAFB;
   --color-white: #FFFFFF;
 
-  --color-focus-ring: #A5B4FC;
+  --color-focus-ring: #FDBA74;
 
   /* semantic aliases (components use these; themes override them) */
   --bg-page: var(--color-gray-50);
@@ -133,12 +137,16 @@
   --text-muted: #9CA3AF;
   --border: #263047;
 
-  --color-primary-600: #6366F1;
-  --color-primary-700: #4F46E5;
-  --color-primary-200: #3730A3;
-  --color-primary-100: #312E81;
-  --color-primary-50: #1E1B4B;
-  --color-focus-ring: #A5B4FC;
+  --color-primary-600: #FB923C;
+  --color-primary-700: #F97316;
+  --color-primary-200: #7C2D12;
+  --color-primary-100: #431407;
+  --color-primary-50: #2C160B;
+  --color-secondary-700: #C7D2FE;
+  --color-secondary-600: #A5B4FC;
+  --color-secondary-100: #312E81;
+  --color-secondary-50: #1E1B4B;
+  --color-focus-ring: #FDBA74;
 }
 
 [data-theme='iron'] {
@@ -155,6 +163,10 @@
   --color-primary-200: #7F1D1D;
   --color-primary-100: #451212;
   --color-primary-50: #2A0D0D;
+  --color-secondary-700: #FECACA;
+  --color-secondary-600: #FCA5A5;
+  --color-secondary-100: #451212;
+  --color-secondary-50: #2A0D0D;
   --color-focus-ring: #FCA5A5;
 
   --color-gray-50: #101010;
@@ -181,6 +193,10 @@
   --color-primary-200: #365314;
   --color-primary-100: #1F2A0B;
   --color-primary-50: #141C08;
+  --color-secondary-700: #D9F99D;
+  --color-secondary-600: #BEF264;
+  --color-secondary-100: #1F2A0B;
+  --color-secondary-50: #141C08;
   --color-focus-ring: #BEF264;
   --on-primary: #0A0A0A; /* dark text on lime, per Knowledge contrast note */
 

@@ -14,7 +14,7 @@ function Input({ id, label, type = 'text', placeholder, value, onChange, error, 
         onChange={onChange}
         required={required}
         aria-invalid={error ? 'true' : undefined}
-        className={`w-full min-h-[var(--control-md)] rounded-md border bg-[var(--bg-card)] px-3.5 text-sm text-[var(--text-body)] placeholder:text-[var(--text-muted)] transition-all duration-150 focus:outline-none focus:ring-[3px] focus:ring-[var(--color-focus-ring)] ${
+        className={`w-full min-h-[var(--control-md)] rounded-md border bg-[var(--bg-card)] px-3.5 text-sm leading-5 text-[var(--text-body)] placeholder:text-[var(--text-muted)] transition-all duration-150 focus:outline-none focus:ring-[3px] focus:ring-[var(--color-focus-ring)] ${
           error
             ? 'border-[var(--color-danger-700)] focus:border-[var(--color-danger-700)]'
             : 'border-[var(--color-gray-300)] focus:border-[var(--color-primary-600)]'
