@@ -4,6 +4,7 @@ import { addItem, increase, decrease, selectCartQtyByProductId } from '../featur
 import { PriceTag } from './PriceTag.jsx';
 import { StockBadge } from './StockBadge.jsx';
 import { Badge } from './Badge.jsx';
+import { WishlistButton } from './WishlistButton.jsx';
 
 function ProductCard({ product, showStepper = true }) {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function ProductCard({ product, showStepper = true }) {
         qty > 0 ? 'border-[var(--color-primary-600)]' : 'border-[var(--border)] hover:border-[var(--color-primary-200)]'
       }`}
     >
+      <WishlistButton product={product} className="absolute right-3 top-3 z-20" />
       <Link to={`/product/${product._id}`} className="relative block aspect-[4/5] overflow-hidden bg-[var(--color-gray-100)]" aria-label={product.title}>
         {onSale && (
           <Badge variant="discount" className="absolute left-3 top-3 z-10 shadow-sm">

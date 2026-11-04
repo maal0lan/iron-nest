@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { login } from '../features/auth/authSlice.js';
 import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { status, error } = useSelector((state) => state.auth);
   const [form, setForm] = useState({ email: '', password: '' });
   const [serverError, setServerError] = useState('');
@@ -17,8 +18,9 @@ export default function Login() {
     e.preventDefault();
     setServerError('');
     try {
-      await dispatch(login(form));
-      navigate('/');
+      await dispatch(login(form)).unwrap();
+      const from = location.state?.from;
+      navigate(from ? `${from.pathname}${from.search || ''}${from.hash || ''}` : '/');
     } catch (err) {
       setServerError(err.message || 'Login failed.');
     }

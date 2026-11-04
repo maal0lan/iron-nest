@@ -5,6 +5,7 @@ import { Provider, useDispatch } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './app/store.js';
 import { loadMe } from './features/auth/authSlice.js';
+import { fetchWishlist } from './features/wishlist/wishlistSlice.js';
 import { selectTheme } from './features/theme/themeSlice.js';
 
 import Navbar from './components/Navbar.jsx';
@@ -38,6 +39,11 @@ function AppContent() {
   useEffect(() => {
     dispatch(loadMe());
   }, [dispatch]);
+
+  const token = useSelector((state) => state.auth.token);
+  useEffect(() => {
+    if (token) dispatch(fetchWishlist());
+  }, [dispatch, token]);
 
   // Re-apply the saved theme on every load (not only when the user switches it).
   useEffect(() => {
