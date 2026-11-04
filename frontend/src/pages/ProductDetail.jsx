@@ -12,6 +12,7 @@ import { Button } from '../components/Button.jsx';
 import { Skeleton } from '../components/Skeleton.jsx';
 import { ErrorState } from '../components/ErrorState.jsx';
 import { formatMoney } from '../utils/money.js';
+import { WishlistButton } from '../components/WishlistButton.jsx';
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -157,6 +158,7 @@ export default function ProductDetail() {
               <Link to="/cart" className="mt-3 w-full rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-strong)] px-6 py-3 text-lg font-semibold hover:bg-[var(--color-gray-100)] transition block text-center">
                 Buy now
               </Link>
+              <WishlistButton product={product} className="mt-3 flex justify-end" />
             </div>
           </div>
 

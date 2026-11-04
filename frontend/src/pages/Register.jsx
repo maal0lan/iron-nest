@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../features/auth/authSlice.js';
-import { Button } from '../components/Button.jsx';
 import { Input } from '../components/Input.jsx';
 import { Link } from 'react-router-dom';
 
@@ -11,18 +10,19 @@ export default function Register() {
   const navigate = useNavigate();
   const { status, error } = useSelector((state) => state.auth);
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'customer', shopName: '' });
-  const [serverError, setServerError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setServerError('');
-    const payload = { ...form };
+    const payload = {
+      ...form,
+      name: form.name.trim(),
+      email: form.email.trim(),
+      shopName: form.shopName.trim(),
+    };
     if (payload.role !== 'seller') delete payload.shopName;
-    try {
-      await dispatch(register(payload));
+    const result = await dispatch(register(payload));
+    if (register.fulfilled.match(result)) {
       navigate('/');
-    } catch (err) {
-      setServerError(err.message || 'Registration failed.');
     }
   };
 
@@ -68,8 +68,8 @@ export default function Register() {
               required
             />
 
-            <div className="rounded-lg border border-[var(--border)] bg-[var(--color-gray-50)] p-3">
-              <label className="block text-xs font-semibold text-[var(--color-gray-500)] uppercase mb-3">I am a</label>
+            <fieldset className="rounded-lg border border-[var(--border)] bg-[var(--bg-page)] p-3">
+              <legend className="px-1 text-xs font-semibold text-[var(--color-gray-500)] uppercase">I am a</legend>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -92,7 +92,7 @@ export default function Register() {
                   Seller
                 </label>
               </div>
-            </div>
+            </fieldset>
 
             {form.role === 'seller' && (
               <Input
@@ -101,12 +101,13 @@ export default function Register() {
                 value={form.shopName}
                 onChange={(e) => setForm({ ...form, shopName: e.target.value })}
                 placeholder="e.g. Strength & Iron Co."
+                required
               />
             )}
 
-            {serverError && (
-              <div className="rounded-md bg-[var(--color-danger-50)] p-3 text-[var(--color-danger-700)] text-sm text-center">
-                {serverError}
+            {error && (
+              <div role="alert" className="rounded-md bg-[var(--color-danger-50)] p-3 text-[var(--color-danger-700)] text-sm text-center">
+                {error}
               </div>
             )}
 

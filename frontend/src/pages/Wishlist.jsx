@@ -1,20 +1,11 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { fetchWishlist } from '../features/wishlist/wishlistSlice.js';
-import { addItem } from '../features/cart/cartSlice.js';
 import { ProductCard } from '../components/ProductCard.jsx';
+import { ErrorState } from '../components/ErrorState.jsx';
+import { fetchWishlist } from '../features/wishlist/wishlistSlice.js';
 
 export default function Wishlist() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { ids, status } = useSelector((state) => state.wishlist);
-  // In a fuller build, wishlist would be populated with product objects from the API.
-  const products = useSelector((state) => state.products.items);
-
-  useEffect(() => {
-    dispatch(fetchWishlist());
-  }, [dispatch]);
+  const { items: products, status, error } = useSelector((state) => state.wishlist);
 
   return (
     <div className="container page py-6">
@@ -23,6 +14,8 @@ export default function Wishlist() {
         <div className="flex justify-center py-20">
           <div className="w-8 h-8 border-4 border-[var(--color-primary-600)] border-t-transparent rounded-full animate-spin" />
         </div>
+      ) : status === 'failed' ? (
+        <ErrorState message={error || 'Could not load your wishlist.'} onRetry={() => dispatch(fetchWishlist())} />
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.length === 0 && (
