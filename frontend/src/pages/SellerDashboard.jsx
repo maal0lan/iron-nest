@@ -58,10 +58,10 @@ export default function SellerDashboard() {
     <div className="container page py-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-1">Seller dashboard</h1>
-          <p className="text-sm text-[var(--color-gray-500)]">Manage your shop and orders</p>
+          <h1 className="page-title mb-1">Seller dashboard</h1>
+          <p className="page-subtitle">Manage your shop and orders</p>
         </div>
-        <Button onClick={() => { setEditId(null); setForm({ title: '', description: '', category: 'supplements', subCategory: '', brand: '', priceCents: '', discountPercentage: '0', stock: '', images: '', tags: '' }); setOpenForm(true); }} className="rounded-md bg-[var(--color-primary-600)] text-white px-4 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition">
+        <Button onClick={() => { setEditId(null); setForm({ title: '', description: '', category: 'supplements', subCategory: '', brand: '', priceCents: '', discountPercentage: '0', stock: '', images: '', tags: '' }); setOpenForm(true); }} className="w-full md:w-auto">
           + Add product
         </Button>
       </div>
@@ -127,7 +127,7 @@ function ProductsTab({ products, dispatch, openForm, setOpenForm, form, setForm,
     );
   }
   return (
-    <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm overflow-hidden">
+    <div className="table-scroll rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-[var(--border)] bg-[var(--color-gray-50)]">
@@ -179,7 +179,7 @@ function OrdersTab({ orders, dispatch }) {
     );
   }
   return (
-    <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm overflow-hidden">
+    <div className="table-scroll rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-[var(--border)] bg-[var(--color-gray-50)]">

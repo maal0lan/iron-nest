@@ -60,8 +60,8 @@ export default function Checkout() {
       <div className="flex flex-col lg:flex-row gap-8 max-w-[900px] mx-auto">
         {/* Address form */}
         <div className="flex-1">
-          <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">Checkout</h1>
-          <p className="text-[var(--color-gray-500)] text-sm mb-6">Demo checkout — no real payment. Your order will be created and saved.</p>
+          <h1 className="page-title mb-6">Checkout</h1>
+          <p className="page-subtitle mb-6">Demo checkout — no real payment. Your order will be created and saved.</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
@@ -111,7 +111,7 @@ export default function Checkout() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 transition"
+              className="min-h-[var(--control-lg)] w-full rounded-md bg-[var(--color-primary-600)] px-4 text-base font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)] disabled:opacity-50"
             >
               {submitting ? 'Placing order…' : 'Place order'}
             </button>
@@ -120,8 +120,8 @@ export default function Checkout() {
         </div>
 
         {/* Order summary */}
-        <div className="lg:w-80 flex-shrink-0">
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm sticky top-6">
+        <div className="shrink-0 lg:w-80">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm sm:p-6 lg:sticky lg:top-6">
             <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-6">Order summary</h2>
 
             <div className="space-y-3 mb-6">

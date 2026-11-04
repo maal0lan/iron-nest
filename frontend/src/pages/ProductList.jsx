@@ -99,12 +99,22 @@ export default function ProductList() {
 
   return (
     <div className="container page py-6">
-      <div className="flex flex-col lg:flex-row gap-8">
+      <Button
+        variant="secondary"
+        size="sm"
+        className="mb-4 w-full lg:hidden"
+        onClick={() => setOpenFilters((open) => !open)}
+        aria-expanded={openFilters}
+        aria-controls="product-filters"
+      >
+        {openFilters ? 'Hide filters' : 'Show filters'}
+      </Button>
+      <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
         {/* Filter sidebar */}
         <aside className="lg:w-72 flex-shrink-0">
-          <div className={`rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm ${openFilters ? '' : 'hidden lg:block'}`}>
+          <div id="product-filters" className={`rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm sm:p-6 ${openFilters ? '' : 'hidden lg:block'}`}>
             <h3 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-6">Filters</h3>
-            <button onClick={() => setOpenFilters(false)} className="text-xs font-semibold text-[var(--color-primary-600)] hover:underline mb-4 block">Clear all</button>
+            <button onClick={() => setOpenFilters(false)} className="mb-4 block text-xs font-semibold text-[var(--color-primary-600)] hover:underline lg:hidden">Hide filters</button>
 
             <div className="mb-6">
               <label className="block text-xs font-semibold text-[var(--color-gray-500)] uppercase mb-3">Category</label>
@@ -212,7 +222,7 @@ export default function ProductList() {
         <div className="flex-1">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)]">All products</h1>
+              <h1 className="page-title">All products</h1>
               <p className="text-[var(--color-gray-500)] text-sm">{total} products</p>
             </div>
 
@@ -247,7 +257,7 @@ export default function ProductList() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-[var(--grid-gap)] sm:grid-cols-3 lg:grid-cols-4">
             {items.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

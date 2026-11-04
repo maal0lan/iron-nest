@@ -32,9 +32,9 @@ export default function Cart() {
       <div className="container page py-20">
         <div className="text-center">
           <div className="rounded-full bg-[var(--color-gray-100)] p-6 text-[var(--color-gray-500)] inline-block mb-4">🛒</div>
-          <h3 className="text-lg font-semibold text-[var(--text-strong)] mb-2">Your cart is empty</h3>
+          <h1 className="page-title mb-2">Your cart is empty</h1>
           <p className="text-[var(--color-gray-500)] mb-6">Add some gear to get started.</p>
-          <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+          <Link to="/products" className="inline-flex min-h-[var(--control-md)] items-center justify-center rounded-md bg-[var(--color-primary-600)] px-6 text-sm font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)]">
             Continue shopping
           </Link>
         </div>
@@ -54,7 +54,7 @@ export default function Cart() {
         <div className="flex-1">
           <div className="flex justify-between items-end mb-6">
             <div>
-              <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)]">Shopping cart ({itemCount} items)</h1>
+              <h1 className="page-title">Shopping cart ({itemCount} items)</h1>
               <Link to="/products" className="text-sm text-[var(--color-primary-600)] hover:underline">← Continue shopping</Link>
             </div>
             <button
@@ -69,13 +69,13 @@ export default function Cart() {
             {items.map((item) => {
               const lineTotal = item.priceCents * item.quantity * (1 - (item.discountPercentage || 0) / 100);
               return (
-                <div key={item.productId} className="flex items-center gap-4 p-6 border-b border-[var(--border)] last:border-0">
+                <div key={item.productId} className="flex flex-wrap items-center gap-3 border-b border-[var(--border)] p-4 last:border-0 sm:flex-nowrap sm:gap-4 sm:p-6">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-20 h-24 rounded-lg object-cover bg-[var(--color-gray-100)]"
+                    className="h-20 w-16 rounded-lg bg-[var(--color-gray-100)] object-cover sm:h-24 sm:w-20"
                   />
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <Link to={`/product/${item.productId}`} className="text-sm font-semibold text-[var(--text-strong)] hover:text-[var(--color-primary-600)] block mb-1">
                       {item.title}
                     </Link>
@@ -87,8 +87,8 @@ export default function Cart() {
                       )}
                     </div>
                   </div>
-                  <QtyStepper productId={item.productId} stock={item.stock} />
-                  <span className="font-semibold text-[var(--text-strong)]">{formatMoney(Math.round(lineTotal))}</span>
+                  <QtyStepper productId={item.productId} stock={item.stock} className="order-last sm:order-none" />
+                  <span className="ml-auto font-semibold text-[var(--text-strong)] sm:ml-0">{formatMoney(Math.round(lineTotal))}</span>
                   <button
                     onClick={() => dispatch({ type: 'cart/removeItem', payload: item.productId })}
                     className="text-xs text-[var(--color-danger-700)] hover:text-[var(--color-danger-700)] underline"
@@ -102,8 +102,8 @@ export default function Cart() {
         </div>
 
         {/* Order summary */}
-        <div className="lg:w-80 flex-shrink-0">
-          <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-6 shadow-sm sticky top-6">
+        <div className="shrink-0 lg:w-80">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 shadow-sm sm:p-6 lg:sticky lg:top-6">
             <h2 className="font-heading text-lg font-bold text-[var(--text-strong)] mb-6">Order summary</h2>
 
             <div className="mb-6">
@@ -158,7 +158,7 @@ export default function Cart() {
                   Add {formatMoney(5000 - sub)} more for free shipping
                 </p>
               )}
-              <Link to="/checkout" className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-4 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] transition block text-center">
+              <Link to="/checkout" className="flex min-h-[var(--control-lg)] w-full items-center justify-center rounded-md bg-[var(--color-primary-600)] px-4 text-base font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)]">
                 Proceed to checkout
               </Link>
             </div>

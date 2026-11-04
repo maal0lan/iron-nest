@@ -61,7 +61,7 @@ export default function Home() {
             <span className="eyebrow !text-[var(--color-accent-600)] inline-flex items-center gap-2">
               <span className="h-px w-8 bg-current" /> This week only
             </span>
-            <h1 className="mt-4 font-display text-5xl font-bold uppercase leading-[.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-4xl font-bold uppercase leading-[.98] tracking-tight text-white sm:text-6xl lg:text-7xl">
               Train harder.
               <br />
               <span className="text-gradient">Save smarter.</span>

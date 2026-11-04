@@ -12,14 +12,14 @@ export default function OrderPlaced() {
         <div className="rounded-full bg-[var(--color-success-50)] p-6 text-[var(--color-success-700)] inline-block mb-6">
           ✓
         </div>
-        <h1 className="font-heading text-3xl font-bold text-[var(--text-strong)] mb-3">Order placed</h1>
+        <h1 className="page-title mb-3">Order placed</h1>
         <p className="text-[var(--color-gray-500)] mb-6">
           Thank you for your order! Order ID: <span className="font-semibold text-[var(--text-strong)]">{id}</span>
         </p>
         <p className="text-sm text-[var(--color-gray-500)] mb-8">
           Your order is being processed. You can view it in <Link to="/orders" className="text-[var(--color-primary-600)] hover:underline font-semibold">My orders</Link>.
         </p>
-        <Link to="/products" className="rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-2 text-sm font-semibold hover:bg-[var(--color-primary-700)] transition inline-block">
+        <Link to="/products" className="inline-flex min-h-[var(--control-md)] items-center justify-center rounded-md bg-[var(--color-primary-600)] px-6 text-sm font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)]">
           Continue shopping
         </Link>
       </div>

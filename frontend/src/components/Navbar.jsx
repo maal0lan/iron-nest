@@ -96,10 +96,10 @@ function Navbar() {
         <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-6">
           {/* Logo */}
           <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label="IronNest home">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
+            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-secondary-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
               I
             </span>
-            <span className="font-display text-xl font-bold uppercase tracking-wider text-[var(--on-header)]">
+            <span className="font-display text-lg font-bold uppercase tracking-wider text-[var(--on-header)] sm:text-xl">
               Iron<span className="text-[var(--color-primary-600)]">Nest</span>
             </span>
           </Link>
@@ -119,7 +119,7 @@ function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="grid h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] md:hidden"
+              className="hidden h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] sm:grid md:hidden"
               aria-label="Search products"
               aria-expanded={mobileOpen}
             >

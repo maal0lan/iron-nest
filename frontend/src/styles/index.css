@@ -9,6 +9,7 @@
   body {
     min-width: 320px;
     min-height: 100vh;
+    margin: 0;
     background: var(--bg-page);
     color: var(--text-body);
     font-family: var(--font-body);
@@ -21,7 +22,9 @@
   h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-strong); }
   button { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
-  img { max-width: 100%; }
+  img, svg { max-width: 100%; }
+  input, select, textarea, button { font: inherit; }
+  textarea { resize: vertical; }
 
   ::selection { background: var(--color-primary-600); color: var(--on-primary); }
 
@@ -45,6 +48,28 @@
   }
   .page { min-height: calc(100vh - var(--header-height)); }
 
+  .page-title {
+    color: var(--text-strong);
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: .9375rem;
+    line-height: 1.6;
+  }
+
+  .table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll table { min-width: 600px; }
+
   /* section heading with a brand accent bar */
   .section-title {
     position: relative;
@@ -58,7 +83,7 @@
     content: '';
     position: absolute; left: 0; top: .12em; bottom: .12em;
     width: 5px; border-radius: var(--radius-pill);
-    background: linear-gradient(180deg, var(--color-primary-600), var(--color-accent-600));
+    background: linear-gradient(180deg, var(--color-primary-600), var(--color-secondary-600));
   }
 
   .eyebrow {
@@ -170,5 +195,10 @@
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+
+  @media (max-width: 639px) {
+    .page-title { letter-spacing: -.02em; }
+    .table-scroll table { min-width: 560px; }
   }
 }

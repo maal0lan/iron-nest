@@ -18,13 +18,13 @@ export default function Wishlist() {
 
   return (
     <div className="container page py-6">
-      <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">Wishlist</h1>
+      <h1 className="page-title mb-6">Wishlist</h1>
       {status === 'loading' ? (
         <div className="flex justify-center py-20">
           <div className="w-8 h-8 border-4 border-[var(--color-primary-600)] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-[var(--grid-gap)] sm:grid-cols-3 lg:grid-cols-4">
           {products.length === 0 && (
             <div className="col-span-full text-center py-20">
               <p className="text-[var(--color-gray-500)]">Your wishlist is empty.</p>
