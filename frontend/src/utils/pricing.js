@@ -28,8 +28,10 @@ export const total = (subtotalCents, discountCents, shippingCents) =>
 /** Coupon info for the cart UI */
 export const couponInfo = (code) => {
   const c = code.toUpperCase();
-  if (c === 'SAVE10') return { code: 'SAVE10', type: 'percent', value: 10, minSubtotalCents: 0 };
-  if (c === 'POWER15') return { code: 'POWER15', type: 'percent', value: 15, minSubtotalCents: 200000 };
-  if (c === 'LIFT5') return { code: 'LIFT5', type: 'flat', value: 5000, minSubtotalCents: 50000 };
+  if (c === 'BHUVAN') return { code: 'BHUVAN', type: 'percent', value: 100, minSubtotalCents: 0 };
+  if (c === 'GAINZ20') return { code: 'GAINZ20', type: 'percent', value: 20, minSubtotalCents: 0 };
+  if (c === 'LEGDAY') return { code: 'LEGDAY', type: 'flat', value: 10000, minSubtotalCents: 50000 };
+  if (c === 'IRON25') return { code: 'IRON25', type: 'percent', value: 25, minSubtotalCents: 200000 };
+  if (c === 'FREESHIP') return { code: 'FREESHIP', type: 'freeShipping', value: 0, minSubtotalCents: 0 };
   return null;
 };

@@ -40,8 +40,7 @@ without medical or miracle-result claims. The intended seed dataset contains
 
 - Prices are stored as integer paise; convert to Indian rupees only for display.
 - A discounted unit price is rounded from `priceCents * (1 - discountPercentage / 100)`.
-- `SAVE10` gives 10% off. `POWER15` gives 15% off orders with a subtotal of at
-  least ₹2,000. `LIFT5` gives ₹50 off with a subtotal of at least ₹500.
+- `BHUVAN` gives 100% off your cart. `GAINZ20` gives 20% off any order. `LEGDAY` gives ₹100 off with a subtotal of at least ₹500. `IRON25` gives 25% off orders of at least ₹2,000. `FREESHIP` gives free shipping on any order.
 - Shipping is free when the pre-coupon subtotal is at least ₹999; otherwise it
   costs ₹49. The technical notes also mention a free-shipping coupon type,
   but do not define a coupon code for it.

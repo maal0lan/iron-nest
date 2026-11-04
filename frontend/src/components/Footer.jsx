@@ -15,7 +15,7 @@ function Footer() {
       <div className="container grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link to="/" className="inline-flex items-center gap-2.5" aria-label="IronNest home">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)]">I</span>
+            <span className="grid h-9 w-9 place-items-center rounded-md bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-secondary-600))] font-display text-lg font-bold text-[var(--on-primary)]">I</span>
             <span className="font-display text-xl font-bold uppercase tracking-wider text-[var(--text-strong)]">
               Iron<span className="text-[var(--color-primary-600)]">Nest</span>
             </span>

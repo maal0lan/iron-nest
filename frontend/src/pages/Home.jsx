@@ -5,6 +5,7 @@ import { fetchProducts } from '../features/products/productsSlice.js';
 import { ProductCard } from '../components/ProductCard.jsx';
 import { ProductCardSkeleton } from '../components/Skeleton.jsx';
 import { ErrorState } from '../components/ErrorState.jsx';
+import { BrandIcon } from '../components/BrandIcon.jsx';
 
 const CATEGORIES = [
   { slug: 'supplements', label: 'Supplements', blurb: 'Protein, pre-workout, creatine' },
@@ -15,20 +16,11 @@ const CATEGORIES = [
   { slug: 'recovery', label: 'Recovery', blurb: 'Foam rollers and more' },
 ];
 
-// Store rules (README): shipping, coupons.
+// Store rules (README): shipping.
 const PERKS = [
   'Free shipping over ₹999',
-  '10% off your cart',
-  '15% off orders ₹2,000+',
-  '₹50 off orders ₹500+',
   'Independent fitness sellers',
   'Demo checkout',
-];
-
-const COUPONS = [
-  { title: '10% off', note: 'On your whole cart' },
-  { title: '15% off', note: 'Orders of ₹2,000 or more' },
-  { title: '₹50 off', note: 'Orders of ₹500 or more' },
 ];
 
 const btnPrimary =
@@ -58,17 +50,17 @@ export default function Home() {
         />
         <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
           <div>
-            <span className="eyebrow !text-[var(--color-accent-600)] inline-flex items-center gap-2">
-              <span className="h-px w-8 bg-current" /> This week only
-            </span>
-            <h1 className="mt-4 font-display text-5xl font-bold uppercase leading-[.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold uppercase tracking-[.14em] text-white/90 backdrop-blur-sm">
+              <BrandIcon className="h-8 w-8 rounded-full" />
+              Iron Nest
+            </div>
+            <h1 className="mt-4 font-display text-4xl font-bold uppercase leading-[.98] tracking-tight text-white sm:text-6xl lg:text-7xl">
               Train harder.
               <br />
               <span className="text-gradient">Save smarter.</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-white/80 sm:text-lg">
-              Gear from independent fitness sellers. Get 10% off your cart,
-              and ship free on orders of ₹999 or more.
+              Gear from independent fitness sellers. Ship free on orders of ₹999 or more.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/products" className={btnPrimary}>Shop deals</Link>
@@ -76,21 +68,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Coupon stack */}
-          <div className="hidden gap-3 lg:grid" aria-label="Current offers">
-            {COUPONS.map((c, i) => (
-              <div
-                key={c.title}
-                className="animate-fade-up flex items-center justify-between rounded-lg border border-white/15 bg-white/10 px-5 py-4 backdrop-blur-md"
-                style={{ animationDelay: `${150 + i * 110}ms`, marginLeft: `${i * 18}px` }}
-              >
-                <div>
-                  <p className="font-display text-2xl font-semibold uppercase tracking-wide text-white">{c.title}</p>
-                  <p className="text-xs text-white/70">{c.note}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -160,11 +137,17 @@ export default function Home() {
         )}
       </section>
 
-      {/* Coupon banner */}
-      <section className="mb-6 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
+      {/* Coupon codes */}
+      <section className="mb-14 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
         <div className="grid gap-px bg-[var(--border)] md:grid-cols-3">
-          {COUPONS.map((c) => (
-            <div key={c.title} className="flex items-center justify-between gap-4 bg-[var(--bg-card)] p-6">
+          {[
+            { title: 'BHUVAN', note: '100% off your cart' },
+            { title: 'GAINZ20', note: '20% off any order' },
+            { title: 'LEGDAY', note: '₹100 off orders ₹500+' },
+            { title: 'IRON25', note: '25% off orders ₹2,000+' },
+            { title: 'FREESHIP', note: 'Free shipping any order' },
+          ].map((c) => (
+            <div key={c.title} className="flex items-center justify-between gap-4 bg-[var(--bg-card)] p-6 md:p-8">
               <div>
                 <p className="font-display text-3xl font-bold uppercase text-[var(--text-strong)]">{c.title}</p>
                 <p className="text-sm text-[var(--text-muted)]">{c.note}</p>

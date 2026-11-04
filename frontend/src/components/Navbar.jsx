@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice.js';
 import { selectItemCount } from '../features/cart/cartSlice.js';
+import { BrandIcon } from './BrandIcon.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
 
 const iconProps = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', viewBox: '0 0 24 24', 'aria-hidden': true };
@@ -98,9 +99,7 @@ function Navbar() {
         <div className="mx-auto flex h-full max-w-[var(--container-max)] items-center gap-3 px-[var(--page-padding)] md:gap-5">
           {/* Logo */}
           <Link to="/" className="group flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)]" aria-label="IronNest home">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[linear-gradient(135deg,var(--color-primary-600),var(--color-accent-600))] font-display text-lg font-bold text-[var(--on-primary)] shadow-glow transition-transform duration-200 group-hover:-rotate-6">
-              I
-            </span>
+            <BrandIcon className="h-9 w-9 transition-transform duration-200 group-hover:-rotate-6" />
             <span className="font-display text-lg font-bold uppercase tracking-wider text-[var(--on-header)] md:text-xl">
               Iron<span className="text-[var(--color-primary-600)]">Nest</span>
             </span>
@@ -117,6 +116,16 @@ function Navbar() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
+            {/* Mobile search toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              className="hidden h-10 w-10 place-items-center rounded-full text-[var(--on-header)] transition-colors hover:bg-[color-mix(in_srgb,var(--on-header)_10%,transparent)] sm:grid md:hidden"
+              aria-label="Search products"
+              aria-expanded={mobileOpen}
+            >
+              <SearchIcon />
+            </button>
             <div className="flex items-center gap-1 rounded-pill border border-[color-mix(in_srgb,var(--on-header)_14%,transparent)] bg-[color-mix(in_srgb,var(--on-header)_5%,transparent)] p-1">
               <ThemeToggle />
 
@@ -130,7 +139,7 @@ function Navbar() {
                   <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 {itemCount > 0 && (
-                  <span className="absolute right-0 top-0 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white ring-2 ring-[var(--bg-header)]">
+                  <span className="absolute right-0 top-0 grid h-5 min-w-[20px] place-items-center rounded-full bg-[var(--danger-solid)] px-1 text-[11px] font-bold leading-none text-white">
                     {itemCount > 9 ? '9+' : itemCount}
                   </span>
                 )}
@@ -164,31 +173,19 @@ function Navbar() {
                   </svg>
                 </button>
                 {userOpen && (
-                  <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-56 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
+                  <div role="menu" className="animate-pop-in absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] py-1.5 shadow-lg">
                     <div className="border-b border-[var(--border)] px-4 pb-2 pt-1.5">
                       <p className="truncate text-sm font-semibold text-[var(--text-strong)]">{user?.name}</p>
                       <p className="text-xs capitalize text-[var(--text-muted)]">{role}</p>
                     </div>
-                    {[
-                      ['/orders', 'My orders'],
-                      ['/wishlist', 'Wishlist'],
-                      ...(isSeller ? [['/seller', 'Seller dashboard']] : []),
-                      ...(role === 'admin' ? [['/admin', 'Admin dashboard']] : []),
-                    ].map(([to, label]) => (
-                      <Link key={to} to={to} role="menuitem" className="block px-4 py-2 text-sm text-[var(--text-body)] transition-colors hover:bg-[var(--color-gray-100)] hover:text-[var(--text-strong)]">
-                        {label}
-                      </Link>
-                    ))}
-                    <div className="mt-1 border-t border-[var(--border)] pt-1">
-                      <button
-                        type="button"
-                        role="menuitem"
-                        onClick={() => { dispatch(logout()); setUserOpen(false); }}
-                        className="w-full px-4 py-2 text-left text-sm font-medium text-[var(--color-danger-700)] transition-colors hover:bg-[var(--color-danger-50)]"
-                      >
-                        Logout
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => { dispatch(logout()); setUserOpen(false); }}
+                      className="w-full px-4 py-2 text-left text-sm font-medium text-[var(--color-danger-700)] transition-colors hover:bg-[var(--color-danger-50)]"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>

@@ -7,7 +7,7 @@ function Button({ children, variant = 'primary', size = 'md', disabled, classNam
   };
 
   const base =
-    'inline-flex items-center justify-center gap-2 select-none font-semibold rounded-md ' +
+    'inline-flex items-center justify-center gap-2 select-none whitespace-nowrap rounded-md font-semibold ' +
     'transition-all duration-150 ease-out active:translate-y-0 ' +
     'focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-page)] ' +
     'disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none';
@@ -16,7 +16,7 @@ function Button({ children, variant = 'primary', size = 'md', disabled, classNam
     primary:
       'bg-[var(--color-primary-600)] text-[var(--on-primary)] hover:bg-[var(--color-primary-700)] hover:-translate-y-0.5 hover:shadow-glow',
     secondary:
-      'border border-[var(--color-primary-600)] text-[var(--color-primary-600)] bg-transparent hover:bg-[var(--color-primary-50)] hover:-translate-y-0.5',
+      'border border-[var(--color-secondary-600)] text-[var(--color-secondary-600)] bg-transparent hover:bg-[var(--color-secondary-50)] hover:-translate-y-0.5',
     ghost:
       'text-[var(--text-muted)] hover:text-[var(--text-strong)] hover:bg-[var(--color-gray-100)]',
     danger:

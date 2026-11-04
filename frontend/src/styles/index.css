@@ -9,6 +9,7 @@
   body {
     min-width: 320px;
     min-height: 100vh;
+    margin: 0;
     background: var(--bg-page);
     color: var(--text-body);
     font-family: var(--font-body);
@@ -21,7 +22,9 @@
   h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-strong); }
   button { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
-  img { max-width: 100%; }
+  img, svg { max-width: 100%; }
+  input, select, textarea, button { font: inherit; }
+  textarea { resize: vertical; }
 
   ::selection { background: var(--color-primary-600); color: var(--on-primary); }
 
@@ -45,6 +48,28 @@
   }
   .page { min-height: calc(100vh - var(--header-height)); }
 
+  .page-title {
+    color: var(--text-strong);
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: .9375rem;
+    line-height: 1.6;
+  }
+
+  .table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll table { min-width: 600px; }
+
   /* section heading with a brand accent bar */
   .section-title {
     position: relative;
@@ -58,7 +83,7 @@
     content: '';
     position: absolute; left: 0; top: .12em; bottom: .12em;
     width: 5px; border-radius: var(--radius-pill);
-    background: linear-gradient(180deg, var(--color-primary-600), var(--color-accent-600));
+    background: linear-gradient(180deg, var(--color-primary-600), var(--color-secondary-600));
   }
 
   .eyebrow {
@@ -203,25 +228,6 @@
   }
   .tile:hover::before { opacity: 1; }
 
-  /* cursor (see CursorFx) */
-  .cursor-ring, .cursor-dot {
-    position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
-    border-radius: 50%; will-change: transform;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px; margin: -18px 0 0 -18px;
-    border: 2px solid var(--color-primary-600);
-    transition: width .18s ease-out, height .18s ease-out, margin .18s ease-out, background-color .18s ease-out, opacity .18s;
-    opacity: 0;
-  }
-  .cursor-ring.is-visible { opacity: .9; }
-  .cursor-ring.is-active {
-    width: 56px; height: 56px; margin: -28px 0 0 -28px;
-    background: color-mix(in srgb, var(--color-primary-600) 18%, transparent);
-  }
-  .cursor-ring.is-down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
-  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--color-primary-600); opacity: 0; }
-  .cursor-dot.is-visible { opacity: 1; }
 }
 
 @layer utilities {
@@ -237,5 +243,10 @@
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+
+  @media (max-width: 639px) {
+    .page-title { letter-spacing: -.02em; }
+    .table-scroll table { min-width: 560px; }
   }
 }

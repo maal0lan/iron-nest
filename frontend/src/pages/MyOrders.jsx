@@ -21,13 +21,13 @@ export default function MyOrders() {
 
   return (
     <div className="container page py-6">
-      <h1 className="font-heading text-xl md:text-2xl font-bold text-[var(--text-strong)] mb-6">My orders</h1>
+      <h1 className="page-title mb-6">My orders</h1>
       {list.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-[var(--color-gray-500)]">No orders yet.</p>
         </div>
       ) : (
-        <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm overflow-hidden">
+        <div className="table-scroll rounded-lg border border-[var(--border)] bg-[var(--bg-card)] shadow-sm">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-[var(--border)] bg-[var(--color-gray-50)]">

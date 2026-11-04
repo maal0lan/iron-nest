@@ -85,11 +85,11 @@ export default function ProductDetail() {
             <img src={image} alt={product.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition" />
           </div>
-          <div className="mt-4 flex gap-3 overflow-hidden">
+          <div className="mt-4 flex gap-2 overflow-hidden sm:gap-3">
             {(product.images || []).slice(0, 4).map((img, i) => (
               <button
                 key={i}
-                className="flex-shrink-0 w-16 h-16 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden"
+                className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-card)] sm:h-16 sm:w-16"
               >
                 <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
               </button>
@@ -102,7 +102,7 @@ export default function ProductDetail() {
           <div>
             <Badge variant="neutral" className="text-[10px] uppercase tracking-wide text-[var(--color-gray-500)] border-transparent">{product.category}</Badge>
             <StockBadge stock={product.stock} className="mt-2" />
-            <h1 className="font-heading text-2xl md:text-3xl font-bold text-[var(--text-strong)] mb-2">{product.title}</h1>
+            <h1 className="page-title mb-2">{product.title}</h1>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[var(--color-warning-700)] text-xs font-semibold">★ {product.rating.toFixed(1)}</span>
               <span className="text-xs text-[var(--color-gray-500)]">{product.reviewCount} reviews</span>
@@ -156,11 +156,11 @@ export default function ProductDetail() {
               <button
                 onClick={() => handleAdd(1)}
                 disabled={outOfStock || inCartQty >= product.stock}
-                className="w-full rounded-md bg-[var(--color-primary-600)] text-[var(--on-primary)] px-6 py-3 text-lg font-semibold hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed transition"
+                className="min-h-[var(--control-lg)] w-full rounded-md bg-[var(--color-primary-600)] px-6 text-base font-semibold text-[var(--on-primary)] transition hover:bg-[var(--color-primary-700)] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {outOfStock ? 'Out of stock' : 'Add to cart'}
               </button>
-              <Link to="/cart" className="mt-3 w-full rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-strong)] px-6 py-3 text-lg font-semibold hover:bg-[var(--color-gray-100)] transition block text-center">
+              <Link to="/cart" className="mt-3 flex min-h-[var(--control-lg)] w-full items-center justify-center rounded-md border border-[var(--color-secondary-600)] bg-[var(--bg-card)] px-6 text-base font-semibold text-[var(--color-secondary-600)] transition hover:bg-[var(--color-secondary-50)]">
                 Buy now
               </Link>
               <WishlistButton product={product} className="mt-3 flex justify-end" />
@@ -239,12 +239,12 @@ export default function ProductDetail() {
 
 function BreadcrumbItems({ product }) {
   return (
-    <div className="mb-6 flex items-center gap-2 text-sm text-[var(--color-gray-500)]">
+    <div className="mb-6 flex min-w-0 flex-wrap items-center gap-2 text-sm text-[var(--color-gray-500)]">
       <Link to="/" className="hover:text-[var(--color-primary-600)]">Home</Link>
       <span>/</span>
       <Link to={`/products?category=${product.category}`} className="hover:text-[var(--color-primary-600)]">{CATEGORY_LABELS[product.category] || product.category}</Link>
       <span>/</span>
-      <span className="text-[var(--text-strong)]" aria-current="page">{product.title}</span>
+      <span className="min-w-0 truncate text-[var(--text-strong)]" aria-current="page">{product.title}</span>
     </div>
   );
 }
